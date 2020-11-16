@@ -1,0 +1,347 @@
+\documentclass{article}
+\usepackage{amsmath, amssymb, amsfonts, amsthm, mathtools}
+\usepackage[utf8]{inputenc}
+\usepackage[inline]{enumitem}
+\usepackage{cancel}
+\usepackage{soul}
+\usepackage{hyperref}
+\usepackage{centernot}
+
+\setlength\parindent{0pt}
+\let\emptyset\varnothing
+
+\usepackage{xcolor}
+\definecolor{mybgcolor}{RGB}{50, 50, 50} %46, 51, 63
+
+\usepackage{pagecolor}
+\pagecolor{mybgcolor}
+\color{white}
+
+\pagestyle{plain}
+
+\usepackage{titlesec}
+\titleformat{\section}[block]{\sffamily\Large\filcenter\bfseries}{\S\thesection.}{0.25cm}{\Large}
+\titleformat{\subsection}[block]{\large\bfseries\sffamily}{\S\S\thesubsection.}{0.2cm}{\large}
+
+\usepackage{geometry}
+\geometry{
+	a4paper,
+	total={170mm,257mm},
+	left=20mm,
+	top=20mm,
+}
+
+\renewcommand{\familydefault}{\sfdefault}
+
+\title{Extra Questions for MA 109}
+\author{Aryaman Maithani\\
+\small TA for D1-T3}
+\date{Semester: Autumn 2020-21\\ Latest update: \today}
+
+\begin{document}
+\maketitle
+\hrulefill
+
+Notation:\\
+$\mathbb{N} = \{1,\; 2,\; \ldots\}$ denotes the set of natural numbers.\\
+$\mathbb{Z} = \mathbb{N} \cup \{0\} \cup \{-n : n\in\mathbb{N}\}$ denotes the set of integers.\\
+$\mathbb{Q}$ denotes the set of rational numbers.\\
+$\mathbb{R}$ denotes the set of real numbers.\\
+\section{Sequences}
+\begin{enumerate}
+	\item Let $(a_n)$ be a sequence of real numbers. We say that $(a_n)$ is \emph{slack-convergent} if there is an $a \in \mathbb{R}$ such that the following condition holds.\\
+	For every $\epsilon > 0,$ there is $n_0 \in \mathbb{N}$ such that $|a_n - a| \le \epsilon$ for all $n \ge n_0.$\\
+	Prove or disprove that a sequence is convergent (in the normal sense) $\iff$ it is slack-convergent.\\~\\
+	\textbf{(Additional)} What happens if we change $n \ge n_0$ to $n > n_0?$
+	%
+	\item Let $(a_n)$ be a sequence of real numbers. We say that $(a_n)$ is \emph{reciprocal-convergent} if there is an $a \in \mathbb{R}$ such that the following condition holds.\\
+	For every $\epsilon > 0,$ there is $n_0 \in \mathbb{N}$ such that $|a_n - a| < 1/\epsilon$ for all $n \ge n_0.$\\
+	Prove or disprove that a sequence is convergent (in the normal sense) $\iff$ it is reciprocal-convergent.
+	%
+	\item Let $(a_n)$ be a sequence of real numbers. We say that $(a_n)$ is \emph{natural-convergent} if the following condition holds.\\
+	For every $k \in \mathbb{N},$ $\displaystyle\lim_{n\to \infty}|a_{n+k} - a_n| = 0.$\\
+	Prove or disprove that a sequence is convergent (in the normal sense) $\iff$ it is natural-convergent.
+	%
+	\item Let $(a_n)$ be a sequence of real numbers. We say that $(a_n)$ is \emph{weirdly-convergent} if there is an $a \in \mathbb{R}$ such that the following condition holds.\\
+	For every $\epsilon > 0,$ there is $n_0 \in \mathbb{N}$ such that $|a_n - a| < \epsilon$ for infinitely many $n \ge n_0.$\\
+	Prove or disprove that a sequence is convergent (in the normal sense) $\iff$ it is weirdly-convergent.
+	%
+	\item Let $(a_n)$ be a sequence of real numbers. We say that $(a_n)$ is \emph{reverse-convergent} if there is an $a \in \mathbb{R}$ such that the following condition holds.\\
+	For every $n_0 \in \mathbb{N},$ there is $\epsilon > 0$ such that $|a_n - a| < \epsilon$ for all $n \ge n_0.$\\
+	Prove or disprove that a sequence is convergent (in the normal sense) $\iff$ it is reverse-convergent.
+	%
+	\item Let $f$ be any bijection from $\mathbb{N}$ to $\mathbb{Q} \cap [0,\; 1].$\\
+	Define the sequence $(a_n)$ of real numbers as: $a_n := f(n) \quad \forall n \in \mathbb{N}.$\\
+	Prove that $(a_n)$ diverges or find an example of $f$ such that $(a_n)$ converges.
+	%
+	\item Let $S$ be a nonempty subset of $\mathbb{R}$ which is bounded above. Let $(a_n)$ be an increasing sequence in $S$ such that $\displaystyle\lim_{n\to \infty}a_n = L \not\in S.$ (The sequence converges to a point outside $S.$)\\
+	 Prove or disprove that $L = \sup S.$ 
+\end{enumerate}
+For the question(s) in which the implication does not hold in both directions, does it hold in any? If yes, which?
+\section{Continuity}
+\begin{enumerate}
+	\item Show that $f:\mathbb{N}\to\mathbb{R}$ is continuous for any $f.$
+	%
+	\item Let $f:\mathbb{Q} \to \mathbb{R}$ be a continuous function such that the image (range) of $f$ is a subset of $\mathbb{Q}.$ Let $a,\;b,\;r\in \mathbb{Q}$ be such that $a < b$ and $f(a) < r < f(b).$ Show (with the help of an example) that it is not necessary that there exists some $c \in \mathbb{Q}\cap[a, b]$ such that $f(c) = r.$
+	%
+	\item (Dirichlet's function)\\
+	Define $f:\mathbb{R}\to\mathbb{R}$ as
+	\begin{equation*} 
+		f(x) \vcentcolon= \begin{cases}
+			0 & x \in \mathbb{Q},\\
+			1 & x \notin \mathbb{Q}.
+		\end{cases}
+	\end{equation*}
+	Show that $f$ is discontinuous everywhere.
+	%
+	\item (Thomae's function) \\
+	Define $f:[0, 1] \to \mathbb{R}$ as follows:
+
+	\begin{equation*} 
+		f(x) \vcentcolon= \begin{cases}
+			0 & x \text{ is irrational},\\
+			\dfrac{1}{n} & x = \dfrac{m}{n} \text{ in simplest form}.
+		\end{cases}
+	\end{equation*}
+	By ``simplest form,'' we mean that $m \in \mathbb{N}\cup\{0\},$ $n \in \mathbb{N}$ with $\gcd(m, n) = 1.$ (For $0,$ it will be $0/1.$)
+
+	Show that $f$ is discontinuous at all rationals in $[0, 1]$ and continuous at all other points in $[0, 1].$
+	%
+	\item Let $f:\mathbb{R} \to \mathbb{R}$ and $c\in\mathbb{R}.$ We say that $f$ is \emph{reverse continuous} at $c$ if for all $\delta > 0,$ there exists $\epsilon > 0$ such that $|x - c| < \delta \implies |f(x) - f(c)| < \epsilon.$\\
+	Is this notion of continuity the same as the normal notion?\\
+	If not, then give an example of a function which is reverse continuous at a point but not continuous or vice-versa.
+	%
+	\item  Let $f:\mathbb{R} \to \mathbb{R}$ and $c\in\mathbb{R}.$ We say that $f$ is \emph{upper continuous} at $c$ if for all $\epsilon > 0,$ there exists $\delta > 0$ such that $|x - c| < \delta \implies f(c) \le f(x) < f(c) + \epsilon.$
+	\begin{enumerate} 
+		\item Prove that a function is continuous at a point if it is upper continuous at that point.
+		\item Show that the converse may not be true.
+		\item Give an example of a function that is upper continuous at only one point.
+		\item Given any $n \in \mathbb{N},$ show that there exists a function that is upper continuous at exactly $n$ points.
+		\item Show that there exists a function that is upper continuous at infinitely many points.
+		\item Give an example of a function $f$ that is upper continuous everywhere.
+		\item Can you give an example of another function $g$ such that $g$ is upper continuous everywhere but $f-g$ is not constant?
+	\end{enumerate}
+	%
+	\item Let $A, B \subset \mathbb{R}$ and $f:A\to B$ be a bijection. Show with the help of an example that $f$ is continuous $\centernot\implies$ $f^{-1}$ is continuous. 
+	%
+	\item Show that there exists a bijection from $(0, 1)$ to $[0, 1].$
+	%
+	\item Show that there exists no continuous bijection from $(0, 1)$ to $[0, 1]$ or from $[0, 1]$ to $(0, 1).$
+	%
+	\item Let $f:A\to B$ be a continuous surjective function. Show that it is possible for $A$ to be a bounded open interval and $B$ to be a bounded closed interval.\\
+	Is it possible for $A$ to be a bounded closed interval and $B$ to be a bounded open interval?
+	%
+	\item Let $f:\mathbb{R}\to\mathbb{R}$ be a function with the intermediate value property. Is it necessary that $f$ is continuous \emph{somewhere}?
+	%
+	\item Let $f:\mathbb{R}\to\mathbb{R}$ be a function such that given any $c \in \mathbb{R},$ the limit $\displaystyle\lim_{x\to c}f(x)$ exists. Is it necessary that $f$ is continuous \emph{somewhere}?
+\end{enumerate}
+The last two questions are just for one to think about. I do not expect solutions for those.
+\section{Differentiation}
+\begin{enumerate} 
+	\item Let $f:\mathbb{R}\to\mathbb{R}$ be a differentiable function. Let $c \in \mathbb{R}.$ Is it necessary that there exist $a,\;b \in \mathbb{R}$ such that $a < c < b$ and $f'(c) = \dfrac{f(b) - f(a)}{b - a}?$
+	%
+	\item Let $k\in \mathbb{N}.$ Construct a function $f:\mathbb{R}\to\mathbb{R}$ that is $k$ times differentiable everywhere but not $(k+1)$ times differentiable somewhere.
+	%
+	\item Construct a function $f:\mathbb{R}\to\mathbb{R}$ which is differentiable at only one point.
+	%
+	\item Let $f:\mathbb{R}\to\mathbb{R}$ be differentiable. Suppose there is $\alpha \in \mathbb{R}$ such that for all $x \in \mathbb{R},$ $|f'(x)| \le \alpha < 1.$ Let $a_1 \in \mathbb{R}$ and set $a_{n+1} := f(a_n)$ for all $n \in \mathbb{N}.$ Show that the sequence $(a_n)$ converges.
+	%
+	\item Let $D \subset \mathbb{R}.$ A function $f:D\to \mathbb{R}$ is said to be \emph{convex} if
+	\[f(\lambda x + (1 - \lambda)y) \le \lambda f(x) + (1 - \lambda)f(y) \quad \forall x,\;y\in D,\;\forall \lambda\in [0, 1].\]
+	
+	Prove that if $I$ is an open interval and $f:I\to\mathbb{R}$ is convex, then $f$ is continuous. Where did you use that $I$ is an open interval?\\
+	Give an example to show that if $J$ is not an open interval, then a convex function $f:J\to\mathbb{R}$ need not be continuous.
+	%
+	\item Let $D \subset \mathbb{R}$ and $f:D\to\mathbb{R}$ be a differentiable function. Show by example that $f'(x) = 0 \quad \forall x \in D$ does not imply that $f$ is constant.
+	%
+	\item Let $D \subset \mathbb{R}$ and $f:D\to\mathbb{R}$ be a differentiable function.\\
+	We say that $f$ is increasing if $\forall x,\;y \in D:$ $x \le y \implies f(x) \le f(y).$\\
+	Show by example that $f'(x) \ge 0 \quad \forall x\in D$ does not imply that $f$ is increasing.
+	%
+	\item Show that the implication in the last two questions would be true if $D$ were an interval.
+	%
+	\item Let $A$ and $B$ be open intervals in $\mathbb{R}$ and $f:A\to B$ be a bijection such that $f$ is differentiable. Show that it is not necessary that $f^{-1}$ is differentiable.
+	%
+	\item * Construct a function $f_1:\mathbb{R}\to\mathbb{R}$ with the following properties or show that no such function exists:\\
+	$1.$ $f_1$ is differentiable everywhere except one point $x_1.$\\
+	$2.$ Define $f_2 : \mathbb{R}\setminus\{x_1\} \to \mathbb{R}$ as $f_2(x) := $ derivative of $f_1$ at $x.$ This $f_2$ must be differentiable everywhere in its domain except one point $x_2.$\\
+	$3.$ Define $f_3 : \mathbb{R}\setminus\{x_1,\;x_2\} \to \mathbb{R}$ as $f_3(x) := $ derivative of $f_2$ at $x.$ This $f_3$ must be differentiable everywhere in its domain except one point $x_3.$\\
+	\vdots
+
+	$n.$ Define $f_n : \mathbb{R}\setminus\{x_1, \cdots, x_{n-1}\} \to \mathbb{R}$ as $f_n(x) := $ derivative of $f_{n-1}$ at $x.$ This $f_n$ must be differentiable everywhere in its domain except one point $x_n.$\\
+	\vdots
+
+	(Note that we do not stop at any $n.$) 
+\end{enumerate}
+
+\section{Riemann integration}
+\begin{enumerate}
+	\item Define $f:[0, 2] \to \mathbb{R}$ as 
+	\begin{equation*} 
+		f(x) \vcentcolon= \begin{cases}
+			0 & x \neq 1,\\
+			1 & x = 1.
+		\end{cases}
+	\end{equation*}
+	Show that $f$ is Riemann integrable on $[0, 2]$ and that the integral is $0.$
+
+	Note that we had $f \ge 0$ with $\int_{a}^{b} f = 0$ and we still didn't get that $f$ is identically zero.
+	%
+	\item Suppose $a < b$ and $f:[a, b] \to \mathbb{R}$ is continuous. Show that if $f \ge 0$ and $\int_{a}^{b} f = 0,$ then $f \equiv 0.$ That is, $f(x) = 0$ for all $x \in [a, b].$
+
+	Compare this with the previous question.
+	%
+	\item Recall Dirichlet's function $f:\mathbb{R}\to\mathbb{R}$ from earlier:
+	\begin{equation*} 
+		f(x) \vcentcolon= \begin{cases}
+			0 & x \in \mathbb{Q},\\
+			1 & x \notin \mathbb{Q}.
+		\end{cases}
+	\end{equation*}
+	Show that $f$ is not integrable over $[0, 1].$
+\end{enumerate}
+
+\section{General}
+Most of these questions are above the level of the course.
+\begin{enumerate} 
+	\item Let $D \subset \mathbb{R}.$ We say a function $f : D \to \mathbb{R}$ is \emph{uniformly continuous} if for all $\epsilon > 0,$ there exists $\delta > 0$ such that whenever $x,\;y \in D$ and $|x - y| < \delta,$ then $|f(x) - f(y)| < \epsilon.$
+	\begin{enumerate} 
+		\item Understand how this definition is different from the definition of (usual) continuity.
+		\item Give an example of a function which is continuous but not uniformly continuous.
+		\item Show that any uniformly continuous function is also continuous.
+	\end{enumerate}
+	\item Let $(f_n)$ be a sequence of real valued functions defined on $[a, b]$ such that each $f_n$ is continuous. Moreover, you are given that for each $x \in [a, b],$ the limit $\displaystyle\lim_{n\to \infty}f_n(x)$ exists. \\
+	Define the function $f : [a, b] \to \mathbb{R}$ as follows:
+	\[f(x) := \lim_{n\to \infty}f_n(x).\]
+	Show with the help of an example that it is not necessary that $f$ is continuous.
+	\item Let $f_n : D \to \mathbb{R}$ be a sequence of functions from the set $D \subset \mathbb{R}$ to $\mathbb{R}.$ We say that the sequence $(f_n)$ \emph{converges uniformly} to the function $f:D \to \mathbb{R}$ if given $\epsilon > 0,$ there exists an integer $N$ such that
+	\[|f_n(x) - f(x)| < \epsilon\]
+	for all $n > N$ and all $x \in D.$\\
+	Prove that if $(f_n)$ is a sequence of continuous functions that converges uniformly to $f,$ then $f$ is continuous.\\
+	If you have solved the previous question, show that $(f_n)$ didn't uniformly converge to $f$ for that example.
+	\item Let $f:[a, b] \to \mathbb{R}$ be any function. Then, we know that if
+	\begin{enumerate} 
+		\item $f$ is monotonic, or
+		\item $f$ is bounded and has at most a finite number of discontinuities in $[a, b],$
+	\end{enumerate}
+	then $f$ is (Riemann) integrable.\\
+	Is the converse true?\\
+	That is, if $f$ is (Riemann) integrable, then is it necessary that one of (a) or (b) should be true? Prove or disprove via counterexample. \hfill (Credit: Amit Kumar)
+	%
+	\item Show that any function $f:\mathbb{N} \to \mathbb{R}$ is uniformly continuous.
+	\item Let $a \in \mathbb{R}$ and $(a_n)$ be a sequence of real numbers with the following property: Given any subsequence $\left(a_{n_k}\right)$ of $(a_n),$ there exists a subsequence $\left(a_{n_{k_l}}\right)$ of $\left(a_{n_k}\right)$ with the property that $\displaystyle\lim_{l\to \infty}a_{n_{k_l}}	= a.$\\
+	Prove that $\displaystyle\lim_{n\to \infty}a_n = a.$
+	\item Let $E$ be a bounded subset of $\mathbb{R}$ with the following property:\\
+	There exists $x_0 \in \mathbb{R}\setminus E$ such that there exists a sequence $(x_n)$ in $E$ which converges to $x_0.$ (For those familiar with the lingo, $E$ is not a closed set.)\\
+	Show that there exists:
+	\begin{enumerate}[nosep] 
+		\item A function $g:E\to \mathbb{R}$ which is continuous but not bounded.
+		\item A function $f:E\to \mathbb{R}$ such that $f(E)$ is bounded but does not have a maximum.
+		\item A function $h:E\to \mathbb{R}$ such that $h$ is continuous but not uniformly continuous.
+	\end{enumerate}
+	\item Let $f:(a, b) \to \mathbb{R}$ be a monotonically increasing function, that is, $a < x < y < b \implies f(x) \le f(y).$\\
+	Show that for any $x \in (a, b),$ both $\displaystyle\lim_{t\to x^-}f(t)$ and $\displaystyle\lim_{t\to x^+}f(t)$ exist. Moreover, show that $\displaystyle\lim_{t\to x^-}f(t) \le f(x) \le \displaystyle\lim_{t\to x^+}f(t).$\\~\\
+	Also show that if $x < y,$ then $\displaystyle\lim_{t\to x^+}f(t) \le \displaystyle \lim_{t\to y^-}f(t).$\\~\\
+	(Hint: Try relating $\displaystyle\lim_{t\to x^-}f(t)$ with $\displaystyle\sup_{a < t < x}f(t).$)
+	\item Let $S = \{a + b\sqrt{2} : a, b \in \mathbb{Z}\}.$ Show that given any $x \in \mathbb{R},$ there exists a sequence $(s_n)$ in $S$ that converges to $x.$\\
+	Bonus 1: Generalise the argument by replacing $\sqrt{2}$ by any irrational square root of a natural number.\\
+	Bonus 2: Generalise the argument by replacing $\sqrt{2}$ by any irrational number.
+	\item Let $f:\mathbb{R} \to \mathbb{R}$ be a periodic function with period $p > 0.$ That is, $f(x+p) = f(x)$ for all $x \in \mathbb{R}.$ Moreover, assume that $f$ is Riemann integrable on $[x, x+p]$ for any $x \in \mathbb{R}.$ Is it necessary that $\displaystyle\int_{x}^{x+p} f(x) dx $ is independent of $x?$ (Note that $f$ is not necessarily continuous.)
+	\item Let $A \subset \mathbb{R}$ and $f:A\to\mathbb{R}$ be a continuous and periodic function.
+	\begin{enumerate}[nosep] 
+		\item Show that if $A = \mathbb{R},$ then $f$ is bounded.
+		\item Show that there exists some $A$ and some $f$ for which the hypothesis holds but $f$ is not bounded.
+	\end{enumerate}
+	\item Let $f:\mathbb{R} \to \mathbb{R}$ be a function such that it is differentiable at $0.$ Is it necessary that there exist $a < 0 < b$ such that $f$ is continuous at every point in $(a, b)?$
+	\item Let $f:\mathbb{R}\to\mathbb{R}$ be a monotonically increasing function. Show that the set of discontinuities of $f$ is countable.\\
+	(A set $E$ is said to be countable if there exists a one-to-one function from $E$ to $\mathbb{N}.$ Examples - $\emptyset,\;\{1, 5, 6\},\;\mathbb{Q}.$)
+	%
+	\item Show with the help of an example that there exists a function $f:\mathbb{R} \to \mathbb{R}$ such that $f$ is continuous and bounded but not uniformly continuous.
+	\item Suppose $E \subset \mathbb{R}.$ Let $f:E \to \mathbb{R}$ be a uniformly continuous function. Show that if $(x_n)$ is a convergent sequence in $E,$ then the sequence $(f(x_n))$ converges in $\mathbb{R}.$ \hfill (Hint: Cauchy)\\
+	Show with the help of an example that the result need not hold if the function is just ``continuous."
+	\item Let $f, g: \mathbb{R} \to \mathbb{R}$ be continuous functions such that $f(q) = g(q)$ for all $q \in \mathbb{Q}.$\\
+	Show that $f(x) = g(x)$ for all $x \in \mathbb{R}.$\\
+	Is the result true if we drop the continuity hypothesis?\\
+	Can you think of a more general result? More simply, what sort of sets can we replace $\mathbb{Q}$ with?
+	\item Let $f:\mathbb{R} \to \mathbb{R}$ be a differentiable function such that $f'$ is bounded. Show that $f$ is uniformly continuous.
+	\item Let $f:\mathbb{R} \to \mathbb{R}$ be an infinitely differentiable function. Suppose $f$ has the property that $f^{(n)}(0) = 0$ for all $n \in \mathbb{N}.$ Is it necessary that there exists $\epsilon > 0$ such that $f$ is constant in the interval $(-\epsilon, \epsilon)?$
+	%
+	\item Does there exist $f:\mathbb{R}\to\mathbb{R}$ such that $f(x)$ is rational iff $x$ is irrational?
+	%\item Let $A_0$ be the closed interval $[0, 1].$ Let $A_1$ be the set obtained from $A_0$ by deleting its ``middle third'' $\left(\frac{1}{3}, \frac{2}{3}\right).$ Let $A_2$ be the set obtained from $A_1$ by deleting its ``middle thirds'' $\left(\frac{1}{9}, \frac{2}{9}\right) \cup \left(\frac{7}{9}, \frac{8}{9}\right).$ In general, define $A_n$ by the equation
+	%\[A_n = A_{n-1} - \bigcup_{k = 0}\left(\frac{1 + 3k}{3^n}, \frac{2 + 3k}{3^n}\right).\]
+%	The intersection
+%	\[C = \bigcap_{n \in \mathbb{N}}A_n\]
+%	is called the \textbf{Cantor set.}\\
+%	Let $f:[0, 1] \to \mathbb{R}$ be a bounded function. Show that if $f$ is continuous 
+\end{enumerate}
+% \section{Multi-variable Calculus}
+% Notation: For $x \in \mathbb{R}^n$ and $\epsilon > 0,$ we define $B_\epsilon(x) := \{y \in \mathbb{R}^n : \|y - x\| < \epsilon\}.$
+% \begin{enumerate} 
+% 	\item Are the following subsets of $\mathbb{R}^2$ closed? Identify $\partial D$ in each case (except the last four).
+% 	\begin{enumerate}[nosep] 
+% 		\item $\mathbb{R}^2$
+% 		\item $\mathbb{Q}^2$
+% 		\item $(\mathbb{R}\setminus\mathbb{Q})^2$
+% 		\item $\mathbb{N}^2$
+% 		\item $\{(x, y)\in\mathbb{R}^2 : x^2 + y^2 < 1\}$
+% 		\item $\{(x, y)\in\mathbb{R}^2 : x^2 + y^2 \le 1\}$
+% 		\item Any finite set of points.
+% 		\item $\{(x, 1/x) \in \mathbb{R}^2 : x \in \mathbb{R}\setminus\{0\}\}.$
+% 		\item $\left\{\left(x, \sin\left(\dfrac{1}{x}\right)\right) \in \mathbb{R}^2: x \in (0, 1]\right\} \cup \{0\}\times[-1, 1].$
+% 		\item $\left\{\dfrac{1}{n} : n \in \mathbb{N}\right\}\times\{0\}.$
+% 		\item $C_1 \cup C_2,$ where $C_1$ and $C_2$ are closed subsets of $\mathbb{R}^2.$
+% 		\item $C_1 \cap C_2,$ where $C_1$ and $C_2$ are closed subsets of $\mathbb{R}^2.$
+% 		\item $\displaystyle\bigcup_{i \in \mathbb{N}}C_i,$ where each $C_i$ is a closed subset of $\mathbb{R}^2.$ \hfill (Not always, give a counterexample)
+% 		\item $\displaystyle\bigcap_{i \in \mathbb{N}}C_i,$ where each $C_i$ is a closed subset of $\mathbb{R}^2.$ \hfill (Yes)
+% 	\end{enumerate}
+% 	%
+% 	\item Let $D$ be a subset of $\mathbb{R}^2.$ Let's call $x \in \mathbb{R}^2$ a limit point of $D$ if for every $\epsilon > 0,$ there exists $y \in B_\epsilon(x)$ such that $y \in D$ and $y \neq x.$\\
+% 	Prove that $D$ is closed if and only if it contains all of its limits points.\\
+% 	For each of the examples above (except for the last four), find the set of its limit points.
+% 	%
+% 	\item Let $n \in \mathbb{N}.$ Show that there exists a countable subset $E$ of $\mathbb{R}^n$ such that $\mathbb{R}^n = E \cup \partial E.$\\
+% 	(Hint: $\mathbb{Q}$ is countable.)
+% 	%
+% 	\item Let $D$ be a subset of $\mathbb{R}^2$ such that every point of $D$ is an interior point. Let $f : D \to \mathbb{R}$ be a differentiable function such that $\nabla f = 0$ on $D.$\\
+% 	Show that it is not necessary that $f$ is constant on $D.$
+% 	%
+% 	\item Let $D \subset \mathbb{R}^2$ be defined as $D := \{(x, y)\in\mathbb{R}^2 : 0 < x^2 + y^2 < 1\}.$ Suppose $f:D \to \mathbb{R}$ is a differentiable function such that $\nabla f = 0$ on $D.$\\
+% 	Prove that $f$ is constant on $D.$ \\
+% 	(Note that you can't directly use bivariate MVT.) \hfill (Why not?)
+% 	%
+% 	\item Let $D \subset \mathbb{R}^2$ be defined as $D = \{(x, y) \in \mathbb{R}^2 : (x, y) \in (\mathbb{Q} \cap [0, 1])^2\}.$ That is, the set of all points in the rectangle $[0,1]\times[0,1]$ with both coordinates rational.\\
+% 	Show that $\partial D = [0, 1]\times[0, 1].$\\
+% 	Show that the function $f:D \to \mathbb{R}$ defined as $f(x, y) := 0$ for $(x, y) \in D$ is integrable over $D.$\\
+% 	(This is an example of a function that is integrable over a domain $D$ even though $\partial D$ is not of content $0.$)
+% 	\item Let $f:\mathbb{R}^2 \to \mathbb{R}$ be defined as $f(x, y) := |xy|.$\\
+% 	Show that $f$ is differentiable at $(0, 0).$\\
+% 	Show that the partial derivative $f_x(0, k)$ does not exist whenever $k \neq 0.$ Show the analogous result for $f_y.$\\
+% 	Conclude that the function is differentiable at $(0, 0)$ even though the partial derivatives aren't continuous at $(0, 0).$ \hfill (They don't even exist in a neighbourhood!) 
+% 	\item Let $f:[-1,1]\times[-1, 1] \to \mathbb{R}$ be defined as follows:
+% 	\[f(x, y) := \left\{
+% 	\begin{array}{cc}
+% 		\dfrac{2xy}{(x^2 + y^2)^2} & (x, y) \neq (0, 0)\\
+% 		0 & (x, y) = (0, 0)
+% 	\end{array}
+% 	\right.\]
+% 	Show that for any fixed $x \in [-1, 1]$ the function is Riemann integrable on $[-1, 1]$ with respect to $y.$ Compute $I_x = \displaystyle\int_{-1}^{1} f(x, y) dy.$\\
+% 	Show that this function $I_x$ is Riemann integrable on $[-1, 1]$ with respect to $x.$ Compute $\displaystyle\int_{0}^{1} I_x dx.$\\
+% 	Now, show that for a fixed $y \in [-1, 1],$ the function is Riemann integrable on $[-1, 1]$ with respect to $x.$ Compute $I_y = \displaystyle\int_{-1}^{1} f(x, y) dx.$\\
+% 	Show that this function $I_y$ is Riemann integrable on $[-1, 1]$ with respect to $y.$ Compute $\displaystyle\int_{-1}^{1} I_y dy.$\\
+% 	In other words, you have shown that the iterated integrals $\displaystyle\int_{-1}^{1} \left(\int_{-1}^{1} f(x, y) dy\right) dx $ and $\displaystyle\int_{-1}^{1} \left(\int_{-1}^{1} f(x, y) dx\right) dy $ both exist.\\
+% 	They should also turn out to be equal.\\~\\
+% 	Now, show that $f$ is not bounded on $R = [-1, 1]\times[-1, 1]$ and hence, conclude that $f$ is not Riemann integrable on $R.$\\
+% 	Think about what you've just shown.
+% 	%
+% 	\item Let $n \in \mathbb{N}.$ Let $D$ be a subset of $\mathbb{R}^n$ such that $|D| = 1.$\\
+% 	Show that $D$ is convex.
+% 	%
+% 	\item Let $n \in \mathbb{N}.$ Suppose $D$ is a path-connected subset of $\mathbb{R}^n.$ \\
+% 	Suppose $|D| > 1.$ Show that $D$ is (uncountably) infinite.\\
+% 	%
+% 	\item Let $S$ denote the following subset of $\mathbb{R}^2:$
+% 	\[\left\{\left(x,\;\sin\left(\dfrac{1}{x}\right)\right) : x \in (0, 1]\right\}.\]
+% 	Consider $\bar{S} := S \cup (\{0\}\times[-1, 1]) \subset \mathbb{R}^2.$ That is, we add the ``vertical'' closed interval to $S.$\\
+% 	Show that $S$ is not path connected.
+% \end{enumerate}
+\end{document}
