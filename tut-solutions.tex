@@ -1,0 +1,314 @@
+\documentclass[12pt]{article}
+\usepackage{amsmath, amssymb, amsfonts, amsthm, mathtools,mathrsfs}
+\usepackage{thmtools}
+\usepackage[utf8]{inputenc}
+\usepackage[inline]{enumitem}
+\usepackage[colorlinks=true]{hyperref}
+\usepackage{tikz}
+\usetikzlibrary{decorations.markings}
+\usetikzlibrary{arrows.meta}
+\usepackage{witharrows}
+\usepackage{datetime2}
+
+\setlength\parindent{0pt}
+\usepackage{parskip}
+
+\usepackage[framemethod=tikz]{mdframed}
+\mdfdefinestyle{theoremstyle}{%
+	% linecolor=gray,linewidth=1pt,%
+	% frametitlerule=true,%
+	frametitlebackgroundcolor=white,
+	% backgroundcolor=  gray!20,	
+	bottomline=false, topline=false, rightline=false, leftline=true,
+	innerlinewidth=0.7pt, outerlinewidth=0.7pt, middlelinewidth=2pt, middlelinecolor=white, %
+	innerleftmargin=6pt,
+	% innertopmargin=-1pt,
+	skipabove=10pt,
+	% fontcolor=blue,
+	% innerbottommargin=-0.5pt,
+}
+\mdtheorem[style=theoremstyle]{defn}[thm]{Definition}
+\mdtheorem[style=theoremstyle]{thm}{Theorem}
+
+\newcommand*{\doublerule}{\hrule width \hsize height 1pt \kern 0.5mm \hrule width \hsize height 2pt}
+\newcommand{\doublerulefill}{\leavevmode\leaders\vbox{\hrule width .1pt\kern1pt\hrule}\hfill\kern0pt}
+
+\usepackage{xpatch}
+\newcommand{\thmautorefname}{Theorem}
+\makeatletter
+\xpatchcmd{\thm}{\refstepcounter}{\NR@gettitle{#1}\refstepcounter}{}{}
+\makeatother
+
+\newcommand{\Res}{\operatorname{Res}}
+
+\theoremstyle{definition}
+% \newtheorem{thm}{Theorem}
+% \numberwithin{thm}{section}
+% \newtheorem{lem}[thm]{Lemma}
+% \newtheorem{defn}[thm]{Definition}
+% \newtheorem{prop}[thm]{Proposition}
+% \newtheorem{cor}[thm]{Corollary}
+% \newtheorem{ex}{Example}
+
+
+\let\emptyset\varnothing
+
+\pagestyle{plain}
+
+\usepackage{titlesec}
+\titleformat{\section}[block]{\sffamily\Large\filcenter\bfseries}{\S\thesection.}{0.25cm}{\Large}
+\titleformat{\subsection}[block]{\large\bfseries\sffamily}{\S\S\thesubsection.}{0.2cm}{\large}
+
+\usepackage[a4paper]{geometry}
+\usepackage{lipsum}
+
+\usepackage{cleveref}
+\crefname{thm}{Theorem}{Theorems}
+\crefname{lem}{Lemma}{Lemmas}
+\crefname{defn}{Definition}{Definitions}
+\crefname{prop}{Proposition}{Propositions}
+\crefname{cor}{Corollary}{Corollaries}
+\crefname{equation}{}{}
+
+\usepackage{mdframed}
+\newenvironment{blockquote}
+{\begin{mdframed}[skipabove=0pt, skipbelow=0pt, innertopmargin=4pt, innerbottommargin=4pt, bottomline=false,topline=false,rightline=false, linewidth=2pt]}
+{\end{mdframed}}
+\newenvironment{soln}{\begin{proof}[Solution]}{\end{proof}}
+
+\usepackage{fancyhdr}
+\setlength{\headheight}{15.2pt}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\sffamily{\S\textbf{\nouppercase{\leftmark}}}}
+\fancyhead[R]{\sffamily{\thepage}}
+\definecolor{myupdatecolor}{RGB}{0, 0, 255}
+
+% \usepackage{xcolor}
+% \definecolor{mybgcolor}{RGB}{50, 50, 50} %46, 51, 63
+% \usepackage{pagecolor}
+% \pagecolor{mybgcolor}
+% \color{white}
+% \mdfsetup{backgroundcolor=mybgcolor, fontcolor=white}
+% \definecolor{myupdatecolor}{RGB}{0, 255, 0}
+
+\renewcommand{\familydefault}{\sfdefault}
+
+\title{MA 109: Calculus I\\\large{Tutorial Solutions}}
+\author{Aryaman Maithani\\\url{https://aryamanmaithani.github.io/tuts/ma-109}}
+\date{Autumn Semester 2020-21\\~\\Last update: \DTMnow}
+
+\begin{document}
+\tikzset{lab dis/.store in=\LabDis,
+  lab dis=-0.4,
+  ->-/.style args={at #1 with label #2}{decoration={
+    markings,
+    mark=at position #1 with {\arrow{>}; \node at (0,\LabDis) {#2};}},postaction={decorate}},
+  -<-/.style args={at #1 with label #2}{decoration={
+    markings,
+    mark=at position #1 with {\arrow{<}; \node at (0,\LabDis)
+    {#2};}},postaction={decorate}},
+  -*-/.style args={at #1 with label #2}{decoration={
+    markings,
+    mark=at position #1 with {{\fill (0,0) circle (1.5pt);} \node at (0,\LabDis)
+    {#2};}},postaction={decorate}},
+  }
+\maketitle
+\tableofcontents
+\newpage
+\setcounter{section}{-1}
+\section{Notations}
+\begin{enumerate}
+	\item $\mathbb{N} = \{1,\; 2,\; \ldots\}$ denotes the set of natural numbers.
+	\item $\mathbb{Z} = \mathbb{N} \cup \{0\} \cup \{-n : n\in\mathbb{N}\}$ denotes the set of integers.
+	\item $\mathbb{Q}$ denotes the set of rational numbers.
+	\item $\mathbb{R}$ denotes the set of real numbers.
+\end{enumerate}
+\newpage\section{Tutorial 1}
+\begin{center}
+	25th November, 2020
+\end{center}
+\textbf{Sheet 1}
+\begin{itemize}[leftmargin=*]
+	\item [2. (iv)]$\displaystyle\lim_{n\to \infty}(n)^{1/n}.$
+
+	Define $h_n := n^{1/n} - 1.$\\
+	Then, $h_n \ge 0$ for all $n \in \mathbb{N}.$ \hfill (Why?)
+
+	Now, for $n > 2,$ we have 
+	\begin{align*} 
+		n &= (1 + h_n)^n \\
+		&= 1 + nh_n + \dbinom{n}{2}h_n^2 + \cdots + \dbinom{n}{n}h_n^n\\
+		&\ge 1 + nh_n + \dbinom{n}{2}h_n^2 \\
+		&> \dbinom{n}{2}h_n^2 \\
+		&= \dfrac{n(n-1)}{2}h_n^2.
+	\end{align*}
+
+	Thus, $h_n < \sqrt{\dfrac{2}{n-1}}$ for all $n > 2.$
+
+	Using Sandwich Theorem, we get that $\displaystyle\lim_{n\to \infty}h_n = 0$ which gives us that 
+	\begin{equation*} 
+		\displaystyle\lim_{n\to \infty}n^{1/n} = 1.
+	\end{equation*}
+
+	(Where did we use that $h_n \ge 0?$)
+	%
+	\newpage
+	\item[3. (ii)] We show that $\left\{(-1)^n\left(\dfrac{1}{2} - \dfrac{1}{n}\right)\right\}_{n \ge 1}$ is \emph{not} convergent.
+
+	\begin{soln}
+	
+	Note that from the difference formula, we know that if $\{a_n\}$ converges, then
+	\begin{equation*} 
+		\lim_{n\to \infty}\left|a_{n+1} - a_n\right| = 0.
+	\end{equation*}
+	(The limit \emph{exists} and equals $0.$)
+
+	We show that this is not true for the given sequence. We define 
+	\begin{equation*} 
+		b_{n} \vcentcolon= a_{n + 1} - a_n,
+	\end{equation*}
+	where $\{a_n\}$ is the sequence given in the question.	
+
+	Then, $b_n$ is given as
+	\begin{align*} 
+		b_n &= (-1)^{n+1}\left(\dfrac{1}{2} - \dfrac{1}{n+1}\right) - (-1)^n\left(\dfrac{1}{2} - \dfrac{1}{n}\right)\\
+		&= (-1)^{n+1}\left(\dfrac{1}{2} - \dfrac{1}{n+1}\right) + (-1)^{n+1}\left(\dfrac{1}{2} - \dfrac{1}{n}\right)\\
+		&= (-1)^{n+1} + (-1)^{n}\left(\dfrac{1}{n+1} + \dfrac{1}{n}\right).
+	\end{align*}
+	Thus, we have
+	\begin{align*} 
+		|b_n| &= \left|1 - \left(\dfrac{1}{n+1} + \dfrac{1}{n}\right)\right|\\
+		&= \left|1 - \dfrac{2n + 1}{n(n + 1)}\right|
+	\end{align*}
+	From the above, we conclude that
+	\begin{equation*} 
+		\lim_{n\to \infty}|b_n| = 1.
+	\end{equation*}
+	This shows that $a_n$ does not converge.
+	\end{soln}
+	%
+	\newpage
+	\item[5. (iii)] $a_1 = \sqrt{2},\;a_{n+1} = 3 + \dfrac{a_n}{2} \quad \forall n \ge 1.$
+	\begin{soln}
+		I first describe the general idea.\\
+
+	\begin{blockquote}
+		The idea in these questions is to first prove a bound on $a_n$ by induction. Then, using that bound we prove that the sequence is convergent.
+
+		Once we do that, we then know that $\lim_{n\to \infty}a_n$ exists. Since that also equals $\lim_{n\to \infty}a_{n+1},$ we can take limit on both sides of the equation and solve for the limit $L.$
+	\end{blockquote}
+
+	First, we prove that the sequence is bounded above.\\
+
+	\begin{blockquote}
+	Claim 1. $a_n < 6$ for all $n \in \mathbb{N}.$ 
+	\begin{proof} 
+		We shall prove this via induction. The base case $n = 1$ is immediate as $2 < 6.$\\
+		Assume that it holds for $n = k.$ Then,
+		
+		\begin{equation*} 
+			a_{k+1} = 3 + \dfrac{a_n}{2} < 3 + \dfrac{6}{2} = 6.
+		\end{equation*}
+
+		By principle of mathematical induction, we have proven the claim. 
+	\end{proof}
+	\end{blockquote}
+	\phantom{hi}
+	\begin{blockquote}
+	Claim 2. $a_n < a_{n+1}$ for all $n \in \mathbb{N}.$ 
+	\begin{proof} 
+		$a_{n+1} - a_n = 3 - \dfrac{a_n}{2} = \dfrac{6 - a_n}{2} > 0 \implies a_{n+1} > a_n.$ 
+	\end{proof}
+	\end{blockquote}
+
+	Thus, we now know that the sequence converges. Let $L = \lim_{n\to \infty}a_n.$ Then taking the limit on both sides of
+	\begin{equation*} 
+		a_{n+1} = 3 + \dfrac{a_n}{2}
+	\end{equation*}
+	gives us
+	\begin{equation*} 
+		L = 3 + \dfrac{L}{2},
+	\end{equation*}
+	which we can solve to get $L = 6.$
+	\end{soln}
+	%
+	\newpage	
+	\item[7.] If $\displaystyle\lim_{n\to \infty}a_n = L \neq 0,$ show that there exists $n_0 \in \mathbb{N}$ such that
+    \begin{equation*} 
+    	|a_n| \ge \dfrac{|L|}{2} \quad \text{ for all } n \ge n_0.
+    \end{equation*}
+
+    \begin{soln}
+    	Choose $\epsilon = \dfrac{\left|L\right|}{2}.$ Note that this is indeed greater than $0.$
+
+    	By the $\epsilon-N$ definition, there exists $N \in \mathbb{N}$ such that
+    	\begin{equation*} 
+    		|a_n - L| < \epsilon = \dfrac{|L|}{2}
+    	\end{equation*}
+    	for all $n > N.$ Using triangle inequality, we get
+    	\begin{equation*} 
+    		||a_n| - |L|| \le |a_n - L| < \dfrac{|L|}{2}.
+    	\end{equation*}
+    	Thus, we get
+    	\begin{equation*} 
+    		-\dfrac{|L|}{2} < |a_n| - |L| < \dfrac{|L|}{2}.
+    	\end{equation*}
+    	Adding $|L|$ on both sides gives us
+    	\begin{equation*} 
+    		\dfrac{|L|}{2} < |a_n| < \dfrac{3|L|}{2}
+    	\end{equation*}
+    	for all $n > N,$ as desired.
+    \end{soln}
+    %
+    \newpage
+    \item[9.] For given sequences $\{a_n\}_{n \ge 1}$ and $\{b_n\}_{n \ge 1},$ prove or disprove the following:
+    \begin{enumerate}
+    	\item $\{a_nb_n\}_{n \ge 1}$ is convergent, if $\{a_n\}_{n \ge 1}$ is convergent.
+    	\item $\{a_nb_n\}_{n \ge 1}$ is convergent, if $\{a_n\}_{n \ge 1}$ is convergent and $\{b_n\}_{n \ge 1}$ is bounded.
+    \end{enumerate}
+    \begin{soln}
+    	Both the statements are false. We give one counterexample for both.
+    	\begin{align*} 
+    		a_n &\vcentcolon= 1 & \text{for all }n \in \mathbb{N},\\
+    		b_n &\vcentcolon= (-1)^n & \text{for all }n \in \mathbb{N}.
+    	\end{align*}
+    	Clearly, $\{a_n\}_{n\ge1}$ converges and $\{b_n\}_{n\ge1}$ is bounded. However, the product is again the latter sequence which does not converge.
+    \end{soln}
+    %
+    \newpage
+    \item[11.] Let $f, g:(a, b) \to \mathbb{R}$ be functions and suppose that $\lim_{x\to c}f(x) = 0$ for some $c \in [a, b].$ Prove or disprove the following statements.
+    \begin{enumerate}
+    	\item $\displaystyle\lim_{x\to c}[f(x)g(x)] = 0.$
+    	\item $\displaystyle\lim_{x\to c}[f(x)g(x)] = 0,$ if $g$ is bounded.
+    	\item $\displaystyle\lim_{x\to c}[f(x)g(x)] = 0,$ if $\displaystyle\lim_{x\to c}g(x)$ exists.
+    \end{enumerate}
+    \begin{soln}
+    	\begin{enumerate}
+    		\item No. Consider $a = c = 0$ and $b = 1.$ Let $f, g$ be defined as
+    		\begin{equation*} 
+    			f(x) = 0, \quad g(x) = \dfrac{1}{x}.
+    		\end{equation*}
+    		Verify that this works as a counterexample.
+    		\item We prove this statement. Since $g$ is bounded, there exists $M > 0$ such that
+    		\begin{equation*} 
+    			|g(x)| < M
+    		\end{equation*}
+    		for all $x \in (a, b).$ Thus, we have
+    		\begin{equation*} 
+    			|f(x)g(x)| \le M|f(x)|
+    		\end{equation*}
+    		for all $x \in (a, b).$ Since the LHS is clearly non-negative, using Sandwich theorem proves that
+    		\begin{equation*} 
+    			\lim_{x\to c}|f(x)g(x)| = 0.
+    		\end{equation*}
+    		This also gives us that
+    		\begin{equation*} 
+    			\lim_{x\to c}f(x)g(x) = 0.
+    		\end{equation*}
+    		(Why?)
+    		\item This is also true. We can simply use that limit of products is the product of limits if the individual limits exist.
+    	\end{enumerate}
+    \end{soln}
+\end{itemize}
+\end{document}

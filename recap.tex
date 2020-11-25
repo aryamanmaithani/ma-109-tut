@@ -1,0 +1,220 @@
+\documentclass[handout, dvipsnames]{beamer}
+\mode<presentation>{}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath, amssymb, amsfonts, amsthm, mathtools, mathrsfs}
+\setbeamertemplate{theorems}[numbered]
+\title{Calculus I Recap}
+\author[Aryaman Maithani]{\texorpdfstring{Aryaman Maithani\\\url{https://aryamanmaithani.github.io/tuts/ma-109}}{Aryaman Maithani}}
+\date{Autumn Semester {\color{red}2020}-21}
+\institute[IITB]{IIT Bombay}
+\usetheme{Warsaw}
+% \usecolortheme{beetle}
+\hypersetup{colorlinks=true}
+\addtobeamertemplate{footline}{\hypersetup{allcolors=.}}{}
+\usepackage{parskip}
+\usepackage{tcolorbox}
+
+\usepackage{tikz}
+\usetikzlibrary{decorations.markings}
+\usetikzlibrary{arrows.meta}
+
+\newcommand{\fl}[1]{\left\lfloor #1 \right\rfloor}
+% \newcommand{\Res}{\operatorname{Res}}
+% \renewcommand{\exp}{\operatorname{exp}}
+
+\theoremstyle{definition}
+\newtheorem{defn}{Definition}
+\newtheorem{prop}{Proposition}
+\newtheorem{thm}{Theorem}
+\newtheorem{rem}{Remark}
+
+\begin{document}
+\tikzset{lab dis/.store in=\LabDis,
+  lab dis=-0.4,
+  ->-/.style args={at #1 with label #2}{decoration={
+    markings,
+    mark=at position #1 with {\arrow{>}; \node at (0,\LabDis) {#2};}},postaction={decorate}},
+  -<-/.style args={at #1 with label #2}{decoration={
+    markings,
+    mark=at position #1 with {\arrow{<}; \node at (0,\LabDis)
+    {#2};}},postaction={decorate}},
+  -*-/.style args={at #1 with label #2}{decoration={
+    markings,
+    mark=at position #1 with {{\fill (0,0) circle (1.5pt);} \node at (0,\LabDis)
+    {#2};}},postaction={decorate}},
+  }
+\begin{frame}
+    \titlepage
+\end{frame}
+\begin{frame}{Week 1}
+    \begin{tcolorbox}
+        Start recording!
+    \end{tcolorbox}
+\end{frame}
+\begin{frame}{Week 1}
+    \begin{defn}[Sequences]
+        \uncover<2->{A sequence {\color{red}in $X$} }\uncover<3->{is a function $a:\mathbb{N} \to X.$ }\uncover<4->{We usually write $a_n$ instead of $a(n).$ }
+    \end{defn}
+    \begin{defn}[Convergence]
+        \uncover<5->{Let $X$ be a \underline{space}. }\uncover<6->{Let $(a_n)$ be a sequence {\color{red}in X}. }\uncover<7->{Let $L {\color{red}\;\in X}$. }\uncover<8->{We write
+        \begin{equation*} 
+            \lim_{n\to \infty}a_n = L
+        \end{equation*} }\uncover<9->{if for every $\epsilon > 0,$ }\uncover<10->{there exists $N \in \mathbb{N}$ }\uncover<11->{such that }\uncover<12->{
+        \begin{equation*} 
+            |a_n - L| < \epsilon
+        \end{equation*} }\uncover<13->{for every $n > N.$ }\uncover<14->{$L$ is said to be the \emph{limit} of the sequence. }
+    \end{defn}
+    \uncover<15->{In this case, we say that $(a_n)$ converges }\uncover<16->{{\color{red}in $X$}. }
+\end{frame}
+\begin{frame}{Week 1}
+    Note the highlights. \uncover<2->{They are important. }\uncover<3->{Consider $X = \mathbb{R}$ }\uncover<4->{and the sequence $a_n \vcentcolon= 1/n.$ }\\
+    \uncover<5->{As we saw in class, $(a_n)$ converges to $0 \in \mathbb{R}.$ }\uncover<6->{Thus, $(a_n)$ converges in $\mathbb{R}.$ }
+
+    \uncover<7->{However, consider $X = (0, 1]$ }\uncover<8->{and $(a_n)$ be as earlier. }\uncover<9->{This sequence does not converge (in $X$) anymore. }
+
+    \uncover<10->{Similarly, consider $X = \mathbb{Q}$ }\uncover<11->{and define $a_n = \dfrac{\fl{10^n\pi}}{10^n}.$ }\uncover<12->{
+    \begin{equation*} 
+        3.1, 3.14, 3.141, \ldots
+    \end{equation*} }\uncover<13->{The above is a sequence in $\mathbb{Q}.$ }\uncover<14->{However, it does not converge in $\mathbb{Q}.$ }
+\end{frame}
+\begin{frame}{Week 1}
+    \begin{defn}[Cauchy Sequences]
+        \uncover<2->{Let $X$ be a \underline{space}. }\uncover<3->{Let $(a_n)$ be a sequence in $X.$ }\uncover<4->{$(a_n)$ is said to be \emph{Cauchy} }\uncover<5->{if for every $\epsilon > 0,$ }\uncover<6->{there exists $N \in \mathbb{N}$ }\uncover<7->{such that }\uncover<8->{
+        \begin{equation*} 
+            |a_n - a_m| < \epsilon
+        \end{equation*} }\uncover<9->{for all $n, m > N.$ }
+    \end{defn}
+    \uncover<10->{\begin{prop}[Convergence $\implies$ Cauchy]
+        \uncover<11->{If $(a_n)$ is a convergent sequence }\uncover<12->{in any space $X,$ }\uncover<13->{then $(a_n)$ is Cauchy. }
+    \end{prop} }   
+\end{frame}
+\begin{frame}{Week 1}
+    \begin{defn}[Completeness]
+        \uncover<2->{A \underline{space} $X$ is said to be \emph{complete} }\uncover<3->{if every Cauchy sequence in $X$ }\uncover<4->{converges }\uncover<5->{{\color{red} in $X$}. }
+    \end{defn}
+    \begin{thm}[$\mathbb{R}$ is complete]
+        \uncover<6->{$\mathbb{R}$ is complete. }
+    \end{thm}
+    \uncover<7->{This theorem is trivial and not trivial at the same time. }\uncover<8->{You don't know what $\mathbb{R}$ \emph{truly} is. }\uncover<9->{So you can't really prove this. }
+
+    \uncover<10->{\textbf{Non-examples:} }\uncover<11->{We saw some examples earlier. }\uncover<12->{Go back and see that $\mathbb{Q}$ and $(0, 1]$ are \textbf{not} complete. }
+
+    \uncover<13->{\textbf{Exercise:} Show that $\mathbb{N}, \mathbb{Z}$ are complete. }\uncover<14->{(What property do you really need? Can you generalise this?) }
+\end{frame}
+\begin{frame}{Week 1}
+    Now, we digress a bit to see what $\mathbb{R}$ and completeness really means.
+
+    It is okay if you don't understand every single thing. It is more or less for you to know ``okay, whatever we say works'' even if you don't know the exact details why.
+\end{frame}
+\begin{frame}{Week 1}
+    What is $\mathbb{R}?$ \uncover<2->{Well, all one really needs is to know the following two slides about $\mathbb{R}.$ }
+
+    \uncover<3->{$\mathbb{R}$ is a field. }\uncover<4->{This means that the familiar properties of addition/multiplication are true. }\uncover<5->{(Commutativity, associativity, existence of identity, inverses, and distributivity.) }
+
+    \uncover<6->{$\mathbb{R}$ is ordered. }\uncover<7->{There is a binary operation $\le$ on $\mathbb{R}$ which is }\uncover<8->{reflexive, }\uncover<9->{anti-symmetric, }\uncover<10->{transitive, }\uncover<11->{\emph{and any two elements can be compared.} }
+
+    \uncover<12->{$\mathbb{R}$ is an ordered field. }\uncover<13->{All this means is that there is an order which is actually compatible with $+$ and $\cdot.$ }\uncover<14->{What does this mean? }
+
+    \uncover<15->{$x < y \implies x + z < y + z$ for all $x, y, z \in \mathbb{R},$}\\
+    \uncover<16->{$x < y \implies x \cdot z < y \cdot z$ for all $x, y \in \mathbb{R}$ and $z \in \mathbb{R}_{> 0}.$ }
+\end{frame}
+\begin{frame}{Week 1}
+    Note that all the properties earlier are also satisfied by $\mathbb{Q}.$ Here's what sets $\mathbb{R}$ apart:
+
+    \uncover<2->{
+    \begin{tcolorbox}
+        $\mathbb{R}$ is complete.
+    \end{tcolorbox} }
+
+    \uncover<3->{There's another way of defining completeness of $\mathbb{R},$ which coincides with the usual. }\uncover<4->{It is the following: }
+    \uncover<5->{\begin{tcolorbox}
+        Every non-empty subset of $\mathbb{R}$\uncover<6->{ which is bounded above }\uncover<7->{has a least upper bound. }
+    \end{tcolorbox} }
+    \uncover<8->{{\color{red}The} least upper bound is called \emph{supremum.} }
+
+    \uncover<9->{Note that \textbf{neither} of the above grey boxes is true if we replace $\mathbb{R}$ by $\mathbb{Q}.$ }
+\end{frame}
+\begin{frame}{Week 1}
+    What one must really ask at this point is: \uncover<2->{how do we know that $\mathbb{R}$ exists? }
+
+    \uncover<3->{That is, how do we know that there is some set $\mathbb{R}$ }\uncover<4->{with some operations $+, \cdot$ }\uncover<5->{and binary relation $<$ }\uncover<6->{which satisfies all the listed properties? }
+
+    \uncover<7->{That is what I refer to as a non-trivial part. }\uncover<8->{It can be done but is not useful to us at the moment. }
+\end{frame}
+\begin{frame}{Week 1}
+    Back to sequences now.
+
+    \begin{defn}[Monotonically increasing sequences]
+        \uncover<2->{A sequence $(a_n)$ is said to be \emph{monotonically increasing} }\uncover<3->{if
+        \begin{equation*} 
+            a_{n + 1} \ge a_n
+        \end{equation*} }\uncover<4->{for all $n \in \mathbb{N}.$ }
+    \end{defn}
+    \uncover<5->{Similarly, one defines a monotonically decreasing sequence. }\uncover<6->{A sequence is said to be monotonic if it is either monotonically increasing or monotonically decreasing. }
+\end{frame}
+\begin{frame}{Week 1}
+    \uncover<1->{\begin{defn}[Eventually monotonically increasing sequences]
+        \uncover<2->{A sequence $(a_n)$ is said to be \emph{eventually monotonically increasing} }\uncover<3->{if there exists $N \in \mathbb{N}$ such that }\uncover<4->{
+        \begin{equation*} 
+            a_{n + 1} \ge a_n
+        \end{equation*} }\uncover<5->{for all $n \ge N.$ }
+    \end{defn} }
+    \vspace{-3mm}
+    \uncover<6->{As earlier, we can define eventually monotonically decreasing sequences and simply, eventually monotonic sequences. }
+
+    \uncover<7->{\begin{thm}[]
+        An eventually monotonic sequence {\color{red}in $\mathbb{R}$} which is bounded converges {\color{red}in $\mathbb{R}$}.
+    \end{thm} }
+    \uncover<8->{Again, the above is not true if we take $\mathbb{Q}$ instead of $\mathbb{R}.$ }\uncover<9->{The $\pi$ sequence shows this. }\uncover<10->{In fact, the above is really a consequence of completeness. }
+\end{frame}
+\begin{frame}{Week 1}
+    We also saw series in the lectures. There's nothing much to be said about it. \uncover<2->{(As far as this course is concerned.) }\uncover<3->{In reality, there is a lot more to be said about series and various tests for seeing if a series converges. }\uncover<4->{Some of you will see this in future courses like MA 205. }\uncover<5->{Those taking a minor in Mathematics will also come across it in MA 403. }\uncover<6->{Of course, the ones in the Mathematics department will also see it in various courses. }
+
+    \uncover<7->{For us, all we need to know is that convergence of a series is just the convergence of the \underline{sequence} of its \emph{partial sums.} }\uncover<8->{Thus, we are back in the case where we study sequences! }
+\end{frame}
+\begin{frame}{Week 1}
+    We then moved on to the definition of limits of functions defined on intervals.
+
+    \uncover<2->{For the remainder, we fix $a, b \in \mathbb{R}$ }\uncover<3->{such that $a < b.$ }\uncover<4->{(Just to recall, $\infty$ is not an element of $\mathbb{R}.$) }
+
+    \uncover<5->{\begin{defn}[Limit]
+        Let $f:(a, b) \to \mathbb{R}$ be a function. \uncover<6->{Let $x_0 \in {\color{red}[}a, b{\color{red}]}$ }\uncover<7->{and $l {\color{red}\;\in \mathbb{R}}.$ }\uncover<8->{Then, we write
+        \begin{equation*} 
+            \lim_{x\to x_0}f(x) = l
+        \end{equation*} }\uncover<9->{if for every $\epsilon > 0,$ }\uncover<10->{there exists $\delta > 0$ }\uncover<11->{such that }\uncover<12->{
+        \begin{equation*} 
+            |f(x) - l| < \epsilon
+        \end{equation*} }\uncover<13->{for all ${\color{red}x \in (a, b)}$ }\uncover<14->{such that ${\color{red}0 < }|x - x_0| < \delta.$ }
+    \end{defn} }
+\end{frame}
+\begin{frame}{Week 1}
+    Note in the above that we can still talk about limits at points at which is the function is \emph{not} defined.
+
+    \uncover<2->{If the thing in the previous slide does happen, }\uncover<3->{then we say that $f(x)$ tends to $l$ as $x$ tends to $x_0.$ }\uncover<4->{Or that $f$ has a limit $l$ at $x_0.$ }
+
+    \uncover<5->{If no such $l$ exists, then we say that $f$ does not have any limit at $x_0.$ }
+\end{frame}
+\begin{frame}{Week 1}
+    We then also defined limit at $\pm\infty.$
+
+    \begin{defn}[Limit at $\infty$]
+        \uncover<2->{Let $A \subset \mathbb{R}$ be a set which is not bounded above. }\uncover<3->{Let $f:A\to\mathbb{R}$ be a function }\uncover<4->{and let $l \in \mathbb{R}.$ }\uncover<5->{We say
+        \begin{equation*} 
+            \lim_{x\to \infty}f(x) = l
+        \end{equation*} }\uncover<6->{if for every $\epsilon > 0,$ }\uncover<7->{there exists $X \in \mathbb{R}$ such that }\uncover<8->{
+        \begin{equation*} 
+            |f(x) - L| < \epsilon
+        \end{equation*} }\uncover<9->{for all {\color{red} $x \in A$} }\uncover<10->{such that $x > X.$ } 
+    \end{defn}
+    \uncover<11->{Similarly, we have the limit at $-\infty.$ }
+\end{frame}
+\begin{frame}{Week 1}
+    \begin{tcolorbox}
+        Stop recording. Start a new one.
+
+        Take doubts.
+    \end{tcolorbox}
+\end{frame}
+\end{document}
+
+% c4yd6ei

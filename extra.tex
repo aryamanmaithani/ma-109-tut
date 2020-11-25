@@ -79,7 +79,7 @@ $\mathbb{R}$ denotes the set of real numbers.\\
 	Prove/disprove: $(a_n)$ is convergent.
 	%
 	\item Let $f$ be any bijection from $\mathbb{N}$ to $\mathbb{Q} \cap [0,\; 1].$\\
-	Define the sequence $(a_n)$ of real numbers as: $a_n := f(n) \quad \forall n \in \mathbb{N}.$\\
+	Define the sequence $(a_n)$ of real numbers as: $a_n \vcentcolon= f(n) \quad \forall n \in \mathbb{N}.$\\
 	Prove that $(a_n)$ diverges or find an example of $f$ such that $(a_n)$ converges.
 	%
 	\item Let $S$ be a nonempty subset of $\mathbb{R}$ which is bounded above. Let $(a_n)$ be an increasing sequence in $S$ such that $\displaystyle\lim_{n\to \infty}a_n = L \not\in S.$ (The sequence converges to a point outside $S.$)\\
@@ -152,7 +152,7 @@ The last two questions are just for one to think about. I do not expect solution
 	%
 	\item Construct a function $f:\mathbb{R}\to\mathbb{R}$ which is differentiable at only one point.
 	%
-	\item Let $f:\mathbb{R}\to\mathbb{R}$ be differentiable. Suppose there is $\alpha \in \mathbb{R}$ such that for all $x \in \mathbb{R},$ $|f'(x)| \le \alpha < 1.$ Let $a_1 \in \mathbb{R}$ and set $a_{n+1} := f(a_n)$ for all $n \in \mathbb{N}.$ Show that the sequence $(a_n)$ converges.
+	\item Let $f:\mathbb{R}\to\mathbb{R}$ be differentiable. Suppose there is $\alpha \in \mathbb{R}$ such that for all $x \in \mathbb{R},$ $|f'(x)| \le \alpha < 1.$ Let $a_1 \in \mathbb{R}$ and set $a_{n+1} \vcentcolon= f(a_n)$ for all $n \in \mathbb{N}.$ Show that the sequence $(a_n)$ converges.
 	%
 	\item Let $D \subset \mathbb{R}.$ A function $f:D\to \mathbb{R}$ is said to be \emph{convex} if
 	\[f(\lambda x + (1 - \lambda)y) \le \lambda f(x) + (1 - \lambda)f(y) \quad \forall x,\;y\in D,\;\forall \lambda\in [0, 1].\]
@@ -172,11 +172,11 @@ The last two questions are just for one to think about. I do not expect solution
 	%
 	\item * Construct a function $f_1:\mathbb{R}\to\mathbb{R}$ with the following properties or show that no such function exists:\\
 	$1.$ $f_1$ is differentiable everywhere except one point $x_1.$\\
-	$2.$ Define $f_2 : \mathbb{R}\setminus\{x_1\} \to \mathbb{R}$ as $f_2(x) := $ derivative of $f_1$ at $x.$ This $f_2$ must be differentiable everywhere in its domain except one point $x_2.$\\
-	$3.$ Define $f_3 : \mathbb{R}\setminus\{x_1,\;x_2\} \to \mathbb{R}$ as $f_3(x) := $ derivative of $f_2$ at $x.$ This $f_3$ must be differentiable everywhere in its domain except one point $x_3.$\\
+	$2.$ Define $f_2 : \mathbb{R}\setminus\{x_1\} \to \mathbb{R}$ as $f_2(x) \vcentcolon= $ derivative of $f_1$ at $x.$ This $f_2$ must be differentiable everywhere in its domain except one point $x_2.$\\
+	$3.$ Define $f_3 : \mathbb{R}\setminus\{x_1,\;x_2\} \to \mathbb{R}$ as $f_3(x) \vcentcolon= $ derivative of $f_2$ at $x.$ This $f_3$ must be differentiable everywhere in its domain except one point $x_3.$\\
 	\vdots
 
-	$n.$ Define $f_n : \mathbb{R}\setminus\{x_1, \cdots, x_{n-1}\} \to \mathbb{R}$ as $f_n(x) := $ derivative of $f_{n-1}$ at $x.$ This $f_n$ must be differentiable everywhere in its domain except one point $x_n.$\\
+	$n.$ Define $f_n : \mathbb{R}\setminus\{x_1, \cdots, x_{n-1}\} \to \mathbb{R}$ as $f_n(x) \vcentcolon= $ derivative of $f_{n-1}$ at $x.$ This $f_n$ must be differentiable everywhere in its domain except one point $x_n.$\\
 	\vdots
 
 	(Note that we do not stop at any $n.$) 
@@ -220,7 +220,7 @@ Most of these questions are above the level of the course.
 	\end{enumerate}
 	\item Let $(f_n)$ be a sequence of real valued functions defined on $[a, b]$ such that each $f_n$ is continuous. Moreover, you are given that for each $x \in [a, b],$ the limit $\displaystyle\lim_{n\to \infty}f_n(x)$ exists. \\
 	Define the function $f : [a, b] \to \mathbb{R}$ as follows:
-	\[f(x) := \lim_{n\to \infty}f_n(x).\]
+	\[f(x) \vcentcolon= \lim_{n\to \infty}f_n(x).\]
 	Show with the help of an example that it is not necessary that $f$ is continuous.
 	\item Let $f_n : D \to \mathbb{R}$ be a sequence of functions from the set $D \subset \mathbb{R}$ to $\mathbb{R}.$ We say that the sequence $(f_n)$ \emph{converges uniformly} to the function $f:D \to \mathbb{R}$ if given $\epsilon > 0,$ there exists an integer $N$ such that
 	\[|f_n(x) - f(x)| < \epsilon\]
@@ -283,7 +283,7 @@ Most of these questions are above the level of the course.
 %	Let $f:[0, 1] \to \mathbb{R}$ be a bounded function. Show that if $f$ is continuous 
 \end{enumerate}
 % \section{Multi-variable Calculus}
-% Notation: For $x \in \mathbb{R}^n$ and $\epsilon > 0,$ we define $B_\epsilon(x) := \{y \in \mathbb{R}^n : \|y - x\| < \epsilon\}.$
+% Notation: For $x \in \mathbb{R}^n$ and $\epsilon > 0,$ we define $B_\epsilon(x) \vcentcolon= \{y \in \mathbb{R}^n : \|y - x\| < \epsilon\}.$
 % \begin{enumerate} 
 % 	\item Are the following subsets of $\mathbb{R}^2$ closed? Identify $\partial D$ in each case (except the last four).
 % 	\begin{enumerate}[nosep] 
@@ -313,20 +313,20 @@ Most of these questions are above the level of the course.
 % 	\item Let $D$ be a subset of $\mathbb{R}^2$ such that every point of $D$ is an interior point. Let $f : D \to \mathbb{R}$ be a differentiable function such that $\nabla f = 0$ on $D.$\\
 % 	Show that it is not necessary that $f$ is constant on $D.$
 % 	%
-% 	\item Let $D \subset \mathbb{R}^2$ be defined as $D := \{(x, y)\in\mathbb{R}^2 : 0 < x^2 + y^2 < 1\}.$ Suppose $f:D \to \mathbb{R}$ is a differentiable function such that $\nabla f = 0$ on $D.$\\
+% 	\item Let $D \subset \mathbb{R}^2$ be defined as $D \vcentcolon= \{(x, y)\in\mathbb{R}^2 : 0 < x^2 + y^2 < 1\}.$ Suppose $f:D \to \mathbb{R}$ is a differentiable function such that $\nabla f = 0$ on $D.$\\
 % 	Prove that $f$ is constant on $D.$ \\
 % 	(Note that you can't directly use bivariate MVT.) \hfill (Why not?)
 % 	%
 % 	\item Let $D \subset \mathbb{R}^2$ be defined as $D = \{(x, y) \in \mathbb{R}^2 : (x, y) \in (\mathbb{Q} \cap [0, 1])^2\}.$ That is, the set of all points in the rectangle $[0,1]\times[0,1]$ with both coordinates rational.\\
 % 	Show that $\partial D = [0, 1]\times[0, 1].$\\
-% 	Show that the function $f:D \to \mathbb{R}$ defined as $f(x, y) := 0$ for $(x, y) \in D$ is integrable over $D.$\\
+% 	Show that the function $f:D \to \mathbb{R}$ defined as $f(x, y) \vcentcolon= 0$ for $(x, y) \in D$ is integrable over $D.$\\
 % 	(This is an example of a function that is integrable over a domain $D$ even though $\partial D$ is not of content $0.$)
-% 	\item Let $f:\mathbb{R}^2 \to \mathbb{R}$ be defined as $f(x, y) := |xy|.$\\
+% 	\item Let $f:\mathbb{R}^2 \to \mathbb{R}$ be defined as $f(x, y) \vcentcolon= |xy|.$\\
 % 	Show that $f$ is differentiable at $(0, 0).$\\
 % 	Show that the partial derivative $f_x(0, k)$ does not exist whenever $k \neq 0.$ Show the analogous result for $f_y.$\\
 % 	Conclude that the function is differentiable at $(0, 0)$ even though the partial derivatives aren't continuous at $(0, 0).$ \hfill (They don't even exist in a neighbourhood!) 
 % 	\item Let $f:[-1,1]\times[-1, 1] \to \mathbb{R}$ be defined as follows:
-% 	\[f(x, y) := \left\{
+% 	\[f(x, y) \vcentcolon= \left\{
 % 	\begin{array}{cc}
 % 		\dfrac{2xy}{(x^2 + y^2)^2} & (x, y) \neq (0, 0)\\
 % 		0 & (x, y) = (0, 0)
@@ -349,7 +349,7 @@ Most of these questions are above the level of the course.
 % 	%
 % 	\item Let $S$ denote the following subset of $\mathbb{R}^2:$
 % 	\[\left\{\left(x,\;\sin\left(\dfrac{1}{x}\right)\right) : x \in (0, 1]\right\}.\]
-% 	Consider $\bar{S} := S \cup (\{0\}\times[-1, 1]) \subset \mathbb{R}^2.$ That is, we add the ``vertical'' closed interval to $S.$\\
+% 	Consider $\bar{S} \vcentcolon= S \cup (\{0\}\times[-1, 1]) \subset \mathbb{R}^2.$ That is, we add the ``vertical'' closed interval to $S.$\\
 % 	Show that $S$ is not path connected.
 % \end{enumerate}
 \end{document}
