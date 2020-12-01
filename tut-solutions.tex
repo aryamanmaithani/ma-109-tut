@@ -311,4 +311,248 @@
     	\end{enumerate}
     \end{soln}
 \end{itemize}
+%
+%
+%
+
+\newpage\section{Tutorial 2}
+\begin{center}
+	2nd December, 2020
+\end{center}
+\textbf{Sheet 1}
+\begin{itemize}
+	\item[13. (ii)] Discuss the continuity of the following function:
+
+	\begin{equation*} 
+		f(x) = \begin{cases}
+			x\sin\left(\dfrac{1}{x}\right) & x \neq 0,\\
+			0 & x = 0.
+		\end{cases}
+	\end{equation*}
+
+	\begin{soln}
+		For $x \neq 0,$ the continuity of $f$ at $x$ follows from the fact that $f$ is the product and composition of continuous functions.
+
+		For $x = 0,$ we prove continuity using $\epsilon-\delta.$ We show that 
+		\begin{equation*} 
+			\lim_{x\to 0}f(x) = 0.
+		\end{equation*}
+		Since $f(0) = 0,$ the continuity of $f$ at $0$ will follow.
+
+		To this end, let $\epsilon > 0$ be given. We show that $\delta \vcentcolon= \epsilon$ works. Indeed, if $0 < |x - 0| < \delta,$ then
+		\[\begin{WithArrows}[displaystyle]
+			\left|f(x) - 0\right| &= \left|x\sin\left(\dfrac{1}{x}\right)\right| \Arrow{$|\sin| \le 1$}\\
+			& \le |x|\\
+			&= |x - 0|\\
+			&< \delta = \epsilon.
+		\end{WithArrows}\]
+
+		Thus, we have shown that
+		\begin{equation*} 
+			0 < |x - 0| < \delta \implies |f(x) - 0| < \epsilon,
+		\end{equation*}
+		proving that
+		\begin{equation*} 
+			\lim_{x\to 0} f(x) = 0 = f(0),
+		\end{equation*}
+		as desired.
+	\end{soln}
+	%
+	\newpage
+	\item[15.] Let $f(x) = x^2\sin(1/x)$ for $x \neq 0$ and $f(0) = 0.$ Show that $f$ is differentiable on $\mathbb{R}.$ Is $f'$ a continuous function?
+	\begin{soln}
+		As earlier, differentiability of $f$ at $x \neq 0$ follows due to product/composition rules.
+
+		Now, for $h \neq 0,$ note that
+		\begin{equation*} 
+			\dfrac{f(0 + h) - f(0)}{h} = h\sin\left(\dfrac{1}{h}\right).
+		\end{equation*}
+
+		As saw earlier, the limit of the above as $h \to 0$ exists and is $0.$ Thus, we get that $f$ is differentiable at $0$ as well with $f'(0) = 0.$
+
+		Thus, $f$ is differentiable on $\mathbb{R}.$
+
+		Now, for $x \neq 0,$ we can compute the derivative using product/chain rule. Putting this together, we get
+		\begin{equation*} 
+			f'(x) = \begin{cases}
+				2x\sin\left(\dfrac{1}{x}\right) - \cos\left(\dfrac{1}{x}\right) & x \neq 0,\\
+				0 & x = 0.
+			\end{cases}
+		\end{equation*}
+
+		We now show that $f'$ is not continuous at $0.$ We use the sequential criterion for this. Consider the sequence
+		\begin{equation*} 
+			x_n \vcentcolon= \dfrac{1}{2n\pi}, \qquad n \in \mathbb{N}.
+		\end{equation*}
+		Clearly, we have that $x_n \to 0$ and $x_n \neq 0.$ Thus, we get
+		\begin{equation*} 
+			f'(x_n) = -\cos(2n\pi) = -1.
+		\end{equation*}
+
+		Thus, we see that $f'(x_n) \to -1 \neq f'(0).$ \\
+		This shows that $f'$ is not continuous.
+	\end{soln}
+	%
+	\newpage
+	\item[18.] Let $f:\mathbb{R}\to\mathbb{R}$ satisfy
+	\begin{equation*} 
+		f(x + y) = f(x)f(y) \quad \text{ for all } x, y \in \mathbb{R}.
+	\end{equation*}
+	If $f$ is differentiable at $0,$ then show that $f$ is differentiable at $c \in \mathbb{R}$ and $f'(c) = f'(0)f(c).$
+	\begin{soln}
+		Putting $x = y = 0,$ we note that $f(0) = (f(0))^2.$ If $f(0) = 0,$ show that $f(x) = 0$ for all $x$ and conclude that the given thing is indeed true.
+
+		Now, assume that $f(0) \neq 0.$ Then, $f(0) = 1.$
+
+		Let $c \in \mathbb{R}$ be arbitrary. For $h \neq 0,$ we note that
+		\begin{align*} 
+			\dfrac{f(c + h) - f(c)}{h} &= \dfrac{f(c)f(h) - f(c)}{h}\\
+			&=f(c)\dfrac{f(h) - 1}{h}\\
+			&=f(c)\dfrac{f(h) - f(0)}{h}.
+		\end{align*}
+
+		Since $f$ is given to be differentiable at $0,$ the above limit as $h \to 0$ exists and equals $f(c)f'(0).$ Thus, we see that $f'(c)$ exists and equals $f(c)f'(0).$
+	\end{soln}
+\end{itemize}
+\newpage
+\textbf{Sheet 1 Optional}
+\begin{itemize}
+	\item[7.] Let $f:(a, b) \to \mathbb{R}$ be differentiable and $c \in (a, b).$ Show that the following are equivalent:
+	\begin{enumerate}[label = (\roman*)]
+		\item $f$ is differentiable at $c.$
+		\item There exists $\delta > 0,$ $\alpha \in \mathbb{R},$ and a function $\epsilon_1:(-\delta, \delta) \to \mathbb{R}$ such that $\lim_{h\to 0}\epsilon_1(h) = 0$ and
+		\begin{equation*} 
+			f(c + h) = f(c) + \alpha h + h\epsilon_1(h) \quad\text{for } h \in (-\delta, \delta).
+		\end{equation*}
+		\item There exists $\alpha \in \mathbb{R}$ such that
+		\begin{equation*} 
+			\lim_{h\to 0}\dfrac{\left|f(c + h) - f(c) - \alpha h\right|}{|h|} = 0.
+		\end{equation*}
+	\end{enumerate}
+	\begin{soln}
+		We prove this by a usual technique in math by showing that (i) $\implies$ (ii) $\implies$ (iii) $\implies$ (i).
+
+		\hrulefill
+
+		(i) $\implies$ (ii)\\
+		First, we pick $\delta \vcentcolon= \min\left\{c - a, b - c\right\}.$ Note that $\delta > 0$ and $(c - \delta, c + \delta) \subset (a, b).$
+
+		Now, since $f$ is differentiable at $c,$ $f'(c)$ exists. We define $\alpha \vcentcolon= f'(c) \in \mathbb{R}.$ \\
+		Now, we define $\epsilon_1:(-\delta, \delta) \to \mathbb{R}$ as
+		\begin{equation*} 
+			\epsilon_1(h) \vcentcolon= \begin{cases}
+				\dfrac{f(c + h) - f(c)}{h} - \alpha & h \neq 0,\\
+				0 & h = 0.
+			\end{cases}
+		\end{equation*}
+		(Note that $f(c + h)$ above makes sense because $(c - \delta, c + \delta) \subset (a, b).$)
+
+		Now, from the definition above, it is clear that
+		\begin{equation*} 
+			f(c + h) = f(c) + \alpha h + h\epsilon_1(h) \quad\text{for } h \in (-\delta, \delta).
+		\end{equation*}
+
+		We only need to show that $\lim_{h\to 0}\epsilon_1(h) = 0.$ However, note that, for $h \neq 0,$ we have
+		\begin{equation*} 
+			\epsilon_1(h) = \dfrac{f(c + h) - f(c)}{h} - \alpha.
+		\end{equation*}
+		Since $f'(c) = \alpha,$ we know that
+		\begin{equation*} 
+			\lim_{h\to 0} \dfrac{f(c + h) - f(c)}{h} = \alpha
+		\end{equation*}
+		which gives us that $\epsilon_1(h) \to 0$ as $h \to 0,$ as desired.
+		
+		\hrulefill
+		
+		(ii) $\implies$ (iii)\\
+		Let $\alpha$ be as in (ii). Then, for $h \neq 0,$ we note that
+		\begin{align*} 
+			\dfrac{\left|f(c + h) - f(c) - \alpha h\right|}{|h|} &= \dfrac{|h\epsilon_1(h)|}{|h|}\\
+			&= |\epsilon_1(h)|.
+		\end{align*}
+		Since $\lim_{h\to 0}\epsilon_1(h) = 0,$ we get that $\lim_{h\to 0}\left|\epsilon_1(h)\right| = 0,$ which proves the desired limit.
+		
+		\hrulefill
+		
+		(iii) $\implies$ (i)\\
+		We show that the $\alpha$ in (iii) is the derivative of $f$ at $c.$ Note that we are given
+		\begin{equation*} 
+			\lim_{h\to 0}\dfrac{\left|f(c + h) - f(c) - \alpha h\right|}{|h|} = 0
+		\end{equation*}
+		or
+		\begin{equation*} 
+			\lim_{h\to 0}\left|\dfrac{f(c + h) - f(c)}{h} - \alpha\right| = 0.
+		\end{equation*}
+		The above gives us that
+		\begin{equation*} 
+			\lim_{h\to 0}\left(\dfrac{f(c + h) - f(c)}{h} - \alpha\right) = 0
+		\end{equation*}
+		or
+		\begin{equation*} 
+			\lim_{h\to 0}\left(\dfrac{f(c + h) - f(c)}{h}\right) = \alpha.
+		\end{equation*}
+		Thus, $f'(c)$ exists and equals $\alpha.$
+	\end{soln}
+	In the above, we used the following implicitly:
+	\begin{equation*} 
+		\lim_{x\to c}f(x) = 0 \iff \lim_{x\to c}|f(x)| = 0.
+	\end{equation*}
+	%
+	\newpage
+	\item[10.] Show that any continuous function $f:[0, 1] \to [0, 1]$ has a fixed point.
+	\begin{soln}
+		We need to show that there exists $x_0 \in [0, 1]$ such that $f(x_0) = x_0.$\\
+		Consider $g:[0, 1] \to \mathbb{R}$ defined by
+		\begin{equation*} 
+			g(x) \vcentcolon= f(x) - x.
+		\end{equation*}
+		Then, showing that $f$ has a fixed point is equivalent to showing that $g$ has a zero.
+
+		Note that
+		\begin{equation*} 
+			g(0) = f(0) \ge 0
+		\end{equation*}
+		and
+		\begin{equation*} 
+			g(1) = f(1) - 1 \le 0.
+		\end{equation*}
+		If either of the equalities hold, then we are done. Otherwise, we have
+		\begin{equation*} 
+			g(0) > 0 \quad\text{and}\quad g(1) < 0.
+		\end{equation*}
+		By intermediate value property, $g(x_0) = 0$ for some $x_0 \in [0, 1],$ as desired.	
+	\end{soln}
+\end{itemize}	
+\newpage
+\textbf{Sheet 2}
+\begin{itemize}
+	\item[2] Let $f$ be continuous on $[a, b]$ and differentiable on $(a, b).$ If $f(a)$ and $f(b)$ are of different signs and $f'(x) \neq 0$ for all $x \in (a, b),$ show that there is a unique $x_0 \in (a, b)$ such that $f(x_0) = 0.$
+	\begin{soln}
+		The existence of $x_0$ is given by the intermediate value theorem since $0$ lies between $f(a)$ and $f(b).$
+
+		We now show uniqueness. Suppose that there exists $x_1 \in (a, b)$ such that $f(x_1) = 0$ and $x_1 \neq x_0.$ We show that this leads to a contraction. \\
+		By LMVT, there exists $c$ between $x_0$ and $x_1$ such that
+		\begin{align*} 
+			f'(c) &= \dfrac{f(x_1) - f(x_0)}{x_1 - x_0}\\
+			&= 0.
+		\end{align*}
+		A contraction since $c \in (a, b)$ and we were given that $f'(x) \neq 0$ for any $x \in (a, b).$
+	\end{soln}
+	%
+	\newpage
+	\item[5.] Use the MVT to prove that $\left|\sin a - \sin b\right| \le |a - b|,$ for all $a, b \in \mathbb{R}.$
+	\begin{soln}
+	 	If $a = b,$ then the inequality is clear. Suppose that $a \neq b.$
+
+	 	Then, there exists $c$ between $a$ and $b$ such that
+	 	\begin{equation*} 
+	 		\sin'(c) = \dfrac{\sin a - \sin b}{a - b}.
+	 	\end{equation*}
+	 	Note that $\sin' = \cos$ and thus,
+	 	\begin{equation*} 
+	 		\left|\dfrac{\sin a - \sin b}{a - b}\right| = \left|\cos(c)\right| \le 1.
+	 	\end{equation*}
+	 	Cross-multiplying gives us the desired result.
+	\end{soln} 
+\end{itemize}
 \end{document}
