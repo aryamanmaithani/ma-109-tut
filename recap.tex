@@ -215,6 +215,124 @@
         Take doubts.
     \end{tcolorbox}
 \end{frame}
+
+\begin{frame}{Week 2}
+    \begin{tcolorbox}
+        Start recording!
+    \end{tcolorbox}
+\end{frame}
+
+\begin{frame}{Week 2}
+    Last week, we had ended on limits. Today, we \uncover<2->{\emph{continue} }\uncover<3->{with }\uncover<4->{\emph{continuity}. }\uncover<5>{Ba-dum-tss. }
+
+    \uncover<6->{This is quite simple, using whatever we've already seen. }
+    \uncover<7->{\begin{defn}[Continuity]
+        If $f:[a, b] \to \mathbb{R}$ is a function \uncover<8->{and $c \in [a, b],$ }\uncover<9->{then $f$ is said to be }\uncover<10->{\emph{continuous at the point $c$} }\uncover<11->{if (and only if)
+        \begin{equation*} 
+            \lim_{x\to c}f(x) = f(c).
+        \end{equation*} } 
+    \end{defn} }
+    \uncover<12->{We simply say ``$f$ is continuous'' if it is continuous at every point in the domain. }\uncover<13->{If $f$ is not continuous at a point $c$ \emph{in the domain}, then we say that $f$ is discontinuous at $c.$ }   
+\end{frame}
+\begin{frame}{Week 2}
+    We have the usual rules which tell us that sum/product/composition of continuous functions is continuous. \uncover<2->{If $f$ is continuous at $c$ and $f(c) \neq 0,$ then $1/f$ is continuous at $c.$ }\uncover<3->{We had also seen that the square root function is continuous. }\uncover<4->{We now state an important property of continuous functions. }
+    \uncover<5->{\begin{defn}[Intermediate Value Property]
+        Suppose $f:[a, b] \to \mathbb{R}$ is a continuous function. \uncover<6->{Let $u \in \mathbb{R}$ be between $f(a)$ and $f(b).$ }\uncover<7->{Then, there exists $c \in [a, b]$ }\uncover<8->{such that $f(c) = u.$ }
+    \end{defn} }
+    \uncover<9->{Note carefully that the domain is an interval. }
+\end{frame}
+\begin{frame}{Week 2}
+    Now, we state another property, called the extreme value theorem.
+    \begin{thm}[Extreme value theorem]
+        \uncover<2->{Let $f:[a, b] \to \mathbb{R}$ be continuous. }\uncover<3->{Then, there exist $x_1, x_2 \in [a, b]$ }\uncover<4->{such that }\uncover<5->{
+        \begin{equation*} 
+            f(x_1) \le f(x) \le f(x_2)
+        \end{equation*} }\uncover<6->{for all $x \in [a, b].$ }
+    \end{thm}
+    \uncover<7->{Note very carefully that the above not only shows that the image of $f$ is bounded }\uncover<8->{but also that the bounds are attained! }\uncover<9->{Note that the domain was a \underline{closed and bounded} interval. }
+\end{frame}
+\begin{frame}{Week 2}
+    Recall that a (non-empty) set which is bounded above can have many upper bounds. \uncover<2->{However, completeness of $\mathbb{R}$ tells us that there is a \emph{least} upper bound. }\uncover<3->{We had called this the \emph{supremum}. }
+
+    \uncover<4->{Similarly, we had defined \emph{infimum}. }
+
+    \uncover<5->{By abuse of notation, given a function $f:X \to \mathbb{R},$ }\uncover<6->{if the image $f(X) \subset \mathbb{R}$ is bounded above, }\uncover<7->{then the supremum of the image is called the supremum of $f$ \underline{on $X$}. }\\
+    \uncover<8->{Analogous comments hold for infimum. }
+
+    \uncover<9->{Thus, what the previous theorem told us was that not only is the image bounded but the supremum and infimum are actually attained. }\uncover<10->{(If the function is continuous and defined on a close and bounded interval, that is.) }
+\end{frame}
+\begin{frame}{Week 2}
+    \textbf{Non-examples} of the previous theorem:
+
+    \uncover<2->{Consider $f:(0, 1) \to \mathbb{R}$ }\uncover<3->{defined by
+    \begin{equation*} 
+        f(x) = x.
+    \end{equation*} }\uncover<4->{The image is bounded but the infimum/supremum are not attained. }
+
+    \uncover<5->{Consider $f:(0, 1) \to \mathbb{R}$ }\uncover<6->{defined by
+    \begin{equation*} 
+        f(x) = \dfrac{1}{x}.
+    \end{equation*} }\uncover<7->{The image is not bounded above. }\uncover<8->{It is bounded below but the infimum is not attained. }
+\end{frame}
+\begin{frame}{Week 2}
+    We saw one interesting result that helps simplify our life in some scenarios.
+    \begin{thm}[Sequential criterion]
+        \uncover<2->{Let $f:A \to \mathbb{R}$ be a function }\uncover<3->{and let $a \in A.$ }\uncover<4->{Then, $f$ is continuous at $a$ iff }\uncover<5->{given any sequence $(a_n)$ {\color{red}in $A$} }\uncover<6->{such that $a_n \to a,$ }\uncover<7->{we have $f(a_n) \to f(a).$ }
+    \end{thm}
+    \uncover<8->{This makes life simpler because it is sometimes easier to deal with sequences. }\uncover<9->{We had seen an example of this when we proved that a certain oscillatory function does not have a limit. }\uncover<10->{Do you remember which? }
+\end{frame}
+\begin{frame}{Week 2}
+    Next, we defined derivative. This was also not difficult.
+    \begin{defn}[Derivative]
+        \uncover<2->{Let $f:(a, b) \to \mathbb{R}$ be a function }\uncover<3->{and let $c \in (a, b).$ }\uncover<4->{$f$ is said to be \emph{differentiable at the point $c$} }\uncover<5->{if the following limit exists: }\uncover<6->{
+        \begin{equation*} 
+            \lim_{h\to 0}\dfrac{f(c + h) - f(c)}{h}.
+        \end{equation*} }\uncover<7->{In such a case, we call the value of the above limit the derivative of $f$ at $c$ }\uncover<8->{and denote it by $f'(c).$ }
+    \end{defn}
+\end{frame}
+\begin{frame}{Week 2}
+    We then have the usual rules about product/sum/composition of differentiable functions again being differentiable. \uncover<2->{Of course, we \textbf{don't} have the naïve product rule but rather $(fg)'(c) = f'(c)g(c) + f(c)g'(c).$ }\uncover<3->{We then looked at minima/maxima. }
+
+    \uncover<4->{\begin{defn}[Local maximum]
+        Let $f:X \to \mathbb{R}$ be a function \uncover<5->{and let $x_0 \in X.$ }\uncover<6->{Suppose that there is an interval $(c, d) \subset X$ containing $x_0.$ }\uncover<7->{If we have $f(x_0) \ge f(x)$ }\uncover<8->{for all $x \in (c, d),$ }\uncover<9->{then we say that $f$ has a \emph{local maximum} at $x_0.$ }
+    \end{defn} }
+    \uncover<10->{Of course, we have an analogous definition for minimum. }\uncover<11->{Note that here, we have that $x_0$ is an ``interior point.'' }\uncover<12->{That is, there is an interval \emph{around} $x_0$ contained within the domain. }
+\end{frame}
+\begin{frame}{Week 2}
+    \begin{thm}[Fermat's Theorem]
+        \uncover<2->{If $f:X\to \mathbb{R}$ is differentiable }\uncover<3->{and has a local minimum or maxmimum at a point $x_0 \in X,$ }\uncover<4->{then $f'(x_0) = 0.$ }
+    \end{thm}
+    \uncover<5->{Once again, note that this only talks about ``interior points.'' }
+\end{frame}
+\begin{frame}{Week 2}
+    We then saw Rolle's Theorem. Note the hypothesis carefully.
+    \begin{thm}[Rolle's Theorem]
+        \uncover<2->{Suppose $f:{\color{red}[}a, b{\color{red}]} \to \mathbb{R}$ is a \emph{continuous} function. }\uncover<3->{Further, assume that it is differentiable on $(a, b).$ }\uncover<4->{In this case, if $f(a) = f(b),$ }\uncover<5->{then $f'(c) = 0$ for some $c \in (a, b).$ }
+    \end{thm}
+    \uncover<6->{Using the above, we have a more general result. }\uncover<7->{\begin{thm}[Mean Value Theorem]
+        Let $f$ be continuous and differentiable as above. \uncover<8->{There exists $c \in (a, b)$ }\uncover<9->{such that
+        \begin{equation*} 
+            f'(c) = \dfrac{f(b) - f(a)}{b - a}.
+        \end{equation*} } 
+    \end{thm} }
+\end{frame}
+\begin{frame}{Week 2}
+    We then saw a theorem which said ``derivatives have IVP.'' TO be more precise:
+    \begin{thm}[Darboux's Theorem]
+        \uncover<2->{Let $f:(a, b) \to \mathbb{R}$ be a differentiable function. }\uncover<3->{Let $c < d$ be points in $(a, b).$ }\uncover<4->{Let $u$ be between $f'(c)$ and $f'(d).$ }\uncover<5->{Then, there exists $x_0 \in (c, d)$ such that }\uncover<6->{
+        \begin{equation*} 
+            f'(x_0) = u.
+        \end{equation*} }
+    \end{thm}
+    \uncover<7->{Note that the derivative of a (differentiable) function need not be continuous. }\uncover<8->{We shall see an example in the tutorial today, in fact. }\uncover<9->{However, the above theorem tells us how the derivative can't have ``jump'' discontinuity. }
+\end{frame}
+\begin{frame}{Week 2}
+    \begin{tcolorbox}
+        Stop recording. Start a new one.
+
+        Take doubts.
+    \end{tcolorbox}
+\end{frame}
 \end{document}
 
 % c4yd6ei
