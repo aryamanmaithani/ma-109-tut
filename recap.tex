@@ -25,6 +25,7 @@
 \theoremstyle{definition}
 \newtheorem{defn}{Definition}
 \newtheorem{prop}{Proposition}
+\newtheorem{cor}{Corollary}
 \newtheorem{thm}{Theorem}
 \newtheorem{rem}{Remark}
 
@@ -223,7 +224,7 @@
 \end{frame}
 
 \begin{frame}{Week 2}
-    Last week, we had ended on limits. Today, we \uncover<2->{\emph{continue} }\uncover<3->{with }\uncover<4->{\emph{continuity}. }\uncover<5>{Ba-dum-tss. }
+    Last week, we had \emph{limited} ourselves to \emph{limits}. Today, we \uncover<2->{\emph{continue} }\uncover<3->{with }\uncover<4->{\emph{continuity}. }\uncover<5>{Ba-dum-tss. }
 
     \uncover<6->{This is quite simple, using whatever we've already seen. }
     \uncover<7->{\begin{defn}[Continuity]
@@ -333,6 +334,205 @@
         Take doubts.
     \end{tcolorbox}
 \end{frame}
+
+\begin{frame}{Week 3}
+    \begin{tcolorbox}
+        Start recording!
+    \end{tcolorbox}
+\end{frame}
+
+\begin{frame}{Week 3}
+    What did we see last week? \uncover<2->{Continuity, }\uncover<3->{IVP, }\uncover<4->{EVT, }\uncover<5->{sequential criterion, }\uncover<6->{derivative, }\uncover<7->{(local) maximum and minimum, }\uncover<8->{Fermat's not-Last Theorem, }\uncover<9->{Rolle's and Mean Value Theorems, }\uncover<10->{Darboux's Theorem. }\hfill\uncover<11->{{\color{gray}(Whew!)} }
+
+    \uncover<11->{We also saw an example of a function with non-continuous derivative. }\uncover<12->{What was it? }
+
+    \uncover<13->{$f:\mathbb{R} \to \mathbb{R}$ defined as }\uncover<14->{
+    \begin{equation*} 
+        f(x) \vcentcolon= \begin{cases}
+            x^2\sin\left(\dfrac{1}{x}\right) & x \neq 0,\\
+            0 & x = 0.
+        \end{cases}
+    \end{equation*} }
+    \uncover<15->{Keep this in mind. }\hfill\uncover<16->{{\color{gray}please.} }
+\end{frame} 
+
+\begin{frame}{Week 3}
+    We turn back to maximum and minimum and recall a theorem you must have seen in your previous life.
+
+    \uncover<2->{\begin{thm}[Second derivative test]
+        \uncover<3->{Assume that $f:[a, b] \to \mathbb{R}$ is continuous. }
+
+        \uncover<4->{Suppose that $x_0 \in (a, b)$ }\uncover<5->{is such that $f'(x_0) = 0$ and $f''(x_0)$ exists. }
+
+        \uncover<6->{Then, }
+        \begin{enumerate}
+            \uncover<7->{\item $f''(x_0) > 0 \implies f$ has a local minimum at $x_0,$ }
+            \uncover<8->{\item $f''(x_0) < 0 \implies f$ has a local maximum at $x_0.$ }
+        \end{enumerate}
+        \uncover<9->{If $f''(x_0) = 0,$ then nothing can be concluded. }
+    \end{thm} }
+\end{frame}
+\begin{frame}{Week 3}
+    We now look at concavity and convexity. \uncover<2->{For what follows, $I$ will always denote an interval. }\uncover<3->{(It could be open/close/neither/unbounded.) }
+    \begin{defn}[Convex]
+        \uncover<4->{A function $f : I \to \mathbb{R}$ is said to be \emph{convex} if }\uncover<5->{for every $x_1, x_2 \in I$ }\uncover<6->{and every $t \in [0, 1],$ }\uncover<7->{we have
+        \begin{equation*} 
+            f(tx_1 + (1 - t)x_2) {\color{blue}\;\le\;} tf(x_1) + (1 - t)f(x_2).
+        \end{equation*} }\uncover<8->{More graphically, given any two points on the graph of the function, }\uncover<9->{the line segment joining the two points }\uncover<10->{lies {\color{red}above} the graph. }
+    \end{defn}
+    \uncover<11->{The definition of a \emph{concave} function is obtained by replacing ${\color{blue}\le}$ with ${\color{blue}\ge}$ and ``{\color{red}above}'' with ``{\color{red}below}.'' }
+\end{frame}
+\begin{frame}{Week 3}
+    Note that the definition does not even assume continuity. \uncover<2->{In particular, the function need not be differentiable, }\uncover<3->{much less twice differentiable. }
+
+    \uncover<4->{However, if we do assume that it's differentiable, then we can say some things. }\uncover<5->{If we assume twice differentiability, we can say some more things. }\uncover<6->{I have put a summary of these on the next slide. }
+
+    \uncover<7->{Read it some day. }
+\end{frame}
+\begin{frame}{Week 3}
+    \begin{prop}
+        Suppose $f: I \to \mathbb{R}$ is differentiable. Then
+        \begin{enumerate}
+            \item $f'$ is increasing on $I$ $\iff$ $f$ is convex on $I.$
+            \item $f'$ is decreasing on $I$ $\iff$ $f$ is concave on $I.$
+            \item $f'$ is strictly increasing on $I$ $\iff$ $f$ is strictly convex on $I.$
+            \item $f'$ is strictly decreasing on $I$ $\iff$ $f$ is strictly concave on $I.$
+        \end{enumerate}
+    \end{prop}
+    \begin{cor}
+        Suppose $f: I \to \mathbb{R}$ is {\color{red}twice} differentiable. Then
+        \begin{enumerate}
+            \item $f''\ge 0$ on $I$ $\iff$ $f$ is convex on $I.$
+            \item $f''\le 0$ on $I$ $\iff$ $f$ is concave on $I.$
+            \item $f''> 0$ on $I$ $\implies$ $f$ is strictly convex on $I.$
+            \item $f''< 0$ on $I$ $\implies$ $f$ is strictly concave on $I.$
+        \end{enumerate}
+    \end{cor}
+\end{frame}
+\begin{frame}{Week 3}
+    Let's now talk about inflection points.
+    \begin{defn}[Inflection point]
+        \uncover<2->{Let $x_0$ be an \emph{interior point} of $I.$ }\uncover<3->{Then, $x_0$ is called an inflection for $f$ }\uncover<4->{if there exists $\delta > 0$ such that {\color{red}either} }
+        \begin{enumerate}
+            \uncover<5->{\item $f$ is convex on $(c - \delta, c)$ and concave on $(c, c + \delta),$ {\color{red}or} }
+            \uncover<6->{\item $f$ is concave on $(c - \delta, c)$ and convex on $(c, c + \delta).$ }
+        \end{enumerate}
+    \end{defn}
+    \uncover<7->{As a crazy example, note that $0$ is an inflection point of: }\\
+    \uncover<8->{$f:\mathbb{R} \to \mathbb{R}$ defined as }\uncover<9->{
+    \begin{equation*} 
+        f(x) \vcentcolon= \begin{cases}
+            \dfrac{1}{x} & x \neq 0,\\
+            0 & x = 0.
+        \end{cases}
+    \end{equation*} }
+    \uncover<10->{Note that $f$ is not even continuous at $0.$ }\uncover<11->{Let alone twice differentiable. }\uncover<12->{Also note that every point is a point of inflection for an affine function $x \mapsto ax + b.$ }\uncover<13->{(Even if $a = 0.$) }
+\end{frame} 
+\begin{frame}{Week 3}
+    Here's some more information being thrown at you. \uncover<2->{Look at it some day. }\uncover<3->{Let $x_0 \in I$ be an \emph{interior point}, and $f: I \to \mathbb{R}.$ }
+    \uncover<4->{
+    \begin{thm}[Derivative tests]
+        \begin{enumerate}
+            \item {\color{red}(First derivative test)} Suppose $f$ is differentiable on $(x_0 - r, x_0) \cup (x_0, x_0 + r)$ for some $r > 0.$ Then, $x_0$ is a point of inflection $\iff$ there is $\delta > 0$ with $\delta < r$ such that $f'$ is increasing on $(x_0 - \delta, x_0)$ and $f'$ is decreasing on $(x_0, x_0 + \delta),$ or vice-versa.
+            \item {\color{red}(Second derivative test)} Suppose $f$ is twice differentiable on $(x_0 - r, x_0) \cup (x_0, x_0 + r)$ for some $r > 0.$ Then, $x_0$ is a point of inflection $\iff$ there is $\delta > 0$ with $\delta < r$ such that $f'' \ge 0$ on $(x_0 - \delta, x_0)$ and $f'' \le 0$ on $(x_0, x_0 + \delta),$ or vice-versa.
+        \end{enumerate}
+    \end{thm}
+    Thus, if $f$ is twice differentiable, then $x_0$ is inflection point iff $f''$ changes sign. (Note that $f''(x_0)$ is not required to exist. Recall the crazy example.)
+     }
+\end{frame}
+\begin{frame}{Week 3}
+    The previous slide gives us a \textbf{necessary} condition for inflection point. We have the same notation as earlier.
+
+    \begin{thm}[Another second derivative test]
+        \uncover<2->{Suppose $f$ is twice differentiable at $x_0.$ }\uncover<3->{If $x_0$ is a point of inflection for $f,$ }\uncover<4->{then $f''(x_0) = 0.$ }
+    \end{thm}
+
+    \uncover<5->{In the above, we are not assuming the existence of $f''$ at other points. }\uncover<6->{The following is now a \textbf{sufficient} condition. }
+    \uncover<7->{\begin{thm}[A \textbf{third} derivative test]
+        \uncover<8->{Suppose $f$ is {\color{red}thrice} differentiable at $x_0$ }\uncover<9->{such that $f''(x_0) = 0$ }\uncover<10->{and $f'''(x_0) \neq 0.$ }\uncover<11->{Then, $x_0$ is an inflection point for $f.$ }
+    \end{thm} }
+\end{frame}
+\begin{frame}{Week 3}
+    Okay, that's enough about convex/concave/inflection points. \uncover<2->{Hopefully, any possible doubt about these is covered in the previous slides. }\uncover<3->{Read them some day and ask doubts, if any. }
+
+    \uncover<4->{Once again, keep in mind the crazy example. }\uncover<5->{The definitions of these concepts do not require any continuity or anything at the point. }\uncover<6->{However, we do have the theorem that a convex function on an open interval is continuous. }\uncover<7->{Proof:\\
+    \url{https://unapologetic.wordpress.com/2008/04/15/convex-functions-are-continuous/} }
+
+    \uncover<8->{We also have the theorem that a convex function is differentiable at all but at most countably many points. }\uncover<9->{Proof:\\
+    \url{https://math.stackexchange.com/questions/946311} }
+\end{frame}
+\begin{frame}{Week 3}
+    Let's now look at Taylor polynomials. \uncover<2->{From now, $I$ will be an {\color{red}open} interval, $a$ an interior point of $I,$ and $f:I \to \mathbb{R}$ a function. }
+    \begin{defn}[Taylor polynomials]
+        \uncover<3->{Let $f$ be $n$ times differentiable }\uncover<4->{{\color{red}at $x_0$.} }\uncover<5->{We define the $n + 1$ Taylor polynomials as }\uncover<6->{
+        \begin{align*} 
+            P_0(x) =& f(x_0)\\
+            \uncover<7->{P_1(x) =& f(x_0) + \dfrac{f^{(1)}(x_0)}{1!}(x - x_0)\\ }
+           \uncover<8->{ P_2(x) =& f(x_0) + \dfrac{f^{(1)}(x_0)}{1!}(x - x_0) + \dfrac{f^{(2)}(x_0)}{2!}(x - x_0)^2\\ }
+            \uncover<9->{\vdots&\\
+            P_n(x) =& f(x_0) + \dfrac{f^{(1)}(x_0)}{1!}(x - x_0) + \cdots + \dfrac{f^{(n)}(x_0)}{n!}(x - x_0)^n }
+         \end{align*} }
+    \end{defn}
+\end{frame}
+\begin{frame}{Week 3}
+    Note that all the Tayloe \textbf{polynomials} have only \textbf{finite}ly many terms, as a polynomial should have. \uncover<2->{Also note that so far, we have just defined some polynomials. }\uncover<3->{We are yet to see how it actually connects with the function itself. }\uncover<4->{This is given by the following theorem. }
+    \begin{thm}[Taylor's theorem]
+        \uncover<5->{Suppose that $f$ is {\color{red}$n + 1$} times differentiable }\uncover<6->{{\color{red}on $I$}. }\uncover<7->{Suppose that $b \in I.$ }\uncover<8->{Then, there exists $c \in (a, b) \cup (b, a)$ such that }\uncover<9->{
+        \begin{equation*} 
+            f(b) = P_n(b) + \dfrac{f^{(n + 1)}(c)}{(n + 1)!}(b - a)^{n + 1},
+        \end{equation*}where $P_n$ is as in the previous slide. }
+    \end{thm}
+\end{frame}
+\begin{frame}{Week 3}
+    Given a function $f$ (which is $n + 1$ times differentiable) and a Taylor polynomial $P_n,$ \uncover<2->{we can define the $n^{\text{th}}$ remainder as }
+    \uncover<3->{
+    \begin{align*} 
+        R_n(x) \vcentcolon= f(x) - P_n(x), && \text{for } x \in I.
+    \end{align*}
+    }
+    \uncover<4->{By the previous theorem, we know that
+    \begin{equation*} 
+        R_n(x) = \dfrac{f^{(n + 1)}(c_x)}{(n + 1)!}(x - a)^{n + 1},
+    \end{equation*}  }\uncover<5->{for some $c_x$ between $x$ and $a.$ }
+
+    \uncover<6->{Sometimes, assuming $f \in \mathcal{C}^{\infty}(I),$ we can bound $f^{(n + 1)}(c_x)$ in a nice enough way to get that }\uncover<7->{
+    \begin{equation*} 
+        R_n(x) \to 0
+    \end{equation*} }\uncover<8->{for \emph{some} $x \in I.$ }
+\end{frame}
+\begin{frame}{Week 3}
+    If the previous thing happens, \uncover<2->{then we get that
+    \begin{equation*} 
+        f(x) = \lim_{n\to \infty}P_n(x)
+    \end{equation*} }\uncover<3->{for all such $x.$ }
+
+    \uncover<4->{Thus, we get
+    \begin{equation*} 
+        f(x) = \sum_{n = 0}^{\infty}\dfrac{f^{(n)}(a)}{n!}(x - a)^n
+    \end{equation*} }\uncover<5->{for all those $x.$ }\uncover<6->{For some nice functions, we get an $R > 0$ }\uncover<7->{such that the above happens for all $x \in (a - R, a + R).$ }\uncover<8->{If such an $R$ exists for all $a \in I,$ }\uncover<9->{then $f$ is said to be \emph{analytic}. }\uncover<10->{(The $R$ may depend on $a.$) }
+
+    \uncover<11->{Note that the Taylor {\color{red}series} }\uncover<12->{about some point $a$ may still converge but \emph{not} to $f.$ }\uncover<13->{Such a function is not called analytic. }
+\end{frame}
+\begin{frame}{Week 3}
+    Some final remarks:
+
+    \uncover<2->{The last thing written $\displaystyle\sum_{n = 0}^{\infty}\dfrac{f^{(n)}(a)}{n!}(x - a)^n$ is not a Taylor \textbf{polynomial}. }\\
+    \uncover<3->{It is the Taylor \textbf{series}. }
+
+    \uncover<4->{It may happen to not converge for \emph{any} $x \neq a.$ }\uncover<5->{It may also happen to converge for all $x \in \mathbb{R}.$ }
+
+    \uncover<6->{Suppose that the series converges on some interval $J$ such that $a \in J \subset I.$ }\uncover<7->{It is not necessary that the Taylor series converges to $f$ on $J.$ }
+
+    \uncover<8->{What was the example seen in class that illustrated this? }
+\end{frame}
+\begin{frame}{Week 3}
+    \begin{tcolorbox}
+        Stop recording. Start a new one.
+
+        Take doubts.
+    \end{tcolorbox}
+\end{frame}
+
 \end{document}
 
 % c4yd6ei
