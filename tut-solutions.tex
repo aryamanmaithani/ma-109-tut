@@ -40,6 +40,8 @@
 \makeatother
 
 \newcommand{\Res}{\operatorname{Res}}
+\newcommand{\md}[1]{\left\lvert #1 \right\lvert}
+\newcommand{\fl}[1]{\left\lfloor #1 \right\rfloor}
 
 \theoremstyle{definition}
 % \newtheorem{thm}{Theorem}
@@ -561,4 +563,237 @@
 	 	Cross-multiplying gives us the desired result.
 	\end{soln} 
 \end{itemize}
+%
+%
+%
+
+\newpage\section{Tutorial 2}
+\begin{center}
+	2nd December, 2020
+\end{center}
+\textbf{Sheet 2}
+\begin{itemize}
+	\item[8.] In each case, find a function $f:\mathbb{R}\to\mathbb{R}$ which satisfies all the given conditions, or else show that no such function exists.
+	\begin{itemize}
+		\item[(ii)] $f''(x) \ge 0$ for all $x \in \mathbb{R},$ $f'(0) = 1,$ $f'(1) = 2.$
+
+		\begin{soln}
+			$f(x) \vcentcolon= x + \dfrac{x^2}{2}$ is one such. Justify.
+		\end{soln}
+
+		\item[(iii)] $f''(x) \ge 0$ for all $x \in \mathbb{R},$ $f'(0) = 1,$ $f(x) \le 100$ for all $x > 0.$
+		\begin{soln}
+			Not possible.\\
+			Assume not. As $f''$ is nonnegative, $f'$ must be increasing everywhere. We are given that $f'(0) = 1.$ 
+
+			Thus, given any $c > 0,$ we know that 
+			\begin{equation} \label{eq:random1} \tag{$*$}
+				f'(c) \ge 1.
+			\end{equation}
+			Let $x \in (0, \infty).$ By MVT, we know that there exists $c \in (0, x)$ such that 
+			\begin{equation*} 
+				f'(c) = \dfrac{f(x) - f(0)}{x - 0}.
+			\end{equation*} 
+			Thus, by \cref{eq:random1}, we have it that $f(x) \ge x + f(0)$ for all positive $x.$ 
+
+			This contradicts that $f(x) \le 100$ for all positive $x.$ (How?)
+		\end{soln}
+	\end{itemize}
+	\newpage
+
+	\item[10.] Sketch the following curves after locating intervals of increase/decrease, intervals of concavity upward/downward, points of local maxima/minima, points of inflection and asymptotes. How many times and approximately where does the curve cross the x-axis?
+	\begin{itemize}
+		\item[(i)] $f(x) = 2x^3 + 2x^2 - 2x - 1$ 
+
+		\begin{soln}
+			Note that this is a cubic and can have at most $3$ roots. It is easy to locate that they're in $(-2, -1),$ $(-1, 0)$ and $(0, 1)$ since $f$ changes signs consecutively at $-2, -1, 0, 1.$
+
+			Moreover, $f'$ has nice roots: $-1$ and $1/3.$
+
+			Lastly, $f''$ has a root at $-1/3.$ Using the above, we get pretty much all we want. Calculating $f(-1),$ $f(1/3)$ and $f(-1/3)$ also tells us the location of the roots with respect to minima/maxima and inflection point.
+
+			\begin{center}
+		\centering
+		\begin{tikzpicture}[scale = 0.75]
+			\draw[step=1cm,gray,very thin] (-4.1,-5.1) grid (4.1,8.1);
+			\draw[thick,->] (0,0) -- (4,0);
+			\draw[thick,->] (0,0) -- (0, 8);
+			\draw[thick,->] (0,0) -- (0, -5);
+			\draw[thick,->] (0,0) -- (-4,0);
+			\node[] at (4.2, 0) {\tiny $x$};
+			\node[] at (0, 8.2) {\tiny $f(x)$};
+			\foreach \x in {-3, ..., 3}
+   \draw (\x cm,1pt) -- (\x cm,-1pt) node[anchor=north] {\tiny $\x$};
+\foreach \y in {1, ...,7}
+    \draw (1pt,\y cm) -- (-1pt,\y cm) node[anchor=east] {\tiny $\y$};
+
+    \draw[variable=\t,domain=-2:1.5,samples=500] plot ({\t},{2*\t*\t*\t + 2*\t*\t - 2*\t - 1});
+
+		\end{tikzpicture}
+	\end{center}
+	Above is the graph.
+		\end{soln}
+	\end{itemize}
+	%
+	\newpage
+	\item[11.] Sketch a continuous curve $y = f(x)$ having all the following properties:\\
+	$f(-2) = 8,\;f(0) = 4,\;f(2) = 0;\;f'(-2) = f(2) = 0;$\\
+	$f'(x) > 0$ for $\md{x} > 2,$ $f'(x) < 0$ for $\md{x} < 2;$\\
+	$f''(x) < 0$ for $x < 0$ and $f''(x) > 0$ for $x > 0.$
+	\begin{soln} Here is the graph:
+
+		\begin{center}
+		\begin{tikzpicture}[scale = 0.75]
+			\draw[step=1cm,gray,very thin] (-4.1,-1.1) grid (4.1,8.1);
+			\draw[thick,->] (0,0) -- (4,0);
+			\draw[thick,->] (0,0) -- (0, 8);
+			\draw[thick,->] (0,0) -- (-4,0);
+			\node[] at (4.2, 0) {\tiny $x$};
+			\node[] at (0, 8.2) {\tiny $f(x)$};
+			\foreach \x in {-3, ..., 3}
+		   \draw (\x cm,1pt) -- (\x cm,-1pt) node[anchor=north] {\tiny $\x$};
+		\foreach \y in {1, ...,7}
+		    \draw (1pt,\y cm) -- (-1pt,\y cm) node[anchor=east] {\tiny $\y$};
+
+		    \draw[variable=\t,domain=-3.9:3.9,samples=500] plot ({\t},{0.25*\t*\t*\t - 3*\t + 4});
+
+		\end{tikzpicture}
+	\end{center}
+		I have actually graphed a polynomial that satisfies the given properties.\\
+		Can you come up with it?\\
+		Is there a unique such polynomial?\\
+		What's the minimum degree of such a polynomial?\\
+		Is there a unique polynomial with that degree?\\
+		Suppose you have two distinct polynomials $f$ and $g$ that satisfy the given conditions. Can you come up with a distinct third polynomial such that it satisfies the conditions as well?
+	\end{soln}
+\end{itemize}
+\newpage
+\textbf{Sheet 3}
+\begin{itemize}
+		\item[1.] Write down the Taylor series for $\arctan x$ about the point $0.$ Write down a precise remainder $R_n(x).$
+		\begin{soln}
+			For each of notation, let $f(x) \vcentcolon= \arctan x$ and $g(x) \vcentcolon= \dfrac{1}{1 + x^2}.$\\
+			Note that $f' = g.$
+
+			Note that if $n \ge 1,$ then $f^{(n)}(0) = g^{(n - 1)}(0).$ For $g,$ we have the easy Taylor expansion as
+			\begin{equation*} 
+				g(x) = 1 - x^2 + x^4 - \cdots
+			\end{equation*}
+			which is valid for $x \in (-1, 1).$
+
+			Thus, we easily see that
+			\begin{equation*} 
+				g^{(n)}(0) = \begin{cases}
+					0 & n \text{ is odd,}\\
+					(-1)^{n/2}n! & n \text{ is even.}
+				\end{cases}
+			\end{equation*}
+
+			Thus,
+			\begin{equation*} 
+				f^{(n)}(0) = \begin{cases}
+					0 & n \text{ is even,}\\
+					(-1)^{(n - 1)/2}(n - 1)! & n \text{ is odd.}
+				\end{cases}
+			\end{equation*}
+			(The above is for $n \ge 1.$)
+			Using this, we get the $(2n + 1)$-th Taylor polynomial as
+			\begin{align*} 
+				P_{2n + 1}(x) &= \sum_{k = 0}^{2n + 1}\dfrac{f^{(n)}(0)}{n!}x^n\\
+				&= f(0) + \sum_{k = 1}^{2n + 1}\dfrac{f^{(n)}(0)}{n!}x^n\\
+				&= 0 + x - \dfrac{2!}{3!}x^3 + \cdots + \dfrac{(-1)^n(2n)!}{(2n + 1)!}x^{2n + 1}\\
+				&= x - \dfrac{x^3}{3} + \cdots + \dfrac{(-1)^n}{2n + 1}x^{2n + 1}.
+			\end{align*}
+			Since $f^{(2n)} = 0,$ we see that
+			\begin{equation*} 
+				P_{2n}(x) = P_{2n - 1}(x)
+			\end{equation*}
+			for $n \ge 1.$
+
+			This solves the problem for finding the Taylor polynomial. Now we solve for the remainder.
+
+			Once again, note that
+			\begin{equation*} 
+				g(t) = 1 - t^2 + t^4 - \cdots.
+			\end{equation*}
+			For $n \ge 1,$ we note that
+			\begin{align*} 
+				g(t) &= [1 - t^2 + \cdots + (-1)^nt^{2n}] + {\color{red}(-1)^{n+1}t^{2n + 2}[1 - t^2 + \cdots]}\\
+				&= [1 - t^2 + \cdots + (-1)^nt^{2n}] + {\color{red}(-1)^{n+1}\dfrac{t^{2n + 2}}{1 + t^2}}
+			\end{align*}
+			Integrating both sides from $0$ to $x$ gives
+			\begin{equation*} 
+				f(x) = P_{2n + 1}(x) + {\color{red}(-1)^{n+1}\int_{0}^{x} \dfrac{t^{2n + 2}}{1 + t^2} {\mathrm{d}}t}.
+			\end{equation*}
+			Thus, the term in red is the $(2n + 1)$-th remainder $R_{2n + 1}(x).$ Conclude as before, for $R_{2n}(x).$
+		\end{soln}
+		%
+		\newpage
+		\item[2.]  Write down the Taylor series of the polynomial $x^3 - 3x^2 + 3x - 1$ about the point $1.$
+		\begin{soln}
+			As one can easily calculate, we have
+			\begin{equation*} 
+				f^{(n)}(1) = \begin{cases}
+					6 & n = 3\\
+					0 & n \neq 3,
+				\end{cases}
+			\end{equation*}
+			for $n \ge 0.$ Thus, we get the Taylor ``series'' to actually be the following finite sum:
+			\begin{equation*} 
+				\dfrac{f^{(3)}(1)}{3!}(x - 1)^3.
+			\end{equation*}
+			In other words, the Taylor series is simply $(x - 1)^3.$
+		\end{soln}
+		%
+		\newpage
+		\item[4.] Consider the series $\sum_{k = 0}^{\infty}\frac{x^k}{k!}$ for a fixed $x.$ Prove that it converges as follows. Choose $N > 2\md{x}.$ We see that for all $n > N,$
+		\begin{equation*} 
+			\dfrac{x^{n + 1}}{(n + 1)!} \le \dfrac{1}{2}\dfrac{\md{x}^n}{n!}.
+		\end{equation*}
+		It should now be relatively easy to show that the given series is Cauchy, and hence (by the completeness of $\mathbb{R}$), convergent.
+		\begin{soln}
+			If $N > 2\md{x}$ and $n > N,$ then
+			\[\begin{WithArrows}[displaystyle]
+				\md{\dfrac{x^{n+1}}{(n + 1)!}} &= \md{\dfrac{x^n}{n!}}\md{\dfrac{x}{n+1}} \Arrow{$n + 1 > n > N$}\\
+				&\le \md{\dfrac{x^n}{n!}}\md{\dfrac{x}{N}} \Arrow{$N > 2\md{x}$}\\
+				&\le \dfrac{1}{2}\md{\dfrac{x^n}{n!}}.
+			\end{WithArrows}\]
+			Thus, we can repeatedly use the above to get:
+			\begin{equation*} 
+				\md{\dfrac{x^{n+1}}{(n + 1)!}} \le \dfrac{1}{2}\md{\dfrac{x^n}{n!}} \le \cdots \le \dfrac{1}{2^{n + 1 - N}}\md{\dfrac{x^N}{N!}}.
+			\end{equation*}
+			Let $s_n(x) = \displaystyle\sum_{k = 0}^{n}\dfrac{x^k}{k!}.$
+
+
+			Now, given $m > n > N,$ we have
+			\begin{align*} 
+				\md{s_m(x) - s_n(x)} &= \md{\sum_{k = n+1}^{m}\dfrac{x^k}{k!}}\\
+				&\le \sum_{k = n + 1}^{m}\md{\dfrac{x^k}{k!}}\\
+				&= \md{\dfrac{x^{n + 1}}{(n + 1)!}} + \cdots + \md{\dfrac{x^m}{m!}}\\
+				&\le \dfrac{\md{x}^N}{N!}\left(\dfrac{1}{2} + \cdots + \dfrac{1}{2^{m-n}}\right)\\
+				&= \dfrac{\md{x}^N}{N!}.
+			\end{align*}
+			Note that given any $\epsilon > 0,$ we can pick $N \in \mathbb{N}$ such that $\dfrac{\md{x}^N}{N!} < \epsilon.$ Conclude Cauchy-ness.
+		\end{soln}
+		%
+		\newpage
+		\item[5.] Using Taylor series, write down a series for 
+		\begin{equation*} 
+			\int \dfrac{e^x}{x} {\mathrm{d}}x.
+		\end{equation*}
+		\begin{soln}
+			Note that
+			\begin{equation*} 
+				e^x = 1 + \sum_{k = 1}^{\infty}\dfrac{x^k}{k!}.
+			\end{equation*}
+			Dividing by $x$ gives
+			\begin{equation*} 
+				\dfrac{e^x}{x} = \dfrac{1}{x} + \sum_{k = 1}^{\infty}\dfrac{x^{k-1}}{k!}.
+			\end{equation*}
+			Integrating both sides gives us
+			\begin{equation*} 
+				\int \dfrac{e^x}{x} {\mathrm{d}}x = C + \log x + \sum_{k = 1}^{\infty}\dfrac{x^{k}}{k\cdot k!}
+			\end{equation*}
+		\end{soln}
+	\end{itemize}	
 \end{document}
