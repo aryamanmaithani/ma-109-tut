@@ -1,0 +1,197 @@
+\documentclass[12pt]{article}
+\usepackage{amsmath, amssymb, amsfonts, amsthm, mathtools,mathrsfs}
+\usepackage{thmtools}
+\usepackage[utf8]{inputenc}
+\usepackage[inline]{enumitem}
+\usepackage[colorlinks=true]{hyperref}
+\usepackage{tikz}
+\usetikzlibrary{decorations.markings}
+\usetikzlibrary{arrows.meta}
+\usepackage{witharrows}
+\usepackage{datetime2}
+
+\setlength\parindent{0pt}
+\usepackage{parskip}
+
+\usepackage[framemethod=tikz]{mdframed}
+\mdfdefinestyle{theoremstyle}{%
+	% linecolor=gray,linewidth=1pt,%
+	% frametitlerule=true,%
+	frametitlebackgroundcolor=white,
+	% backgroundcolor=  gray!20,	
+	bottomline=false, topline=false, rightline=false, leftline=true,
+	innerlinewidth=0.7pt, outerlinewidth=0.7pt, middlelinewidth=2pt, middlelinecolor=white, %
+	innerleftmargin=6pt,
+	% innertopmargin=-1pt,
+	skipabove=10pt,
+	% fontcolor=blue,
+	% innerbottommargin=-0.5pt,
+}
+\mdtheorem[style=theoremstyle]{defn}[thm]{Definition}
+\mdtheorem[style=theoremstyle]{thm}{Theorem}
+
+\newcommand*{\doublerule}{\hrule width \hsize height 1pt \kern 0.5mm \hrule width \hsize height 2pt}
+\newcommand{\doublerulefill}{\leavevmode\leaders\vbox{\hrule width .1pt\kern1pt\hrule}\hfill\kern0pt}
+
+\usepackage{xpatch}
+\newcommand{\thmautorefname}{Theorem}
+\makeatletter
+\xpatchcmd{\thm}{\refstepcounter}{\NR@gettitle{#1}\refstepcounter}{}{}
+\makeatother
+
+\newcommand{\Res}{\operatorname{Res}}
+
+\theoremstyle{definition}
+% \newtheorem{thm}{Theorem}
+% \numberwithin{thm}{section}
+% \newtheorem{lem}[thm]{Lemma}
+% \newtheorem{defn}[thm]{Definition}
+% \newtheorem{prop}[thm]{Proposition}
+% \newtheorem{cor}[thm]{Corollary}
+% \newtheorem{ex}{Example}
+
+
+\let\emptyset\varnothing
+
+\pagestyle{plain}
+
+\usepackage{titlesec}
+\titleformat{\section}[block]{\sffamily\Large\filcenter\bfseries}{\S\thesection.}{0.25cm}{\Large}
+\titleformat{\subsection}[block]{\large\bfseries\sffamily}{\S\S\thesubsection.}{0.2cm}{\large}
+
+\usepackage[a4paper]{geometry}
+\usepackage{lipsum}
+
+\usepackage{cleveref}
+\crefname{thm}{Theorem}{Theorems}
+\crefname{lem}{Lemma}{Lemmas}
+\crefname{defn}{Definition}{Definitions}
+\crefname{prop}{Proposition}{Propositions}
+\crefname{cor}{Corollary}{Corollaries}
+\crefname{equation}{}{}
+
+\usepackage{mdframed}
+\newenvironment{blockquote}
+{\begin{mdframed}[skipabove=0pt, skipbelow=0pt, innertopmargin=4pt, innerbottommargin=4pt, bottomline=false,topline=false,rightline=false, linewidth=2pt]}
+{\end{mdframed}}
+\newenvironment{soln}{\begin{proof}[Solution]}{\end{proof}}
+
+\usepackage{fancyhdr}
+\setlength{\headheight}{15.2pt}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\sffamily{\S\textbf{\nouppercase{\leftmark}}}}
+\fancyhead[R]{\sffamily{\thepage}}
+\definecolor{myupdatecolor}{RGB}{0, 0, 255}
+
+\newcommand{\remark}[1]{{\color{gray}[#1]}}
+\newcommand{\md}[1]{\left\lvert #1 \right\lvert}
+\newcommand{\fl}[1]{\left\lfloor #1 \right\rfloor}
+
+% \usepackage{xcolor}
+% \definecolor{mybgcolor}{RGB}{50, 50, 50} %46, 51, 63
+% \usepackage{pagecolor}
+% \pagecolor{mybgcolor}
+% \color{white}
+% \mdfsetup{backgroundcolor=mybgcolor, fontcolor=white}
+% \definecolor{myupdatecolor}{RGB}{0, 255, 0}
+
+\renewcommand{\familydefault}{\sfdefault}
+
+\title{MA 109: Calculus I\\\large{Assignment Solutions}}
+\author{Aryaman Maithani\\\url{https://aryamanmaithani.github.io/tuts/ma-109}}
+\date{Autumn Semester 2020-21\\~\\Last update: \DTMnow}
+
+\begin{document}
+\maketitle
+\tableofcontents
+\newpage
+\section{Assignment 1}
+Take the last digit of your roll number. Call it $w.$ Take the second last digit of your roll number. Call it $z.$ Let $a = w + 10$ and $b = z + 10.$ Evaluate the limit
+\begin{equation*} 
+	\lim_{n\to \infty}\dfrac{an + 1}{bn + 2}.
+\end{equation*}	
+Justify your answer using the $\epsilon-N$ definition of the limit.
+
+\begin{soln}
+	Calculate $a$ and $b$ first, as per \textbf{your} roll number (and not the roll number of the person you're copying from).
+
+	\textbf{Claim.} We claim that $\displaystyle\lim_{n\to \infty}\dfrac{an + 1}{bn + 2} = \dfrac{a}{b}.$ 
+
+	\remark{You don't have to justify how you came up with the limit.}
+
+	We need to show that given \emph{any} $\epsilon > 0,$ there exists $N \in \mathbb{N}$ such that
+	\begin{equation*} 
+		\md{\dfrac{an + 1}{bn + 2} - \dfrac{a}{b}} < \epsilon\quad\text{for all } n > N.
+	\end{equation*}
+	\remark{Note the order of $\epsilon, N,$ and $n.$ Changing this will change the meaning and won't be correct. Also note the ``for all'' in the two places.}
+
+	To this end, given any $\epsilon > 0$ define $N \vcentcolon= \fl{\dfrac{2a - b}{b^2\epsilon}} + 1.$
+	
+	Now, note that if $n > N,$ then
+	\begin{align*} 
+		\hspace{2cm}\md{\dfrac{an + 1}{bn + 2} - \dfrac{a}{b}} &= \dfrac{2a - b}{b(bn + 2)} & (\because b - 2a < 0)\\
+		&< \dfrac{2a - b}{b^2n}\\
+		&< \dfrac{2a - b}{b^2N}\\
+		&< \epsilon,
+	\end{align*}
+	as desired.
+\end{soln}
+
+An alternate:
+
+\begin{soln}
+	Calculate $a$ and $b$ first, as per \textbf{your} roll number (and not the roll number of the person you're copying from).
+
+	\textbf{Claim.} We claim that $\displaystyle\lim_{n\to \infty}\dfrac{an + 1}{bn + 2} = \dfrac{a}{b}.$ 
+
+	\remark{You don't have to justify how you came up with the limit.}
+
+	We need to show that given \emph{any} $\epsilon > 0,$ there exists $N \in \mathbb{N}$ such that
+	\begin{equation*} 
+		\md{\dfrac{an + 1}{bn + 2} - \dfrac{a}{b}} < \epsilon\quad\text{for all } n > N.
+	\end{equation*}
+	\remark{Note the order of $\epsilon, N,$ and $n.$ Changing this will change the meaning and won't be correct. Also note the ``for all'' in the two places.}
+
+	To this end, given any $\epsilon > 0$ and $n \in \mathbb{N},$ we note that
+	
+	\begin{equation*} 
+	\begin{WithArrows}[displaystyle]
+		\md{\dfrac{an + 1}{bn + 2} - \dfrac{a}{b}} < \epsilon &\iff \md{\dfrac{b - 2a}{b(bn + 2)}} < \epsilon \Arrow{$b - 2a < 0$ for your roll number}\\
+		&\iff \dfrac{2a - b}{b(bn + 2)} < \epsilon \Arrow{since $n \in \mathbb{N}$ and hence, \\
+		$b(bn + 2) > b(bn)$}\\
+		&{\color{red}\impliedby} \dfrac{2a - b}{b^2n} < \epsilon
+	\end{WithArrows}
+	\end{equation*}
+
+	Now, given any $\epsilon > 0,$ we choose $N \in \mathbb{N}$ such that
+	\begin{equation*} 
+		N > \dfrac{2a - b}{b^2\epsilon}.
+	\end{equation*}
+	\remark{You can also be explicit and choose $N = \fl{\dfrac{2a - b}{b^2\epsilon}} + 1$ but make sure your quantity is then actually a \underline{positive integer}.}
+
+	Thus, for $n > N,$ we have
+	\begin{equation*} 
+		\dfrac{2a - b}{b^2n} < \epsilon
+	\end{equation*}
+	and thus, by our earlier observation, we see
+	\begin{equation*} 
+		\md{\dfrac{an + 1}{bn + 2} - \dfrac{a}{b}} < \epsilon
+	\end{equation*}
+	for all $n > N,$ as desired.
+\end{soln}
+\newpage
+\textbf{Common mistakes}
+\begin{enumerate}
+	\item Not exactly a mistake but many of you spent a page or two in first ``finding'' the limit using Sandwich theorem and/or using that $1/n \to 0.$ This is unnecessary. 
+	\item If you have an inequality like $A - C < B - C,$ you cannot (in general) conclude that $\md{A - C} < \md{B - C}.$ In fact, in this case, $A - C$ was usually negative and thus, you need to justify more.
+	\item The direction of implication signs was in the opposite direction for many. (Note the red implication sign in the second solution. That's how it should be.) If you write something like $\md{a_n - l} < \epsilon \implies n > 1/\epsilon,$ then simply choosing $N > 1/\epsilon$ does not solve the problem because you haven't said that $n > 1/\epsilon \implies \md{a_n - l} < \epsilon.$
+	\item \textbf{Don't} write something like $N = \dfrac{2a - b}{b^2\epsilon}.$ You need $N$ to be a positive \underline{integer}.
+	\item Make sure you mention $\epsilon {\color{red}\;> 0}$.
+	\item Note the definition says \underline{for all} $\epsilon > 0.$ You cannot choose $\epsilon$ on your own if you want to \emph{prove} a limit. Something like ``Set $\epsilon = \ldots$'' is incorrect.
+	\item In the same vein as above, after you've fixed an $N \in \mathbb{N},$ the $\md{a_n - l} < \epsilon$ condition should hold for \underline{all} $n > N$ and not \emph{some}.
+	\item Speaking of fixing an $N,$ do fix an $N$!\footnote{Exclamation, not factorial.} Many of you have not done that.
+	\item Also, don't mess up the order of ``for every $\epsilon > 0,$ there exists $N \in \mathbb{N}$'' by writing ``there exists $N \in \mathbb{N}$ such that for every $\epsilon > 0$.'' The latter implies that a \emph{single} $N \in \mathbb{N}$ works for \emph{all} $\epsilon > 0.$ That is \emph{not} the case here.
+	\item Instead of writing ``Assume that the limit is ...,'' you should write ``We claim that the limit is ...'' because you immediately follow it up with a proof. (The ``assuming'' thing is more appropriate when you want to disprove something by using contradiction.)
+\end{enumerate}
+\end{document}
