@@ -140,7 +140,7 @@
 \begin{itemize}[leftmargin=*]
 	\item [2. (iv)]$\displaystyle\lim_{n\to \infty}(n)^{1/n}.$
 
-	Define $h_n := n^{1/n} - 1.$\\
+	Define $h_n \vcentcolon= n^{1/n} - 1.$\\
 	Then, $h_n \ge 0$ for all $n \in \mathbb{N}.$ \hfill (Why?)
 
 	Now, for $n > 2,$ we have 
@@ -670,130 +670,363 @@
 \newpage
 \textbf{Sheet 3}
 \begin{itemize}
-		\item[1.] Write down the Taylor series for $\arctan x$ about the point $0.$ Write down a precise remainder $R_n(x).$
-		\begin{soln}
-			For each of notation, let $f(x) \vcentcolon= \arctan x$ and $g(x) \vcentcolon= \dfrac{1}{1 + x^2}.$\\
-			Note that $f' = g.$
+	\item[1.] Write down the Taylor series for $\arctan x$ about the point $0.$ Write down a precise remainder $R_n(x).$
+	\begin{soln}
+		For each of notation, let $f(x) \vcentcolon= \arctan x$ and $g(x) \vcentcolon= \dfrac{1}{1 + x^2}.$\\
+		Note that $f' = g.$
 
-			Note that if $n \ge 1,$ then $f^{(n)}(0) = g^{(n - 1)}(0).$ For $g,$ we have the easy Taylor expansion as
-			\begin{equation*} 
-				g(x) = 1 - x^2 + x^4 - \cdots
-			\end{equation*}
-			which is valid for $x \in (-1, 1).$
-
-			Thus, we easily see that
-			\begin{equation*} 
-				g^{(n)}(0) = \begin{cases}
-					0 & n \text{ is odd,}\\
-					(-1)^{n/2}n! & n \text{ is even.}
-				\end{cases}
-			\end{equation*}
-
-			Thus,
-			\begin{equation*} 
-				f^{(n)}(0) = \begin{cases}
-					0 & n \text{ is even,}\\
-					(-1)^{(n - 1)/2}(n - 1)! & n \text{ is odd.}
-				\end{cases}
-			\end{equation*}
-			(The above is for $n \ge 1.$)
-			Using this, we get the $(2n + 1)$-th Taylor polynomial as
-			\begin{align*} 
-				P_{2n + 1}(x) &= \sum_{k = 0}^{2n + 1}\dfrac{f^{(n)}(0)}{n!}x^n\\
-				&= f(0) + \sum_{k = 1}^{2n + 1}\dfrac{f^{(n)}(0)}{n!}x^n\\
-				&= 0 + x - \dfrac{2!}{3!}x^3 + \cdots + \dfrac{(-1)^n(2n)!}{(2n + 1)!}x^{2n + 1}\\
-				&= x - \dfrac{x^3}{3} + \cdots + \dfrac{(-1)^n}{2n + 1}x^{2n + 1}.
-			\end{align*}
-			Since $f^{(2n)} = 0,$ we see that
-			\begin{equation*} 
-				P_{2n}(x) = P_{2n - 1}(x)
-			\end{equation*}
-			for $n \ge 1.$
-
-			This solves the problem for finding the Taylor polynomial. Now we solve for the remainder.
-
-			Once again, note that
-			\begin{equation*} 
-				g(t) = 1 - t^2 + t^4 - \cdots.
-			\end{equation*}
-			For $n \ge 1,$ we note that
-			\begin{align*} 
-				g(t) &= [1 - t^2 + \cdots + (-1)^nt^{2n}] + {\color{red}(-1)^{n+1}t^{2n + 2}[1 - t^2 + \cdots]}\\
-				&= [1 - t^2 + \cdots + (-1)^nt^{2n}] + {\color{red}(-1)^{n+1}\dfrac{t^{2n + 2}}{1 + t^2}}
-			\end{align*}
-			Integrating both sides from $0$ to $x$ gives
-			\begin{equation*} 
-				f(x) = P_{2n + 1}(x) + {\color{red}(-1)^{n+1}\int_{0}^{x} \dfrac{t^{2n + 2}}{1 + t^2} {\mathrm{d}}t}.
-			\end{equation*}
-			Thus, the term in red is the $(2n + 1)$-th remainder $R_{2n + 1}(x).$ Conclude as before, for $R_{2n}(x).$
-		\end{soln}
-		%
-		\newpage
-		\item[2.]  Write down the Taylor series of the polynomial $x^3 - 3x^2 + 3x - 1$ about the point $1.$
-		\begin{soln}
-			As one can easily calculate, we have
-			\begin{equation*} 
-				f^{(n)}(1) = \begin{cases}
-					6 & n = 3\\
-					0 & n \neq 3,
-				\end{cases}
-			\end{equation*}
-			for $n \ge 0.$ Thus, we get the Taylor ``series'' to actually be the following finite sum:
-			\begin{equation*} 
-				\dfrac{f^{(3)}(1)}{3!}(x - 1)^3.
-			\end{equation*}
-			In other words, the Taylor series is simply $(x - 1)^3.$
-		\end{soln}
-		%
-		\newpage
-		\item[4.] Consider the series $\sum_{k = 0}^{\infty}\frac{x^k}{k!}$ for a fixed $x.$ Prove that it converges as follows. Choose $N > 2\md{x}.$ We see that for all $n > N,$
+		Note that if $n \ge 1,$ then $f^{(n)}(0) = g^{(n - 1)}(0).$ For $g,$ we have the easy Taylor expansion as
 		\begin{equation*} 
-			\dfrac{x^{n + 1}}{(n + 1)!} \le \dfrac{1}{2}\dfrac{\md{x}^n}{n!}.
+			g(x) = 1 - x^2 + x^4 - \cdots
 		\end{equation*}
-		It should now be relatively easy to show that the given series is Cauchy, and hence (by the completeness of $\mathbb{R}$), convergent.
+		which is valid for $x \in (-1, 1).$
+
+		Thus, we easily see that
+		\begin{equation*} 
+			g^{(n)}(0) = \begin{cases}
+				0 & n \text{ is odd,}\\
+				(-1)^{n/2}n! & n \text{ is even.}
+			\end{cases}
+		\end{equation*}
+
+		Thus,
+		\begin{equation*} 
+			f^{(n)}(0) = \begin{cases}
+				0 & n \text{ is even,}\\
+				(-1)^{(n - 1)/2}(n - 1)! & n \text{ is odd.}
+			\end{cases}
+		\end{equation*}
+		(The above is for $n \ge 1.$)
+		Using this, we get the $(2n + 1)$-th Taylor polynomial as
+		\begin{align*} 
+			P_{2n + 1}(x) &= \sum_{k = 0}^{2n + 1}\dfrac{f^{(n)}(0)}{n!}x^n\\
+			&= f(0) + \sum_{k = 1}^{2n + 1}\dfrac{f^{(n)}(0)}{n!}x^n\\
+			&= 0 + x - \dfrac{2!}{3!}x^3 + \cdots + \dfrac{(-1)^n(2n)!}{(2n + 1)!}x^{2n + 1}\\
+			&= x - \dfrac{x^3}{3} + \cdots + \dfrac{(-1)^n}{2n + 1}x^{2n + 1}.
+		\end{align*}
+		Since $f^{(2n)} = 0,$ we see that
+		\begin{equation*} 
+			P_{2n}(x) = P_{2n - 1}(x)
+		\end{equation*}
+		for $n \ge 1.$
+
+		This solves the problem for finding the Taylor polynomial. Now we solve for the remainder.
+
+		Once again, note that
+		\begin{equation*} 
+			g(t) = 1 - t^2 + t^4 - \cdots.
+		\end{equation*}
+		For $n \ge 1,$ we note that
+		\begin{align*} 
+			g(t) &= [1 - t^2 + \cdots + (-1)^nt^{2n}] + {\color{red}(-1)^{n+1}t^{2n + 2}[1 - t^2 + \cdots]}\\
+			&= [1 - t^2 + \cdots + (-1)^nt^{2n}] + {\color{red}(-1)^{n+1}\dfrac{t^{2n + 2}}{1 + t^2}}
+		\end{align*}
+		Integrating both sides from $0$ to $x$ gives
+		\begin{equation*} 
+			f(x) = P_{2n + 1}(x) + {\color{red}(-1)^{n+1}\int_{0}^{x} \dfrac{t^{2n + 2}}{1 + t^2} {\mathrm{d}}t}.
+		\end{equation*}
+		Thus, the term in red is the $(2n + 1)$-th remainder $R_{2n + 1}(x).$ Conclude as before, for $R_{2n}(x).$
+	\end{soln}
+	%
+	\newpage
+	\item[2.]  Write down the Taylor series of the polynomial $x^3 - 3x^2 + 3x - 1$ about the point $1.$
+	\begin{soln}
+		As one can easily calculate, we have
+		\begin{equation*} 
+			f^{(n)}(1) = \begin{cases}
+				6 & n = 3\\
+				0 & n \neq 3,
+			\end{cases}
+		\end{equation*}
+		for $n \ge 0.$ Thus, we get the Taylor ``series'' to actually be the following finite sum:
+		\begin{equation*} 
+			\dfrac{f^{(3)}(1)}{3!}(x - 1)^3.
+		\end{equation*}
+		In other words, the Taylor series is simply $(x - 1)^3.$
+	\end{soln}
+	%
+	\newpage
+	\item[4.] Consider the series $\sum_{k = 0}^{\infty}\frac{x^k}{k!}$ for a fixed $x.$ Prove that it converges as follows. Choose $N > 2\md{x}.$ We see that for all $n > N,$
+	\begin{equation*} 
+		\dfrac{x^{n + 1}}{(n + 1)!} \le \dfrac{1}{2}\dfrac{\md{x}^n}{n!}.
+	\end{equation*}
+	It should now be relatively easy to show that the given series is Cauchy, and hence (by the completeness of $\mathbb{R}$), convergent.
+	\begin{soln}
+		If $N > 2\md{x}$ and $n > N,$ then
+		\[\begin{WithArrows}[displaystyle]
+			\md{\dfrac{x^{n+1}}{(n + 1)!}} &= \md{\dfrac{x^n}{n!}}\md{\dfrac{x}{n+1}} \Arrow{$n + 1 > n > N$}\\
+			&\le \md{\dfrac{x^n}{n!}}\md{\dfrac{x}{N}} \Arrow{$N > 2\md{x}$}\\
+			&\le \dfrac{1}{2}\md{\dfrac{x^n}{n!}}.
+		\end{WithArrows}\]
+		Thus, we can repeatedly use the above to get:
+		\begin{equation*} 
+			\md{\dfrac{x^{n+1}}{(n + 1)!}} \le \dfrac{1}{2}\md{\dfrac{x^n}{n!}} \le \cdots \le \dfrac{1}{2^{n + 1 - N}}\md{\dfrac{x^N}{N!}}.
+		\end{equation*}
+		Let $s_n(x) = \displaystyle\sum_{k = 0}^{n}\dfrac{x^k}{k!}.$
+
+
+		Now, given $m > n > N,$ we have
+		\begin{align*} 
+			\md{s_m(x) - s_n(x)} &= \md{\sum_{k = n+1}^{m}\dfrac{x^k}{k!}}\\
+			&\le \sum_{k = n + 1}^{m}\md{\dfrac{x^k}{k!}}\\
+			&= \md{\dfrac{x^{n + 1}}{(n + 1)!}} + \cdots + \md{\dfrac{x^m}{m!}}\\
+			&\le \dfrac{\md{x}^N}{N!}\left(\dfrac{1}{2} + \cdots + \dfrac{1}{2^{m-n}}\right)\\
+			&{\color{myupdatecolor}\le} \dfrac{\md{x}^N}{N!}.
+		\end{align*}
+		Note that given any $\epsilon > 0,$ we can pick $N \in \mathbb{N}$ such that $\dfrac{\md{x}^N}{N!} < \epsilon.$ Conclude Cauchy-ness.
+	\end{soln}
+	%
+	\newpage
+	\item[5.] Using Taylor series, write down a series for 
+	\begin{equation*} 
+		\int \dfrac{e^x}{x} {\mathrm{d}}x.
+	\end{equation*}
+	\begin{soln}
+		Note that
+		\begin{equation*} 
+			e^x = 1 + \sum_{k = 1}^{\infty}\dfrac{x^k}{k!}.
+		\end{equation*}
+		Dividing by $x$ gives
+		\begin{equation*} 
+			\dfrac{e^x}{x} = \dfrac{1}{x} + \sum_{k = 1}^{\infty}\dfrac{x^{k-1}}{k!}.
+		\end{equation*}
+		Integrating both sides gives us
+		\begin{equation*} 
+			\int \dfrac{e^x}{x} {\mathrm{d}}x = C + \log x + \sum_{k = 1}^{\infty}\dfrac{x^{k}}{k\cdot k!}
+		\end{equation*}
+	\end{soln}
+\end{itemize}
+%
+%
+%
+
+\newpage\section{Tutorial 4}
+\begin{center}
+	16th December, 2020
+\end{center}
+\textbf{Sheet 4}
+\begin{itemize}
+	\item[2.] \begin{itemize}
+		\item[(a)] Let $f:[a, b] \to \mathbb{R}$ be Riemann integrable and $f(x) \ge 0$ for all $x \in [a, b].$ Show that $\displaystyle\int_{a}^{b} f(x) {\mathrm{d}}x \ge 0.$ Further, if $f$ is continuous and $\displaystyle\int_{a}^{b} f(x) {\mathrm{d}}x = 0,$ show that $f(x) = 0$ for all $x \in [a, b].$
 		\begin{soln}
-			If $N > 2\md{x}$ and $n > N,$ then
-			\[\begin{WithArrows}[displaystyle]
-				\md{\dfrac{x^{n+1}}{(n + 1)!}} &= \md{\dfrac{x^n}{n!}}\md{\dfrac{x}{n+1}} \Arrow{$n + 1 > n > N$}\\
-				&\le \md{\dfrac{x^n}{n!}}\md{\dfrac{x}{N}} \Arrow{$N > 2\md{x}$}\\
-				&\le \dfrac{1}{2}\md{\dfrac{x^n}{n!}}.
-			\end{WithArrows}\]
-			Thus, we can repeatedly use the above to get:
+			For the first part, let 
 			\begin{equation*} 
-				\md{\dfrac{x^{n+1}}{(n + 1)!}} \le \dfrac{1}{2}\md{\dfrac{x^n}{n!}} \le \cdots \le \dfrac{1}{2^{n + 1 - N}}\md{\dfrac{x^N}{N!}}.
+				P = \{a = x_0 < x_1 < \cdots < x_n = b\}
 			\end{equation*}
-			Let $s_n(x) = \displaystyle\sum_{k = 0}^{n}\dfrac{x^k}{k!}.$
+			be an arbitrary partition of $[a, b].$ Note that
+			\begin{equation*} 
+				m_i = \inf_{x \in [x_i, x_{i + 1}]}f(x) \ge 0
+			\end{equation*}
+			for all $0 \le i \le n - 1.$ (This is because $0$ is a lower bound of $f.$)
 
+			Thus, we get that $L(f, P) \ge 0.$
 
-			Now, given $m > n > N,$ we have
-			\begin{align*} 
-				\md{s_m(x) - s_n(x)} &= \md{\sum_{k = n+1}^{m}\dfrac{x^k}{k!}}\\
-				&\le \sum_{k = n + 1}^{m}\md{\dfrac{x^k}{k!}}\\
-				&= \md{\dfrac{x^{n + 1}}{(n + 1)!}} + \cdots + \md{\dfrac{x^m}{m!}}\\
-				&\le \dfrac{\md{x}^N}{N!}\left(\dfrac{1}{2} + \cdots + \dfrac{1}{2^{m-n}}\right)\\
-				&{\color{myupdatecolor}\le} \dfrac{\md{x}^N}{N!}.
-			\end{align*}
-			Note that given any $\epsilon > 0,$ we can pick $N \in \mathbb{N}$ such that $\dfrac{\md{x}^N}{N!} < \epsilon.$ Conclude Cauchy-ness.
+			In turn, we see that $L(f) \ge 0,$ since $L(f)$ is the supremum of $L(f, P)$ over \underline{all} partitions $P$ of $[a, b].$ Since $f$ is given to be Riemann integrable, we know that the integral is $L(f)$ and we are done.
+			
+			\hrulefill
+			
+			For the second part, we prove by contrapositive. That is, if $f(x) \neq 0$ for some $x \in [a, b],$ then $\displaystyle\int_{a}^{b} f(x) {\mathrm{d}}x \neq 0.$
+
+			Suppose $c \in [a, b]$ is such that $f(c) \neq 0.$ As $f(x) \ge 0$ for all $x \in [a, b],$ we have that $f(c) > 0.$ Let $\epsilon \vcentcolon= f(c).$
+
+			As $f$ is continuous, there is a $\delta > 0$ such that if $x \in [a, b]$ and $|x - c| < \delta,$ then $|f(x) - f(c)| < \epsilon/2$ which implies that $\epsilon/2 < f(x).$
+
+			Note that even if $c = a$ or $c = b,$ the above shows that we can find $c \in (a, b)$ with $f(c) > 0.$ Thus, WLOG we may assume that $c \in (a, b).$ Moreover, we may also assume that $\delta > 0$ is small enough so that $(c- \delta, c + \delta) \subset (a, b).$
+
+			Now, consider the partition of $[a, b]$ given as
+			\begin{equation*} 
+				P = \{a, c - \delta/2, c + \delta/2, b\}.
+			\end{equation*}
+			Now, note that
+			\begin{equation*} 
+				\inf_{x \in [c - \delta/2, c + \delta/2]} f(x) \ge \dfrac{\epsilon}{2}.
+			\end{equation*}
+
+			Thus, $L(P, f) > 0.$ As $L(f)$ is the supremum over all such $L(P, f),$ we see that $L(f) > 0.$ Since $f$ is given to be Riemann integrable, we know that the integral is $L(f)$ and we are done.
 		\end{soln}
 		%
-		\newpage
-		\item[5.] Using Taylor series, write down a series for 
-		\begin{equation*} 
-			\int \dfrac{e^x}{x} {\mathrm{d}}x.
-		\end{equation*}
+		\item[(b)] Give an example of a Riemann integrable function on $[a, b]$ such that $f(x)	\ge 0$ for all $x \in [a, b]$ and $\displaystyle\int_{a}^{b} f(x) {\mathrm{d}}x = 0,$ but $f(x) \neq 0$ for some $x \in [a, b].$
 		\begin{soln}
-			Note that
+			Let $a = 0, b = 2$ and $f:[a, b] \to \mathbb{R}$ be defined as
 			\begin{equation*} 
-				e^x = 1 + \sum_{k = 1}^{\infty}\dfrac{x^k}{k!}.
+				f(x) \vcentcolon= \begin{cases}
+					0 & x \neq 1,\\
+					1 & x = 1.
+				\end{cases}
 			\end{equation*}
-			Dividing by $x$ gives
-			\begin{equation*} 
-				\dfrac{e^x}{x} = \dfrac{1}{x} + \sum_{k = 1}^{\infty}\dfrac{x^{k-1}}{k!}.
-			\end{equation*}
-			Integrating both sides gives us
-			\begin{equation*} 
-				\int \dfrac{e^x}{x} {\mathrm{d}}x = C + \log x + \sum_{k = 1}^{\infty}\dfrac{x^{k}}{k\cdot k!}
-			\end{equation*}
+			Show that $f$ is actually Riemann integrable on $[0, 2]$ with the integral equal to $0.$
 		\end{soln}
-	\end{itemize}	
+	\end{itemize}
+	%
+	%
+	\newpage
+	\item[3] Evaluate $\displaystyle\lim_{n\to \infty}S_n$ by showing that $S_n$ is an appropriate Riemann sum for a suitable function over a suitable interval.
+
+	\begin{itemize}
+		\item[(ii)] $S_n = \sum_{i = 1}^{n}\dfrac{n}{i^2 + n^2}.$
+		\item[(iv)] $S_n = \dfrac{1}{n}\sum_{i = 1}^{n}\cos\left(\dfrac{i\pi}{n}\right).$
+	\end{itemize}
+
+	\begin{soln}
+		For both the parts, we shall use the following theorem:
+		
+		\begin{thm}
+			Let $f:[a, b] \to \mathbb{R}$ be Riemann integrable. Suppose that $(P_n, t_n)$ is a sequence of tagged partitions of $[a, b]$ such that $\|P_n\| \to 0.$\\
+			Then,
+			\begin{equation*} 
+				\lim_{n\to \infty}R(f, P_n, t_n) = \int_{a}^{b} f(x) {\mathrm{d}}x.
+			\end{equation*}
+		\end{thm}
+
+		Note very carefully in the above that we already need to know that $f$ is Riemann integrable.
+
+		\begin{itemize}
+			\item[(ii)] Note that 
+			\begin{equation*} 
+				S_n = \sum_{i=1}^{n}\dfrac{n}{i^2 + n^2} = \sum_{i=1}^{n}\dfrac{1}{\left(\frac{i}{n}\right)^2 + 1}\left(\frac{i}{n} - \frac{i-1}{n}\right).
+			\end{equation*}
+			Define $f:[0, 1] \to \mathbb{R}$ by $f(x) \vcentcolon= \tan^{-1}x.$\\
+			Then, we have that $f'(x) = \dfrac{1}{x^2 + 1}.$
+
+			As $f'$ is continuous and bounded, it is (Riemann) integrable. \\
+			For $n \in \mathbb{N},$ let 
+			\begin{equation*} 
+				P_n \vcentcolon= \{0, 1/n, \ldots, n/n\}
+			\end{equation*} and tags 
+			\begin{equation*} 
+				t_i \vcentcolon= i/n
+			\end{equation*} for $i = 1, 2, \ldots, n.$
+
+			Then, $S_n = R(f', P_n, t_n).$ Since $\|P_n\| = 1/n \to 0,$ it follows that
+			\begin{equation*} 
+				\lim_{n\to \infty}R(f, P_n, t_n) = \int_{0}^{1} \dfrac{1}{x^2 + 1} {\mathrm{d}}x = \int_{0}^{1} f'(x) {\mathrm{d}}x.
+			\end{equation*}
+			By FTC Part II, we have it that
+			\begin{equation*} 
+				\lim_{n\to \infty}S_n = \int_{0}^{1} f'(x) {\mathrm{d}}x = f(1) - f(0) = \dfrac{\pi}{4}.
+			\end{equation*}
+			%
+			\item[(iv)] Note that 
+			\begin{equation*} 
+				S_n = \dfrac{1}{n}\sum_{i=1}^{n}\cos\left(\dfrac{i\pi}{n}\right) = \sum_{i=1}^{n}\cos\left(\dfrac{i\pi}{n}\right)\left(\frac{i}{n} - \frac{i-1}{n}\right).
+			\end{equation*}
+			Define $f:[0, 1] \to \mathbb{R}$ by $f(x) \vcentcolon= \pi^{-1}\sin(\pi x).$\\
+			Then, we have that $f'(x) = \cos(\pi x).$
+
+			As $f'$ is continuous and bounded, it is (Riemann) integrable. \\
+			For $n \in \mathbb{N},$ let 
+			\begin{equation*} 
+				P_n \vcentcolon= \{0, 1/n, \ldots, n/n\}
+			\end{equation*} and tags 
+			\begin{equation*} 
+				t_i \vcentcolon= i/n
+			\end{equation*} for $i = 1, 2, \ldots, n.$
+
+			Then, $S_n = R(f', P_n, t_n).$ Since $\|P_n\| = 1/n \to 0,$ it follows that
+			\begin{equation*} 
+				\lim_{n\to \infty}R(f, P_n, t_n) = \int_{0}^{1} \cos(\pi x) {\mathrm{d}}x = \int_{0}^{1} f'(x) {\mathrm{d}}x.
+			\end{equation*}
+			By FTC Part II, we have it that
+			\begin{equation*} 
+				\lim_{n\to \infty}S_n = \int_{0}^{1} f'(x) {\mathrm{d}}x = f(1) - f(0) = 0. \qedhere
+			\end{equation*}
+		\end{itemize}
+	\end{soln}
+	%
+	%
+	%
+	%
+	\newpage
+	\item[4. (b)] Compute $F'(x),$ if for $x \in \mathbb{R}$
+	\begin{itemize}
+		\item[(i)] $F(x) = \displaystyle\int_{1}^{2x} \cos(t^2) {\mathrm{d}}t.$
+		\item[(ii)] $F(x) = \displaystyle\int_{0}^{x^2} \cos(t) {\mathrm{d}}t.$
+	\end{itemize}
+
+	\begin{soln}
+		For both the parts, we shall use the following theorem:
+		
+		\begin{thm}
+			Let $v:\mathbb{R} \to \mathbb{R}$ be differentiable and $g:\mathbb{R}\to\mathbb{R}$ be continuous. Suppose that $F:\mathbb{R}\to\mathbb{R}$ is defined by
+			\begin{equation*} 
+				F(x) \vcentcolon= \int_{0}^{v(x)} g(t) {\mathrm{d}}t.
+			\end{equation*}
+			Then,
+			\begin{equation*} 
+				F'(x) = g(v(x))v'(x).
+			\end{equation*}
+		\end{thm}
+		Note that using the above, we can state the more general result for when the lower limit is also a differentiable function.
+
+		\begin{proof} 
+			First, define $G:\mathbb{R}\to\mathbb{R}$ by
+			\begin{equation*} 
+				G(x) \vcentcolon= \int_{0}^{x} g(t) {\mathrm{d}}t.
+			\end{equation*}
+			By FTC Part I, we know that $G$ is differentiable and
+			\begin{equation*} 
+				G'(x) = g(x).
+			\end{equation*}
+			On the other hand, note that
+			\begin{equation*} 
+				F(x) = G(v(x)).
+			\end{equation*}
+			An application of chain rule yields
+			\begin{equation*} 
+				F'(x) = G'(v(x))v'(x) = g(v(x))v'(x). \qedhere
+			\end{equation*}
+		\end{proof}
+
+		Both the parts are now solved easily.
+		\begin{itemize}
+			\item[(i)] We have $g(t) = \cos(t^2)$ and $v(x) = 2x.$ Thus, $v'(x) = 2$ and 
+			\begin{equation*} 
+				\boxed{F'(x) = 2\cos(4x^2).}
+			\end{equation*}
+			%
+			\item[(ii)] We have $g(t) = \cos(t)$ and $v(x) = x^2.$ Thus, $v'(x) = 2x$ and 
+			\begin{equation*} 
+				\boxed{F'(x) = 2x\cos(x^2).} \qedhere
+			\end{equation*}
+		\end{itemize}
+	\end{soln}
+	%
+	%
+	%
+	%
+	\newpage
+	\item[6.] Let $f:\mathbb{R} \to \mathbb{R}$ be continuous and $\lambda \in \mathbb{R},\; \lambda \neq 0.$ For $x \in \mathbb{R},$ let
+	\begin{equation*} 
+		g(x) = \dfrac{1}{\lambda}\int_{0}^{x} f(t)\sin\left[\lambda(x - t)\right] {\mathrm{d}}t.
+	\end{equation*}
+	Show that $g''(x) + \lambda^2g(x) = f(x)$ for all $x \in \mathbb{R}$ and $g(0) = 0 = g'(0).$
+
+	\begin{soln}
+		Just brute calculation. Note that
+		\begin{align*}
+			g(x) &= \dfrac{1}{\lambda}\int_{0}^{x} f(t)\sin \lambda(x - t) {\mathrm{d}}t\\
+			&= \dfrac{1}{\lambda}\int_{0}^{x} f(t) \left(\sin \lambda x\cos \lambda t - \cos \lambda x \sin \lambda t\right) {\mathrm{d}}t\\
+			&= \frac{1}{\lambda}\sin\lambda x\int_{0}^{x} f(t)\cos \lambda t {\mathrm{d}}t - \frac{1}{\lambda}\cos \lambda x \int_{0}^{x} f(t)\sin \lambda t {\mathrm{d}}t.
+		\end{align*}
+
+		Now, we can differentiate $g$ using product rule and FTC Part I.
+		\begin{align*}
+			g'(x) &= \cos\lambda x\int_{0}^{x} f(t)\cos \lambda t {\mathrm{d}}t + \sin \lambda x \int_{0}^{x} f(t)\sin \lambda t {\mathrm{d}}t \\
+		\end{align*}
+
+		Since the limits of integrals appearing in the expressions for $g$ and $g'$ are both from $0$ to $x,$ we see that $g(0) = 0 = g'(0).$
+
+		We can differentiate $g'$ in a similar way and get,
+		\begin{align*}
+			g''(x) &= -\lambda\sin\lambda x\int_{0}^{x} f(t)\cos \lambda t dt + f(x)\cos^2\lambda x + \lambda \cos \lambda x \int_{0}^{x} f(t)\sin \lambda t dt \\
+			& + f(x)\sin^2 \lambda x\\
+			&= f(x) - \lambda^2\left(\dfrac{1}{\lambda}\int_{0}^{x} f(t) \left(\sin \lambda x\cos \lambda t - \cos \lambda x \sin \lambda t\right) dt\right)\\
+			&= f(x) - \lambda^2g(x).
+		\end{align*}
+		Rearranging the above gives
+		\begin{equation*} 
+			g''(x) + \lambda^2g(x) = f(x) \qedhere
+		\end{equation*}
+	\end{soln}
+\end{itemize}
 \end{document}
