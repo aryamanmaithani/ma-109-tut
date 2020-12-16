@@ -844,6 +844,44 @@
 
 			Thus, $L(P, f) > 0.$ As $L(f)$ is the supremum over all such $L(P, f),$ we see that $L(f) > 0.$ Since $f$ is given to be Riemann integrable, we know that the integral is $L(f)$ and we are done.
 		\end{soln}
+
+		{\color{myupdatecolor}Here is an alternate easier solution for both the parts:}
+
+		\begin{soln}
+			Consider the trivial partition $P_0 = \{a, b\}$ of $[a, b].$ Clearly,
+			\begin{equation*} 
+				\inf_{x \in [a, b]} f(x) \ge 0.	
+			\end{equation*}
+			Thus,
+			\begin{equation*} 
+				L(f, P_0) = \left[\inf_{x \in [a, b]} f(x)\right][b - a] \ge 0
+			\end{equation*}
+			and hence,
+			\begin{equation*} 
+				L(f) \ge L(f, P_0) \ge 0.
+			\end{equation*}
+			Since $f$ is given to be Riemann integrable, we know that the integral is $L(f)$ and we are done.
+			
+			\hrulefill
+			
+			Second part:
+
+			Define $F:[a, b] \to \mathbb{R}$ as
+			\begin{equation*} 
+				F(x) \vcentcolon= \int_{a}^{x} f(t) {\mathrm{d}}t.
+			\end{equation*}
+			Note that since $f$ is continuous, $F$ is differentiable with $F' = f.$ (FTC Part I)
+
+			Thus, we get that $F' = f \ge 0$ and hence, $F$ is increasing. Thus, we get
+			\begin{equation*} 
+				F(a) \le F(x) \le F(b)
+			\end{equation*}
+			for all $x \in [a, b].$ However, note that $F(a) = 0 = F(b)$ and hence, $F$ is constant. Thus, 
+			\begin{equation*} 
+				f(x) = F'(x) = 0,
+			\end{equation*}
+			for all $x \in [a, b],$ as desired.
+		\end{soln}
 		%
 		\item[(b)] Give an example of a Riemann integrable function on $[a, b]$ such that $f(x)	\ge 0$ for all $x \in [a, b]$ and $\displaystyle\int_{a}^{b} f(x) {\mathrm{d}}x = 0,$ but $f(x) \neq 0$ for some $x \in [a, b].$
 		\begin{soln}
@@ -891,15 +929,15 @@
 			As $f'$ is continuous and bounded, it is (Riemann) integrable. \\
 			For $n \in \mathbb{N},$ let 
 			\begin{equation*} 
-				P_n \vcentcolon= \{0, 1/n, \ldots, n/n\}
-			\end{equation*} and tags 
-			\begin{equation*} 
-				t_i \vcentcolon= i/n
-			\end{equation*} for $i = 1, 2, \ldots, n.$
+				P_n \vcentcolon= \{0, 1/n, \ldots, n/n\}.
+			\end{equation*}
+			The tags are given as follows: For the interval $\left[\dfrac{i - 1}{n}, \dfrac{i}{n}\right],$ we pick the point $\dfrac{i}{n};$ for each $i = 1, \ldots, n.$
+
+			This collection corresponding to $P_n$ is denoted by $t_n.$ Thus, we get a sequence $(P_n, t_n)$ of tagged partitions.
 
 			Then, $S_n = R(f', P_n, t_n).$ Since $\|P_n\| = 1/n \to 0,$ it follows that
 			\begin{equation*} 
-				\lim_{n\to \infty}R(f, P_n, t_n) = \int_{0}^{1} \dfrac{1}{x^2 + 1} {\mathrm{d}}x = \int_{0}^{1} f'(x) {\mathrm{d}}x.
+				\lim_{n\to \infty}R(f{\color{myupdatecolor}'}, P_n, t_n) = \int_{0}^{1} \dfrac{1}{x^2 + 1} {\mathrm{d}}x = \int_{0}^{1} f'(x) {\mathrm{d}}x.
 			\end{equation*}
 			By FTC Part II, we have it that
 			\begin{equation*} 
@@ -916,15 +954,15 @@
 			As $f'$ is continuous and bounded, it is (Riemann) integrable. \\
 			For $n \in \mathbb{N},$ let 
 			\begin{equation*} 
-				P_n \vcentcolon= \{0, 1/n, \ldots, n/n\}
-			\end{equation*} and tags 
-			\begin{equation*} 
-				t_i \vcentcolon= i/n
-			\end{equation*} for $i = 1, 2, \ldots, n.$
+				P_n \vcentcolon= \{0, 1/n, \ldots, n/n\}.
+			\end{equation*}
+			The tags are given as follows: For the interval $\left[\dfrac{i - 1}{n}, \dfrac{i}{n}\right],$ we pick the point $\dfrac{i}{n};$ for each $i = 1, \ldots, n.$
+
+			This collection corresponding to $P_n$ is denoted by $t_n.$ Thus, we get a sequence $(P_n, t_n)$ of tagged partitions.
 
 			Then, $S_n = R(f', P_n, t_n).$ Since $\|P_n\| = 1/n \to 0,$ it follows that
 			\begin{equation*} 
-				\lim_{n\to \infty}R(f, P_n, t_n) = \int_{0}^{1} \cos(\pi x) {\mathrm{d}}x = \int_{0}^{1} f'(x) {\mathrm{d}}x.
+				\lim_{n\to \infty}R(f{\color{myupdatecolor}'}, P_n, t_n) = \int_{0}^{1} \cos(\pi x) {\mathrm{d}}x = \int_{0}^{1} f'(x) {\mathrm{d}}x.
 			\end{equation*}
 			By FTC Part II, we have it that
 			\begin{equation*} 
