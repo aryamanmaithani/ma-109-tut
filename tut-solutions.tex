@@ -898,7 +898,7 @@
 	%
 	%
 	\newpage
-	\item[3] Evaluate $\displaystyle\lim_{n\to \infty}S_n$ by showing that $S_n$ is an appropriate Riemann sum for a suitable function over a suitable interval.
+	\item[3.] Evaluate $\displaystyle\lim_{n\to \infty}S_n$ by showing that $S_n$ is an appropriate Riemann sum for a suitable function over a suitable interval.
 
 	\begin{itemize}
 		\item[(ii)] $S_n = \sum_{i = 1}^{n}\dfrac{n}{i^2 + n^2}.$
@@ -985,9 +985,9 @@
 		For both the parts, we shall use the following theorem:
 		
 		\begin{thm}
-			Let $v:\mathbb{R} \to \mathbb{R}$ be differentiable and $g:\mathbb{R}\to\mathbb{R}$ be continuous. Suppose that $F:\mathbb{R}\to\mathbb{R}$ is defined by
+			Let $v:\mathbb{R} \to \mathbb{R}$ be differentiable and $g:\mathbb{R}\to\mathbb{R}$ be continuous. {\color{myupdatecolor}Fix $a \in \mathbb{R}.$} Suppose that $F:\mathbb{R}\to\mathbb{R}$ is defined by
 			\begin{equation*} 
-				F(x) \vcentcolon= \int_{0}^{v(x)} g(t) {\mathrm{d}}t.
+				F(x) \vcentcolon= \int_{{\color{myupdatecolor}a}}^{v(x)} g(t) {\mathrm{d}}t.
 			\end{equation*}
 			Then,
 			\begin{equation*} 
@@ -999,7 +999,7 @@
 		\begin{proof} 
 			First, define $G:\mathbb{R}\to\mathbb{R}$ by
 			\begin{equation*} 
-				G(x) \vcentcolon= \int_{0}^{x} g(t) {\mathrm{d}}t.
+				G(x) \vcentcolon= \int_{{\color{myupdatecolor}a}}^{x} g(t) {\mathrm{d}}t.
 			\end{equation*}
 			By FTC Part I, we know that $G$ is differentiable and
 			\begin{equation*} 
@@ -1017,12 +1017,12 @@
 
 		Both the parts are now solved easily.
 		\begin{itemize}
-			\item[(i)] We have $g(t) = \cos(t^2)$ and $v(x) = 2x.$ Thus, $v'(x) = 2$ and 
+			\item[(i)] We have {\color{myupdatecolor}${\color{myupdatecolor}a = 1},$} $g(t) = \cos(t^2)$ and $v(x) = 2x.$ Thus, $v'(x) = 2$ and 
 			\begin{equation*} 
 				\boxed{F'(x) = 2\cos(4x^2).}
 			\end{equation*}
 			%
-			\item[(ii)] We have $g(t) = \cos(t)$ and $v(x) = x^2.$ Thus, $v'(x) = 2x$ and 
+			\item[(ii)] We have {\color{myupdatecolor}${\color{myupdatecolor}a = 0},$} $g(t) = \cos(t)$ and $v(x) = x^2.$ Thus, $v'(x) = 2x$ and 
 			\begin{equation*} 
 				\boxed{F'(x) = 2x\cos(x^2).} \qedhere
 			\end{equation*}
