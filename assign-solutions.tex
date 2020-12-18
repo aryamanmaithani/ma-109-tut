@@ -181,7 +181,7 @@ An alternate:
 	for all $n > N,$ as desired.
 \end{soln}
 \newpage
-\textbf{Common mistakes}
+\subsection{Common mistakes}
 \begin{enumerate}
 	\item Not exactly a mistake but many of you spent a page or two in first ``finding'' the limit using Sandwich theorem and/or using that $1/n \to 0.$ This is unnecessary. 
 	\item If you have an inequality like $A - C < B - C,$ you cannot (in general) conclude that $\md{A - C} < \md{B - C}.$ In fact, in this case, $A - C$ was usually negative and thus, you need to justify more.
@@ -193,5 +193,197 @@ An alternate:
 	\item Speaking of fixing an $N,$ do fix an $N$!\footnote{Exclamation, not factorial.} Many of you have not done that.
 	\item Also, don't mess up the order of ``for every $\epsilon > 0,$ there exists $N \in \mathbb{N}$'' by writing ``there exists $N \in \mathbb{N}$ such that for every $\epsilon > 0$.'' The latter implies that a \emph{single} $N \in \mathbb{N}$ works for \emph{all} $\epsilon > 0.$ That is \emph{not} the case here.
 	\item Instead of writing ``Assume that the limit is ...,'' you should write ``We claim that the limit is ...'' because you immediately follow it up with a proof. (The ``assuming'' thing is more appropriate when you want to disprove something by using contradiction.)
+\end{enumerate}
+%
+%
+%
+\newpage
+\section{Assignment 2}
+Do there exist functions with the following properties? Justify.
+\begin{enumerate}[leftmargin=*]
+	\item $f:[0, 1] \to \mathbb{R}:$ convex and differentiable, $f'\left(\frac{1}{4}\right) = 2,$ $f'\left(\frac{3}{4}\right) = -1.$
+	\item $f:[0, 1] \to \mathbb{R}:$ concave and discontinuous at $\frac{1}{2}.$
+	\item $f:[0, 1] \to \mathbb{R}:$ convex and differentiable and such that $f'$ is not differentiable at $\frac{1}{2}.$
+	\item $f:\mathbb{R} \to \mathbb{R}:$ strictly convex and strictly decreasing.
+\end{enumerate}
+\begin{soln}
+	Note that if your answer is ``Yes,'' then you must give an example and justify why it has the given properties. Otherwise, give a proof that no such function can exist.
+	\begin{enumerate}[leftmargin=*]
+		\item {\color{red}No}.
+
+		Suppose not. Let $f$ be a function with the given properties. 
+
+		Since $f$ is convex and differentiable, $f'$ must be increasing.
+
+		Since $\frac{1}{4} \le \frac{3}{4},$ we must have $f'\left(\frac{1}{4}\right) \le f'\left(\frac{3}{4}\right).$ Since 
+		\begin{equation*} 
+			f'\left(\frac{3}{4}\right) = -1 < 2 = f'\left(\frac{1}{4}\right),
+		\end{equation*} we get a contradiction.
+		%
+		%
+		\item {\color{red}No}.
+
+		If a function $f:[a, b] \to \mathbb{R}$ is convex/concave, then it is continuous on $(a, b).$ Here, we have $a = 0$ and $b = 1.$ Since $\frac{1}{2} \in (0, 1),$ we see that no such function is possible.
+
+		\remark{Note that this isn't given very precisely in slides. It is not true that $f$ will be continuous on $[0, 1].$ It may very well be discontinuous at the end-points. However, this time, no marks were deducted even if you wrote that ``Convex/cave functions are continuous.''}
+		%
+		%
+		\item {\color{blue}Yes}.
+
+		Consider $f:[0, 1] \to \mathbb{R}$ defined as
+		\begin{equation*} 
+			f(x) \vcentcolon= \begin{cases}
+				0 & 2x \le 1,\\
+				\left(x - \dfrac{1}{2}\right)^2 & 2x > 1.
+			\end{cases}
+		\end{equation*}
+		Differentiability of $f$ at any point in $[0, 1]\setminus\left\{\frac{1}{2}\right\}$ is clear. At $1/2,$ we compute the LHD and RHD as follows:
+		\begin{align*} 
+			\lim_{h\to 0^+}\dfrac{f\left(\frac{1}{2} + h\right) - f\left(\frac{1}{2}\right)}{h} &= \lim_{h\to 0^+}\dfrac{f\left(\frac{1}{2} + h\right) - 0}{h}\\
+			&= \lim_{h\to 0^+}\dfrac{\left(\dfrac{1}{2} + h - \dfrac{1}{2}\right)^2 - 0}{h}\\
+			&= \lim_{h\to 0^+}\dfrac{h^2}{h} = 0,
+		\end{align*}
+		\begin{align*} 
+			\lim_{h\to 0^-}\dfrac{f\left(\frac{1}{2} + h\right) - f\left(\frac{1}{2}\right)}{h} &= \lim_{h\to 0^-}\dfrac{f\left(\frac{1}{2} + h\right) - 0}{h}\\
+			&= \lim_{h\to 0^-}\dfrac{0 - 0}{h}\\
+			&= 0.
+		\end{align*}
+		Thus, we see that $f'\left(\frac{1}{2}\right) = 0.$ For the other points, we use the usual formulae to get
+		\begin{equation*} 
+			f'(x) \vcentcolon= \begin{cases}
+				0 & 2x \le 1,\\
+				2\left(x - \dfrac{1}{2}\right) & 2x > 1.
+			\end{cases}
+		\end{equation*}
+		To see that $f'$ is not differentiable at $\frac{1}{2},$ we may compute the LHD and RHD again. One sees that the LHD is $0$ whereas the RHD is $2.$
+
+		Moreover, note that $f'$ above is increasing, this tells us that $f$ is convex.
+		%
+		%
+		\item {\color{blue}Yes}.
+
+		Consider $f:\mathbb{R}\to\mathbb{R}$ defined by $f(x) \vcentcolon= \exp(-x).$ Note that $f$ is twice differentiable and that the following holds for all $x \in \mathbb{R}:$
+		\begin{align*} 
+			f'(x) &= -\exp(-x) < 0,\\
+			f''(x) &= \exp(-x) > 0.
+		\end{align*}
+		The first inequality tells us that $f$ is strictly decreasing while the second tells us that $f$ is strictly convex. \qedhere
+	\end{enumerate}
+\end{soln}
+\newpage
+\subsection{Common mistakes}
+
+\textbf{General}
+\begin{enumerate}[label = \roman*.]
+	\item If your answer is ``Yes,'' you cannot conclude by simply saying that ``The definition of {\color{red}foo} does not prevent {\color{blue}bar} and hence, it is possible.'' You must explicitly construct a example.
+	\item You must justify your example in the above case. You cannot just state the function without explanation.
+	\item You cannot simply draw a graph and justify your answer. Especially if your answer is ``No.''
+\end{enumerate}
+
+\textbf{Specific}
+\begin{enumerate}[leftmargin=*, label = Q\arabic*.]
+	\item You can't conclude by invoking $f''.$ You don't know if it exists.
+	\item \phantom{hi}
+	\begin{enumerate}[leftmargin=*, label = \roman*.]
+		\item Some of you tried drawing graphs like the following to disprove it.
+
+		\begin{center}
+		
+		\begin{tikzpicture}[scale=5,
+		  mydot/.style={
+		    circle,
+		    fill=white,
+		    draw,
+		    outer sep=0pt,
+		    inner sep=1.5pt
+		  },
+		  yourdot/.style={
+		    circle,
+		    fill=black,
+		    draw,
+		    outer sep=0pt,
+		    inner sep=1.5pt
+		  }
+		]
+
+		\def\shift{1.1};
+		\draw[variable=\t,domain=0:1,samples=500] plot ({\t},{-2*(\t - 0.5)*(\t - 0.5)});
+		 \draw (0.5, 0) node[mydot] {};
+		 \draw (0.5, -0.1) node[yourdot] {};
+
+		 \draw[variable=\t,domain=0:1,samples=500] plot ({\shift + \t},{-2*(\t - 0.5)*(\t - 0.5)});
+		 \draw (\shift + 0.5, 0) node[mydot] {};
+		 \draw (\shift + 0.5, 0.1) node[yourdot] {};
+		\end{tikzpicture}
+		\end{center}
+
+		Firstly, graphs are not proofs. Even ignoring that, all you have really shown is that this particular discontinuous function isn't concave. That doesn't prove anything.
+		%
+		%
+		\item Some of you have tried arguing using:
+		\begin{center}
+			Concavity $\implies$ Double derivative exists $\implies$ Function is continuous
+		\end{center}
+
+		This is not correct since concave functions don't even have to be differentiable. Consider $x \mapsto -|x|$ defined on $[-1, 1].$
+	\end{enumerate}
+	%
+	%
+	\item \phantom{hi}
+	\begin{enumerate}[leftmargin=*, label = \roman*.]
+		\item This has got to be my favourite mistake I've (possibly ever) seen being made. Some of you have defined the function ``piecewise'' as:
+		\begin{equation*} 
+			f(x) = \begin{cases}
+				x^2 + \frac{1}{4} & x \neq \frac{1}{2},\\
+				\frac{1}{2} & x = \frac{1}{2}
+			\end{cases}
+		\end{equation*}
+		and then proceeded to \textbf{{\color{red}incorrectly}} differentiate it piecewise as
+		\begin{equation*} 
+			f'(x) = \begin{cases}
+				2x & x \neq \frac{1}{2},\\
+				0 & x = \frac{1}{2}.
+			\end{cases}
+		\end{equation*}
+		The above is \textbf{absurd}.
+
+		Firstly, note that the function defined above is actually just $f(x) = x^2 + \frac{1}{4}$ and as such, is infinitely differentiable everywhere.
+
+		Secondly, the reason you cannot do that is because for you to differentiate ``piecewise,'' you need an interval around that point on which the function doesn't change definition. This is something I had mentioned in Tutorial 2.
+		%
+		\item In the same vein as above, you need to explicitly compute the first (and lack thereof of second) derivative at $\frac{1}{2}$ using the first principle (i.e., LHD and RHD). You cannot differentiate piecewise and argue using limits without additional justification.
+		%
+		\item Recall the slide in recap where I had put a ``please.'' I had requested you to remember that a function can be differentiable at a point without the derivative being continuous at that point. As such, all arguments using just limits of $f'$ (or $f''$) have been discarded. (You could possibly argue using that but that needs more justification such as Darboux's theorem or something else.)
+		%
+		\item Some of you had written something like \\
+		\begin{blockquote}
+		
+		\begin{equation*} 
+			f''(x) \vcentcolon= \begin{cases}
+				4 & x \ge \frac{1}{2},\\
+				2 & x < \frac{1}{2}
+			\end{cases}
+		\end{equation*}
+		and hence, $f''\left(\frac{1}{2}\right)$ does not exist because the left and right hand limits of $f''$ don't agree. 
+		\end{blockquote}
+
+		This is \textbf{absurd}. To begin with, refer to the previous point.
+
+		Even keeping that aside: You, technically, are already saying $f''\left(\frac{1}{2}\right) = 4$ in the above and hence, according to \emph{you}, $f'$ is indeed differentiable at $\frac{1}{2}.$
+		%
+		\item Some of you have tried to conclude convexity by saying that $f''(x) \ge 0.$ Firstly, $f''$ doesn't even exist at $\frac{1}{2}.$ Secondly, if you are arguing by saying that ``The second derivative is positive, wherever it exists,'' that is also not correct. For example, consider $g:\mathbb{R}\to\mathbb{R}$ defined as
+		\begin{equation*} 
+			g(x) \vcentcolon= \begin{cases}
+				(x + 1)^2 - 1 & x < 0,\\
+				x^2 & x \ge 0.
+			\end{cases}
+		\end{equation*}
+		$g''$ is defined on $\mathbb{R}\setminus\{0\}$ and is positive there. However, $g$ is not convex.
+		%
+	\end{enumerate}
+	%
+	%
+	\item This was fine for most of you. Do justify why $f$ has the properties using $f'$ and $f''$ (if you pick a twice differentiable function, like I did). Don't draw graphs.
+
 \end{enumerate}
 \end{document}
