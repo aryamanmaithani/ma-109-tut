@@ -179,13 +179,13 @@
     \uncover<2->{For the remainder, we fix $a, b \in \mathbb{R}$ }\uncover<3->{such that $a < b.$ }\uncover<4->{(Just to recall, $\infty$ is not an element of $\mathbb{R}.$) }
 
     \uncover<5->{\begin{defn}[Limit]
-        Let $f:(a, b) \to \mathbb{R}$ be a function. \uncover<6->{Let $x_0 \in {\color{red}[}a, b{\color{red}]}$ }\uncover<7->{and $l {\color{red}\;\in \mathbb{R}}.$ }\uncover<8->{Then, we write
+        Let $f:(a, b) \to \mathbb{R}$ be a function. \uncover<6->{Let $x_0 \in {\color{red}[}a, b{\color{red}]}$ }\uncover<7->{and $L {\color{red}\;\in \mathbb{R}}.$ }\uncover<8->{Then, we write
         \begin{equation*} 
-            \lim_{x\to x_0}f(x) = l
+            \lim_{x\to x_0}f(x) = L
         \end{equation*} }\uncover<9->{if for every $\epsilon > 0,$ }\uncover<10->{there exists $\delta > 0$ }\uncover<11->{such that }\uncover<12->{
         \begin{equation*} 
-            |f(x) - l| < \epsilon
-        \end{equation*} }\uncover<13->{for all ${\color{red}x \in (a, b)}$ }\uncover<14->{such that ${\color{red}0 < }|x - x_0| < \delta.$ }
+            |f(x) - L| < \epsilon
+        \end{equation*} }\uncover<13->{for all ${\color{red}x \in (a, b)}$ }\uncover<14->{such that ${\color{red}0 <\;}|x - x_0| < \delta.$ }
     \end{defn} }
 \end{frame}
 \begin{frame}{Week 1}
@@ -199,9 +199,9 @@
     We then also defined limit at $\pm\infty.$
 
     \begin{defn}[Limit at $\infty$]
-        \uncover<2->{Let $A \subset \mathbb{R}$ be a set which is not bounded above. }\uncover<3->{Let $f:A\to\mathbb{R}$ be a function }\uncover<4->{and let $l \in \mathbb{R}.$ }\uncover<5->{We say
+        \uncover<2->{Let $A \subset \mathbb{R}$ be a set which is not bounded above. }\uncover<3->{Let $f:A\to\mathbb{R}$ be a function }\uncover<4->{and let $L \in \mathbb{R}.$ }\uncover<5->{We say
         \begin{equation*} 
-            \lim_{x\to \infty}f(x) = l
+            \lim_{x\to \infty}f(x) = L
         \end{equation*} }\uncover<6->{if for every $\epsilon > 0,$ }\uncover<7->{there exists $X \in \mathbb{R}$ such that }\uncover<8->{
         \begin{equation*} 
             |f(x) - L| < \epsilon
@@ -319,7 +319,7 @@
 \end{frame}
 \begin{frame}{Week 2}
     We then saw a theorem which said ``derivatives have IVP.'' To be more precise:
-    \begin{thm}[Darboux's Theorem]
+    \begin{thm}[Darboux's Theorem] \label{thm:darboux}
         \uncover<2->{Let $f:(a, b) \to \mathbb{R}$ be a differentiable function. }\uncover<3->{Let $c < d$ be points in $(a, b).$ }\uncover<4->{Let $u$ be between $f'(c)$ and $f'(d).$ }\uncover<5->{Then, there exists $x_0 \in (c, d)$ such that }\uncover<6->{
         \begin{equation*} 
             f'(x_0) = u.
@@ -414,8 +414,8 @@
     \begin{defn}[Inflection point]
         \uncover<2->{Let $x_0$ be an \emph{interior point} of $I.$ }\uncover<3->{Then, $x_0$ is called an inflection for $f$ }\uncover<4->{if there exists $\delta > 0$ such that {\color{red}either} }
         \begin{enumerate}
-            \uncover<5->{\item $f$ is convex on $(c - \delta, c)$ and concave on $(c, c + \delta),$ {\color{red}or} }
-            \uncover<6->{\item $f$ is concave on $(c - \delta, c)$ and convex on $(c, c + \delta).$ }
+            \uncover<5->{\item $f$ is convex on $(x_0 - \delta, x_0)$ and concave on $(x_0, x_0 + \delta),$ {\color{red}or} }
+            \uncover<6->{\item $f$ is concave on $(x_0 - \delta, x_0)$ and convex on $(x_0, x_0 + \delta).$ }
         \end{enumerate}
     \end{defn}
     \uncover<7->{As a crazy example, note that $0$ is an inflection point of: }\\
@@ -475,7 +475,7 @@
     \end{defn}
 \end{frame}
 \begin{frame}{Week 3}
-    Note that all the Tayloe \textbf{polynomials} have only \textbf{finite}ly many terms, as a polynomial should have. \uncover<2->{Also note that so far, we have just defined some polynomials. }\uncover<3->{We are yet to see how it actually connects with the function itself. }\uncover<4->{This is given by the following theorem. }
+    Note that all the Taylor \textbf{polynomials} have only \textbf{finite}ly many terms, as a polynomial should have. \uncover<2->{Also note that so far, we have just defined some polynomials. }\uncover<3->{We are yet to see how it actually connects with the function itself. }\uncover<4->{This is given by the following theorem. }
     \begin{thm}[Taylor's theorem]
         \uncover<5->{Suppose that $f$ is {\color{red}$n + 1$} times differentiable }\uncover<6->{{\color{red}on $I$}. }\uncover<7->{Suppose that $b \in I.$ }\uncover<8->{Then, there exists $c \in (a, b) \cup (b, a)$ such that }\uncover<9->{
         \begin{equation*} 
@@ -532,7 +532,197 @@
         Take doubts.
     \end{tcolorbox}
 \end{frame}
+\begin{frame}{Week 4}
+    In the following, it will be tacitly assumed that $a, b \in \mathbb{R}$ with $a < b.$
+    \begin{defn}[Partitions]
+        \uncover<2->{Given a closed interval $[a, b],$ }\uncover<3->{a \emph{partition} $P$ of $[a, b]$ }\uncover<4->{is a \underline{finite} collection of points
+        \begin{equation*} 
+            P = \{a = x_0 < x_1 < \cdots < x_n = b\}.
+        \end{equation*} }
+    \end{defn}
+    \uncover<5->{Note that a partition $P$ is really just a subset of $[a, b]$ }\uncover<6->{with the requirement that it must be finite and contain $a$ and $b.$ }\uncover<7->{It is customary to then list it in increasing order. }
+\end{frame}
+\begin{frame}{Week 4}
+    \begin{defn}[Refinements]
+        \uncover<2->{Given two partitions $P$ and $P'$ of $[a, b],$ }\uncover<3->{we say that $P'$ is a \emph{refinement} of $P$ }\uncover<4->{if $P \subset P'.$ }
+    \end{defn}
+    \uncover<5->{The ``$\subset$'' makes sense because of our earlier remark about partitions just being subsets of $[a, b].$ }\uncover<6->{In other words, it means that every point of $P$ is also a point in $P'.$ }\uncover<7->{Thus, we have ``refined'' the partition by further ``chopping'' it up. }
 
+    \uncover<8->{Given two partitions $P_1$ and $P_2$ of $[a, b],$ }\uncover<9->{we see that $P = P_1 \cup P_2$ is also a partition of $[a, b].$ }\uncover<10->{Moreover, $P$ is a refinement of both $P_1$ and $P_2.$ }\uncover<11->{In other words, any two partitions have a \underline{common refinement}. }
+\end{frame}
+\begin{frame}{Week 4}
+    \begin{defn}
+    \uncover<2->{Let $f:[a, b] \to \mathbb{R}$ be a {\color{red}bounded} function }\uncover<3->{and
+    \begin{equation*} 
+        P = \{a = x_0 < x_1 < \cdots < x_n = b\}
+    \end{equation*} a partition of $[a, b].$ }
+
+    \uncover<4->{We define the following quantities: }\uncover<5->{
+    \begin{equation*} 
+        M_i \vcentcolon= \sup_{x \in [x_{i-1}, x_i]}f(x) \quad\text{and}\quad m_i \vcentcolon= \inf_{x \in [x_{i-1}, x_i]}f(x),
+    \end{equation*} 
+    for $i = 1, \ldots, n.$}
+    \end{defn}
+    \uncover<6->{Thus, $m_i$ and $M_i$ denote the infimum and supremum of $f$ over the $i$-th interval, respectively. }
+\end{frame}
+\begin{frame}{Week 4}
+    Given everything as in the previous slide, we define lower/upper sums as following.
+    \begin{defn}[Lower/Upper sum]
+        \uncover<2->{The \emph{lower sum} of $f$ with respect to the partition $P$ is defined as }\uncover<3->{
+        \begin{equation*} 
+            L(f, P) \vcentcolon= \sum_{i = 1}^{n}m_i(x_i - x_{i - 1}).
+        \end{equation*} }
+        \uncover<4->{The \emph{upper sum} of $f$ with respect to the partition $P$ is defined as }\uncover<5->{
+        \begin{equation*} 
+            U(f, P) \vcentcolon= \sum_{i = 1}^{n}M_i(x_i - x_{i - 1}).
+        \end{equation*} }
+    \end{defn}
+    \uncover<6->{In the above, note that we have both $f$ and $P$ in the notation. }\uncover<7->{This is crucial because the sums depend on the partition. }
+\end{frame}
+\begin{frame}{Week 4}
+    Using the earlier sums, we now define the upper and lower Darboux \emph{integrals.} The notations are continuing from earlier.
+    \begin{defn}[Lower/Upper Darboux integrals]
+        \uncover<2->{The \emph{lower Darboux integral of $f$} }\uncover<3->{is defined as
+        \begin{equation*} 
+            L(f) \vcentcolon= \sup\{L(f, P) \mid P \text{ is a partition of }[a, b]\}, 
+        \end{equation*} }
+        \uncover<4->{and the \emph{upper Darboux integral of $f$} }\uncover<5->{is defined as
+        \begin{equation*} 
+            U(f) \vcentcolon= \inf\{U(f, P) \mid P \text{ is a partition of }[a, b]\}.
+        \end{equation*} }
+        \uncover<6->{Note that the $\sup/\inf$ is over {\color{red}all} the partitions $P$ of $[a, b].$ }
+    \end{defn}
+    \uncover<7->{Note that the notation now does not have any $P.$ }\uncover<8->{This is because $L(f)$ and $U(f)$ don't depend on any specific partition. }
+\end{frame}
+\begin{frame}{Week 4}
+    \begin{defn}[Darboux integrable]
+        \uncover<2->{A \underline{bounded} function $f:[a, b] \to \mathbb{R}$ }\uncover<3->{is said to be \emph{Darboux integrable} }\uncover<4->{if $L(f) = U(f).$ }
+
+        \uncover<5->{In this case, we define
+        \begin{equation*} 
+            \int_{a}^{b} f(t) {\mathrm{d}}t \vcentcolon= U(f) = L(f).
+        \end{equation*} }\uncover<6->{This value is called the Darboux integral. }
+    \end{defn}
+    \uncover<7->{\begin{thm}[Criteria for Darboux integrable]
+        \uncover<8->{A bounded function $f:[a, b] \to \mathbb{R}$ }\uncover<9->{is Darboux integrable if and only if }\uncover<10->{for every $\epsilon > 0,$ }\uncover<11->{there exists a partition $P$ of $[a, b]$ }\uncover<12->{such that
+        \begin{equation*} 
+            U(f, P) - L(f, P) < \epsilon.
+        \end{equation*} }
+    \end{thm} }
+\end{frame}
+\begin{frame}{Week 4}
+    A corollary of the previous is the following.
+    \begin{cor}
+        \uncover<2->{Let $f:[a, b] \to \mathbb{R}$ be a bounded function. }\uncover<3->{Suppose that $(P_n)$ is a sequence of partitions of $[a, b]$ }\uncover<4->{such that
+        \begin{equation*} 
+            \lim_{n\to \infty}\left[U(f, P_n) - L(f, P_n)\right] = 0.
+        \end{equation*} }\uncover<5->{Then, $f$ is Darboux integrable. }
+    \end{cor}
+    \uncover<6->{We now turn to the definition of Riemann integrals. }
+\end{frame}
+\begin{frame}{Week 4}
+    Some jargon.
+    \begin{defn}[Norm of a partition]
+        \uncover<2->{Let $P = \{a = x_0 < \cdots < x_n = b\}$ be a partition of $[a, b].$ }\uncover<3->{The \emph{norm} of $P$ is defined to be }\uncover<4->{
+        \begin{equation*} 
+            \|P\| \vcentcolon= \max_{1 \le i \le n}[x_i - x_{i - 1}].    
+        \end{equation*} }\uncover<5->{In other words, it is the length of the largest sub-interval. }
+    \end{defn}
+    \begin{defn}[Tagged partition]
+        \uncover<6->{Given a partition $P$ of $[a, b]$ as before, }\uncover<7->{we get the intervals $I_i = [x_{i - 1}, x_i]$ }\uncover<8->{for $i = 1, \ldots, n.$ }\uncover<8->{For each $i,$ we pick a point $t_i \in I_i.$ }\uncover<9->{This collection of points together is denoted by $t.$ }\uncover<10->{The pair $(P, t)$ is called a \emph{tagged partition} of $[a, b].$ }
+    \end{defn}
+\end{frame}
+\begin{frame}{Week 4}
+    \begin{defn}[Riemann sum]
+        \uncover<2->{Let $f:[a, b] \to \mathbb{R}$ be a function. }\uncover<3->{Let $(P, t)$ be a tagged partition of $[a, b].$ }\uncover<4->{We define the \emph{Riemann sum} associated to $f$ and $(P, t)$ by }\uncover<5->{
+        \begin{equation*} 
+            R(f, P, t) \vcentcolon= \sum_{i = 1}^{n}f(t_i)(x_i - x_{i-1}).
+        \end{equation*} }
+    \end{defn}
+    \uncover<6->{Note that the notation here includes $f,$ $P,$ \emph{and} $t.$ }\uncover<7->{Also note that here we didn't demand $f$ be bounded. }
+
+    \uncover<7->{On the next slide, we state two equivalent definitions of Riemann integrability. }
+\end{frame}
+\begin{frame}{Week 4}
+    \begin{defn}[Riemann 1]
+        \uncover<2->{A function $f:[a, b] \to \mathbb{R}$ }\uncover<3->{is said to be \emph{Riemann integrable} }\uncover<4->{if for there exists $R \in \mathbb{R}$ }\uncover<5->{such that for every $\epsilon > 0,$ }\uncover<6->{there exists {\color{red}$\delta > 0$} such that }\uncover<7->{
+        \begin{equation*} 
+            |R(f, P, t) - R| < \epsilon
+        \end{equation*} }\uncover<8->{for {\color{red}all} tagged partitions $(P, t)$ }\uncover<9->{such that {\color{red}$\|P\| < \delta.$} }
+    \end{defn}
+    \begin{defn}[Riemann 2]
+        \uncover<10->{A function $f:[a, b] \to \mathbb{R}$ }\uncover<11->{is said to be \emph{Riemann integrable} }\uncover<12->{if for there exists $R \in \mathbb{R}$ }\uncover<13->{such that for every $\epsilon > 0,$ }\uncover<14->{there exists {\color{red}$\delta > 0$ and a partition $P$} such that }\uncover<15->{
+        \begin{equation*} 
+            |R(f, P', t') - R| < \epsilon
+        \end{equation*} }\uncover<16->{for {\color{red}all tagged refinements} $(P', t')$ of $P$ }\uncover<17->{with {\color{red}$\|P'\| < \delta.$} }
+    \end{defn}
+\end{frame}
+\begin{frame}{Week 4}
+    \begin{defn}
+        \uncover<2->{In both the definitions on the earlier slide, the $R$ is unique and it is called the \emph{Riemann integral} of $f$ over $[a, b].$ }
+    \end{defn}
+    \begin{thm}[Darboux and Riemann are friends]
+        \uncover<3->{Let $f:[a, b] \to \mathbb{R}$ be a function. }
+
+        \uncover<4->{If $f$ is bounded and Darboux integrable, then $f$ is also Riemann integrable. }
+
+        \uncover<5->{If $f$ is Riemann integrable, then $f$ is bounded and also Darboux integrable. }
+
+        \uncover<6->{In both the cases above, the Darboux and Riemann integrals are the same. }
+    \end{thm}
+\end{frame}
+\begin{frame}{Week 4}
+    \begin{thm}[Riemann sums approximating the integral]
+        \uncover<2->{Let $f:[a, b] \to \mathbb{R}$ be {\color{red}Riemann integrable}. }\uncover<2->{Suppose that $(P_n, t_n)$ is a sequence of tagged partitions of $[a, b]$ such that $\|P_n\| \to 0.$ }\uncover<3->{Then, }\uncover<4->{ 
+        \begin{equation*} 
+            \lim_{n\to \infty}R(f, P_n, t_n) = \int_{a}^{b} f(x) {\mathrm{d}}x.
+        \end{equation*}}
+    \end{thm}
+    \uncover<5->{Note that we assumed $f$ to be Riemann integrable to begin with. }\uncover<6->{Thus, we cannot use the above theorem if we don't already know that $f$ is Riemann integrable. }\uncover<7->{The next theorem helps us in determining when that happens. }
+    \uncover<8->{\begin{thm}
+        Let $f:[a, b] \to \mathbb{R}$ be continuous. \uncover<9->{Then, $f$ is Riemann integrable. }
+    \end{thm} }
+\end{frame} 
+\begin{frame}{Week 4}
+    The converse of the previous theorem is not true. \uncover<2->{In fact, the theorem is true even if we assume something less. }\uncover<3->{Namely, if $f$ is bounded and is discontinuous on a finite set, then it is Riemann integrable. }\uncover<4->{The ``finite'' can even be replaced with ``at most countable,'' if you know what that means. }
+
+    \uncover<5->{{\color{gray}The ``at most countable'' can actually be replaced with ``measure zero.''} }\uncover<6->{{\color{gray}At this point, the converse also becomes true!} }
+
+    \uncover<7->{Now, we see how derivatives and integrals relate. These are the two parts of the Fundamental Theorem of Calculus. }
+\end{frame}
+\begin{frame}{Week 4}
+    \begin{thm}[FTC Part I]
+        \uncover<2->{Let $f:[a, b] \to \mathbb{R}$ be a Riemann integrable function, }\uncover<3->{and let
+        \begin{equation*} 
+            F(x) \vcentcolon= \int_{a}^{x} f(t) {\mathrm{d}}t
+        \end{equation*} }\uncover<4->{for $x \in [a, b].$ }
+
+        \uncover<5->{Then, $F$ is continuous. }\uncover<6->{Moreover, if $f$ is continuous at some $c \in (a, b),$ }\uncover<7->{then $F$ is differentiable at $c$ and }\uncover<8->{
+        \begin{equation*} 
+            F'(c) = f(c).
+        \end{equation*} }
+        \uncover<9->{In particular, if $f$ is continuous, }\uncover<10->{then Riemann integrability of $f$ is guaranteed }\uncover<11->{and the above equation is true for \emph{all} $c \in (a, b).$ }
+    \end{thm}
+\end{frame}
+\begin{frame}{Week 4}
+    \begin{thm}[FTC Part II]
+        \uncover<2->{Let $f:[a, b] \to \mathbb{R}$ be given }\uncover<3->{and suppose there exists a continuous function $F:[a, b] \to \mathbb{R}$ }\uncover<4->{which is differentiable on $(a, b)$ }\uncover<5->{and satisfies $F' = f$ on $(a, b).$ }\uncover<6->{{\color{red}If} $f$ is Riemann integrable on $[a, b],$ }\uncover<7->{then
+        \begin{equation*} 
+            \int_{a}^{b} f(t) {\mathrm{d}}t = F(b) - F(a).
+        \end{equation*} }
+    \end{thm}
+    \uncover<8->{Note that the {\color{red}if} is crucial. }\uncover<9->{It isn't necessary that the derivative of a function is Riemann integrable. }\uncover<10->{It needn't even be bounded. }\uncover<11->{(But even if it is bounded, it needn't be Riemann integrable. Although an example of this is harder.) }
+\end{frame}
+\begin{frame}{Week 4}
+    Some pathological remarks: 
+    \begin{enumerate}
+        \item If a function is Riemann integrable, it doesn't mean that it is the derivative of a function. (That is, it needn't have an anti-derivative.)
+        \item If a function has an anti-derivative, it doesn't mean that it is Riemann integrable. (That is, derivatives needn't be Riemann integrable.)
+    \end{enumerate}
+    For the first, take $f:[0, 2] \to \mathbb{R}$ defined by $f(x) = \lfloor x \rfloor.$ It cannot be the derivative of any function because it doesn't have IVP. (Recall Theorem \ref{thm:darboux}.)
+
+    For the second, consider the derivative of $F:[-1, 1] \to \mathbb{R}$ defined by $F(x) = x^2\sin(1/x^2)$ for $x \neq 0$ and $F(0) = 0.$ $F'$ here isn't bounded.
+\end{frame}
 \end{document}
 
 % c4yd6ei
