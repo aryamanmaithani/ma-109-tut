@@ -178,7 +178,7 @@
 
     \uncover<2->{For the remainder, we fix $a, b \in \mathbb{R}$ }\uncover<3->{such that $a < b.$ }\uncover<4->{(Just to recall, $\infty$ is not an element of $\mathbb{R}.$) }
 
-    \uncover<5->{\begin{defn}[Limit]
+    \uncover<5->{\begin{defn}[Limit] \label{defn:limit}
         Let $f:(a, b) \to \mathbb{R}$ be a function. \uncover<6->{Let $x_0 \in {\color{red}[}a, b{\color{red}]}$ }\uncover<7->{and $L {\color{red}\;\in \mathbb{R}}.$ }\uncover<8->{Then, we write
         \begin{equation*} 
             \lim_{x\to x_0}f(x) = L
@@ -722,6 +722,101 @@
     For the first, take $f:[0, 2] \to \mathbb{R}$ defined by $f(x) = \lfloor x \rfloor.$ It cannot be the derivative of any function because it doesn't have IVP. (Recall Theorem \ref{thm:darboux}.)
 
     For the second, consider the derivative of $F:[-1, 1] \to \mathbb{R}$ defined by $F(x) = x^2\sin(1/x^2)$ for $x \neq 0$ and $F(0) = 0.$ $F'$ here isn't bounded.
+\end{frame}
+\begin{frame}{Week 5}
+    \begin{tcolorbox}
+        Start recording!
+    \end{tcolorbox}
+\end{frame}
+\begin{frame}{Week 5}
+    \uncover<2->{In whatever follows, $n, m \ge 1$ and $U$ will be a subset of $\mathbb{R}^n.$}
+    \begin{defn}[Limits]
+        \uncover<3->{Let $f:U \to \mathbb{R}^m$ be a function }\uncover<4->{and $c \in \mathbb{R}^n$ be a \underline{limit point} of $U.$ } \uncover<5->{Let $L {\color{red}\;\in \mathbb{R}^m}.$ }\uncover<6->{We write
+        \begin{equation*} 
+            \lim_{x\to c}f(x) = L
+        \end{equation*} }\uncover<7->{if for every $\epsilon > 0,$ }\uncover<8->{there exists $\delta > 0$ }\uncover<11->{such that }\uncover<9->{
+        \begin{equation*} 
+            \|f(x) - L\| < \epsilon
+        \end{equation*} }\uncover<10->{for all ${\color{red}x \in U}$ }\uncover<11->{such that ${\color{red}0 <\;}\|x - c\| < \delta.$ }
+    \end{defn}
+    \uncover<12->{Note that if $m = 1,$ then $\|f(x) - L\|$ is just $|f(x) - L|.$ }\uncover<13->{In fact, for $n = m = 1,$ the definition above coincides with the earlier one. (Definition \ref{defn:limit}.)}
+\end{frame}
+\begin{frame}{Week 5}
+    In the previous slide, we used the phrase ``limit point.'' \uncover<2->{The following is the definition. }\uncover<3->{\begin{defn}[Limit point]
+        Let $U \subset \mathbb{R}^n$ \uncover<4->{and $c \in \mathbb{R}^n.$ }\uncover<5->{$c$ is said to be a \emph{limit point} of $U$ }\uncover<6->{if for every $\delta > 0,$ }\uncover<7->{there exists $x \in U$ such that }\uncover<8->{${\color{red}0 < \;} \|x - c\| < \delta.$ }
+    \end{defn} }
+    \uncover<9->{Note that a limit point of $U$ can lie outside $U.$ }\uncover<10->{Conversely, a point in $U$ could still fail to be a limit point of $U.$ }
+
+    \uncover<11->{To see this, consider $n = 1$ and $U = [0, 1) \cup \{2\}.$ }\uncover<12->{Then, $1$ is a limit point of $U$ while $2$ is not. }
+\end{frame}
+\begin{frame}{Week 5}
+    As before, we can now define continuity easily.
+    \begin{defn}[Continuity]
+        \uncover<2->{If $f: U \to \mathbb{R}^m$ is a function }\uncover<3->{and $c \in U,$ }\uncover<4->{then $f$ is said to be }\uncover<5->{\emph{continuous at the point $c$} }\uncover<6->{if (and only if)
+        \begin{equation*} 
+            \lim_{x\to c}f(x) = f(c).
+        \end{equation*} } 
+    \end{defn}
+    \uncover<7->{As before, the case $n = m = 1$ recovers the original one. }
+\end{frame}
+\begin{frame}{Week 5}
+    Now, let us assume $n = 2$ and $m = 1.$ \uncover<2->{That is, $U \subset \mathbb{R}^2$ and we look at functions of the form $f : U \to \mathbb{R}.$ }
+    \begin{defn}[Partial derivative]
+        \uncover<3->{Let $f : U \to \mathbb{R}$ be a function }\uncover<4->{and $(a, b) \in U$ an \underline{interior point} of $U.$ }\uncover<5->{The \emph{partial derivative of $f$ at $(a, b)$ with respect to $x_1$} is defined by }\uncover<6->{
+        \begin{equation*} 
+            \dfrac{\partial f}{\partial x_1}(a, b) \vcentcolon= \lim_{x_1\to a}\dfrac{f(x_1, b) - f(a, b)}{x_1 - a},
+        \end{equation*} }\uncover<7->{provided that the limit exists. }
+    \end{defn}
+    \uncover<8->{The partial derivative with respect to $x_2$ is defined similarly. }\\
+    \uncover<9->{Note that the limit above is an ordinary one-variable limit of a real function, as we had seen earlier. }\uncover<10->{Also note that $b$ is fixed in the numerator. }
+\end{frame}
+\begin{frame}{Week 5}
+    In the previous slide, we used the phrase ``interior point.'' \uncover<2->{The following is the definition. }\uncover<3->{\begin{defn}[Interior point]
+        Let $U \subset \mathbb{R}^n$ \uncover<4->{and $c \in U.$ }\uncover<5->{$c$ is said to be an \emph{interior point} of $U$ }\uncover<6->{if there exists $\delta > 0$ }\uncover<7->{such that for every $x \in \mathbb{R}^n$ with $\|x - c\| < \delta,$ }\uncover<8->{we have $x \in U.$ }
+    \end{defn} }
+    \uncover<9->{The above says that not only is $c \in U$ but also that there is a ``ball'' around $c$ contained in $U.$ }
+
+    \uncover<10->{Note that the above says ``there exists'' and not ``for every.'' }\uncover<11->{Compare this with the definition of ``limit point.'' }
+\end{frame}
+\begin{frame}{Week 5}
+    \begin{defn}[Directional derivatives]
+        \uncover<2->{Let $f : U \to \mathbb{R}$ be a function }\uncover<3->{and $v = (v_1, v_2) \in \mathbb{R}^2$ a {\color{red}unit vector}. }\uncover<4->{Let $x = (x_1, x_2) \in U$ be an interior point of $U.$ }\uncover<5->{The \emph{directional derivative of $f$ in the direction $v$ at $x$} is defined as }\uncover<6->{
+        \begin{equation*} 
+            \nabla_vf(x) = \lim_{t\to 0}\dfrac{f(x_1 + tv_1, x_2 + tv_2) - f(x_1, x_2)}{t},
+        \end{equation*} provided it exists.}
+    \end{defn}
+    \uncover<7->{As before, this is an ordinary limit. }\uncover<8->{Taking $v = (1, 0)$ and $(0, 1)$ recovers the usual the partial derivatives with respect to $x_1$ and $x_2,$ respectively. }
+\end{frame}
+\begin{frame}{Week 5}
+    \begin{defn}[Differentiability]
+        \uncover<2->{Let $f : U \to \mathbb{R}$ be a function and $(x_0, y_0)$ be an interior point of $U.$ }\uncover<3->{$f$ is said to be \emph{differentiable at $(x_0, y_0)$} }\uncover<4->{if there exists a $1 \times 2$ matrix $A$ }\uncover<5->{such that
+        \begin{equation*} 
+            \lim_{(h, k)\to (0, 0)}\dfrac{\left|f(x_0 + h, y_0 + k) - f(x_0, y_0) - A\begin{bmatrix}
+                h\\
+                k
+            \end{bmatrix}\right|}{\|(h, k)\|} = 0.
+        \end{equation*} }\uncover<6->{In this case, we write $Df(x_0, y_0) = A$ }\uncover<7->{and call $A$ the \emph{total derivative} of $f$ at $(x_0, y_0).$ }
+    \end{defn}
+\end{frame}
+\begin{frame}{Week 5}
+    In your slides, we had seen originally seen a different definition. \uncover<2->{That happens to be equivalent to the above. }\uncover<3->{We have the following theorem. }\uncover<4->{We keep the same notations as earlier. }
+    \begin{thm}
+        \uncover<5->{Suppose that $f$ is differentiable is $(x_0, y_0).$ }\uncover<6->{Then, both the partial derivatives of $f$ at $(x_0, y_0)$ exist }\uncover<7->{and
+        \begin{equation*} 
+            Df(x_0, y_0) = \begin{bmatrix}
+                \dfrac{\partial f}{\partial x_1}(x_0, y_0) &
+                \dfrac{\partial f}{\partial x_2}(x_0, y_0)
+            \end{bmatrix}.
+        \end{equation*} }
+    \end{thm}
+    \uncover<8->{The above matrix is also called the \emph{gradient} and denoted by $\nabla f(x_0, y_0).$ }
+\end{frame}
+\begin{frame}{Week 5}
+    \begin{tcolorbox}
+        Stop recording. Start a new one.
+
+        Take doubts.
+    \end{tcolorbox}
 \end{frame}
 \end{document}
 
