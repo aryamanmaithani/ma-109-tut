@@ -1067,4 +1067,189 @@
 		\end{equation*}
 	\end{soln}
 \end{itemize}
+%
+%
+%
+
+\newpage\section{Tutorial 4}
+\begin{center}
+	23rd December, 2020
+\end{center}
+\textbf{Sheet 5}
+\begin{itemize}
+	\item[4.] Suppose $f, g : \mathbb{R} \to \mathbb{R}$ are continuous functions. Show that each of the following functions for $(x, y) \in \mathbb{R}^2$ are continuous:
+	\begin{itemize}
+		\item[(i)] $f(x) \pm g(x),$
+		\item[(ii)] $f(x)g(y),$
+		\item[(iii)] $\max\{f(x), g(y)\},$
+		\item[(iv)] $\min\{f(x), g(y)\}.$
+	\end{itemize}
+	\begin{soln}
+		The idea in all is to use sequential criterion. To recap:
+
+		\begin{thm}[Sequential criterion]
+			Let $h:\mathbb{R}^2 \to \mathbb{R}$ be a function. Let $(x_0, y_0) \in \mathbb{R}^2.$ Then, $h$ is continuous at $(x_0, y_0)$ if and only if for every sequence $\left((x_n, y_n)\right)$ converging to $(x_0, y_0),$ we have that
+			\begin{equation*} 
+				\lim_{n\to \infty}f(x_n, y_n) = f(x_0, y_0).
+			\end{equation*}
+		\end{thm}
+
+		The proof of the above is identical to that for the case in one variable.
+
+		We now prove the first two parts. \\
+		Let $(x_0, y_0) \in \mathbb{R}^2$ be arbitrary. Let $\left((x_n, y_n)\right)$ be an arbitrary sequence converging to $(x_0, y_0).$ Then we see that $x_n \to x_0$ and $y_n \to y_0.$ Now, applying the (usual) sequential criterion of continuity to $f$ and $g,$ we see that
+		\begin{equation*} 
+			\lim_{n\to \infty}f(x_n) = f(x_0) \quad\text{and}\quad \lim_{n\to \infty}f(y_n) = g(y_0).	
+		\end{equation*} 
+		Using the usual algebra of limits, we get that
+		\begin{align*} 
+			\lim_{n\to \infty}[f(x_n) \pm g(y_n)] &= \lim_{n\to \infty}f(x_n) \pm \lim_{n\to \infty}g(y_n) = f(x_0) +	g(y_0),\\
+			\lim_{n\to \infty}[f(x_n) g(y_n)] &= \lim_{n\to \infty}f(x_n)\lim_{n\to \infty}g(y_n) = f(x_0)g(y_0).
+		\end{align*}
+		Since the sequence was arbitrary, we have shown continuity at$(x_0, y_0).$ Since $(x_0, y_0)$ was arbitrary, we have shown that the desired functions are continuous on $\mathbb{R}^2.$
+
+		For the third and fourth parts, use the fact that
+		\begin{equation*} 
+			\min\{a, b\} = \dfrac{a + b - \left|a- b\right|}{2} \quad\text{and}\quad \max\{a, b\} = \dfrac{a + b + \left|a- b\right|}{2}.
+		\end{equation*}
+		A similar argument gives the answer, since $\left|\cdot\right|$ is continuous.
+	\end{soln}
+	%
+	%
+	\newpage
+	\item[6.] Examine the following function for the existence of partial derivatives at $(0,0).$
+	\begin{itemize}
+		\item[(ii)] $f(x, y) \vcentcolon= \begin{cases}
+			\dfrac{\sin^2(x + y)}{\left|x\right| + \left|y\right|} & (x, y) \neq (0, 0),\\
+			0 & (x, y) = (0, 0).
+		\end{cases}$
+	\end{itemize}
+	\begin{soln}
+		We shall show that neither partial derivative exists at $(0, 0).$ First, we show this for the partial derivative in the first direction.
+
+		For $h \neq 0,$ we note that
+		\begin{align*} 
+			\dfrac{f(0 + h, 0) - f(0, 0)}{\|(h, 0)\|} &= \dfrac{\frac{\sin^2(h)}{h} - 0}{\left|h\right|}\\
+			&= \dfrac{\sin^2 h}{h\left|h\right|}
+		\end{align*}
+		It is easy to see that 
+		\begin{equation*} 
+			\lim_{h\to 0}\dfrac{\sin^2 h}{h\left|h\right|}
+		\end{equation*}
+		does not exist. (Consider the RHL and LHL.)
+
+		Thus, we see that $\dfrac{\partial f}{\partial x_1}(0, 0)$ does not exist. A similar computation shows the same for the second partial as well.
+	\end{soln}
+	%
+	%
+	\newpage
+	\item[8.] Let $f(0, 0) = 0$ and 
+	\begin{equation*} 
+		f(x, y) = \begin{cases}
+			x\sin(1/x) + y\sin(1/y) & \text{if } x \neq 0,\; y \neq 0,\\
+			x\sin(1/x) & \text{if } x \neq 0,\; y = 0,\\
+			y\sin(1/y) & \text{if } x = 0,\; y \neq 0.
+		\end{cases}
+	\end{equation*}
+	\begin{soln}
+		To show continuity: First, for $(x, y) \neq (0, 0),$ note that
+		\begin{equation*} 
+			\left|f(x, y)\right| \le \left|x\right| + \left|y\right| \le \sqrt{x^2 + y^2}.
+		\end{equation*}
+		The first inequality follows by taking the three cases and the second by simply squaring and verifying.
+
+		The above can be written as
+		\begin{equation*} 
+			\|f(x, y) - f(0, 0)\| \le \|(x, y) - (0, 0)\|.
+		\end{equation*}
+		Thus, given any $\epsilon > 0,$ $\delta = \epsilon$ works in the definition of continuity.
+
+		Now, we show neither partial derivative exists. The calculations are similar and we show only the first. For $h \neq 0,$ we note that
+		\begin{equation*} 
+			\dfrac{f(h, 0) - f(0, 0)}{h} = \dfrac{h\sin(1/h)}{h} = \sin\left(\dfrac{1}{h}\right).
+		\end{equation*}
+		The limit of the above expression as $h \to 0$ does not exist. Thus, we are done.
+	\end{soln}
+	%
+	%
+	\newpage
+	\item[10.] Le $f(x, y) = 0$ if $y = 0$ and
+	\begin{equation*} 
+		f(x, y) = \dfrac{y}{\left|y\right|}\sqrt{x^2 + y^2}
+	\end{equation*}
+	otherwise. Show that $f$ is continuous at $(0, 0),$ $D_{\underline{u}}f(0, 0)$ exists for every {\color{red}unit} vector $\underline{u},$ yet $f$ is not differentiable at $(0, 0).$
+	\begin{soln}
+		For continuity: Let $(x, y) \neq (0, 0).$ If $y = 0,$ then\begin{equation*} 
+			\|f(x, y) - f(0, 0)\| = 0
+		\end{equation*}
+		and if $y \neq 0,$ then
+		\begin{equation*} 
+			\|f(x, y) - f(0, 0)\| = \sqrt{x^2 + y^2} = \|(x, y) - (0, 0)\|.
+		\end{equation*}
+		The cases put together give
+		\begin{equation*} 
+			\|f(x, y) - f(0, 0)\| \le \|(x, y) - (0, 0)\|.
+		\end{equation*}
+		Thus, $\delta = \epsilon$ works as before.
+
+		Now to see the partial derivatives: We can write $\underline{u} = (u_1, u_2).$ Note that $u_1^2 + u_2^2 = 1.$
+
+		If $u_2 = 0,$ then for $t \neq 0,$ note that
+		\begin{align*} 
+			\dfrac{f(0 + u_1t, 0 + u_2t) - f(0, 0)}{t} &= \dfrac{f(u_1t, 0) - 0}{t}\\
+			&= \dfrac{0 - 0}{t} = 0.
+		\end{align*}
+		Clearly, the above limit exists as $t \to 0$ and is $0.$
+
+		Now, for $u_2 \neq 0$ and $t \neq 0,$ note that
+		\begin{align*} 
+			\dfrac{f(0 + u_1t, 0 + u_2t) - f(0, 0)}{t} &= \dfrac{f(u_1t, u_2t) - 0}{t}\\
+			&=\dfrac{1}{t}\dfrac{u_2t}{\left|u_2t\right|}\sqrt{(u_1^2 + u_2^2)t^2}\\
+			&= \dfrac{1}{t}\dfrac{u_2t}{\left|u_2t\right|}\left|t\right|\\
+			&= \dfrac{u_2}{\left|u_2\right|}.
+		\end{align*}
+		Clearly, the above limit exists as $t \to 0$ and is $\frac{u_2}{\left|u_2\right|}.$
+
+		Thus, all directional derivatives exist and we have
+		\begin{equation*} 
+			D_{\underline{u}}f(0, 0) = \begin{cases}
+				0 & u_2 = 0,\\
+				\frac{u_2}{|u_2|} & u_2 \neq 0,
+			\end{cases}
+		\end{equation*}
+		Note that taking $\underline{u} = (1, 0)$ and $(0, 1)$ recovers the first and second partial derivatives, respectively. We now check for differentiability.
+
+		\emph{If} $f$ is differentiable at $(0, 0),$ then the total derivative \emph{must} be 
+		\begin{equation*} 
+			A \vcentcolon= \begin{bmatrix}
+				\dfrac{\partial f}{\partial x_1}(0, 0) &\dfrac{\partial f}{\partial x_2}(0, 0) 
+			\end{bmatrix} = \begin{bmatrix}
+				0 & 1
+			\end{bmatrix}.
+		\end{equation*}
+		We now see whether that actually satisfies the limit condition. That is, we must check if
+		\begin{equation*} 
+			\lim_{(h, k)\to (0, 0)} \dfrac{\left|f(0 + h, 0 + k) - f(0, 0) - A\begin{bmatrix}
+							h\\
+							k
+						\end{bmatrix}\right|}{\|(h, k)\|} = 0.
+		\end{equation*} 
+
+		For $(h, k) \neq (0, 0)$ and $k \neq 0,$ we note that
+		\begin{align*} 
+			\dfrac{\left|f(0 + h, 0 + k) - f(0, 0) - A\begin{bmatrix}
+							h\\
+							k
+						\end{bmatrix}\right|}{\|(h, k)\|} &= \frac{f\left(0+h, 0+k\right)-f\left(0, 0\right)-0 h- 1k}{\sqrt{h^{2}+k^{2}}}\\
+						&= \dfrac{k}{|k|} - \dfrac{k}{\sqrt{h^2 + k^2}}
+		\end{align*}
+		Note that along the curve $h = k$ with $(h, k) \neq (0, 0),$ we see that the above expression equals
+		\begin{equation*} 
+			\dfrac{k}{|k|} - \dfrac{k}{\sqrt{h^2 + k^2}} = \dfrac{k}{|k|} - \dfrac{k}{\sqrt{2k^2}} = \dfrac{k}{|k|}\left(1 - \dfrac{1}{\sqrt{2}}\right)
+		\end{equation*}
+		and the limit of \emph{that} does not exist as $k \to 0.$
+
+		Thus, we see that the original limit (which was supposed to be $0$) also does not exist. Thus, $f$ is not differentiable at $(0, 0).$
+	\end{soln}
+\end{itemize}
 \end{document}
