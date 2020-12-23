@@ -42,6 +42,7 @@
 \newcommand{\Res}{\operatorname{Res}}
 \newcommand{\md}[1]{\left\lvert #1 \right\lvert}
 \newcommand{\fl}[1]{\left\lfloor #1 \right\rfloor}
+\newcommand{\norm}[1]{\left\| #1 \right\|}
 
 \theoremstyle{definition}
 % \newtheorem{thm}{Theorem}
@@ -1071,7 +1072,7 @@
 %
 %
 
-\newpage\section{Tutorial 4}
+\newpage\section{Tutorial 5}
 \begin{center}
 	23rd December, 2020
 \end{center}
@@ -1114,6 +1115,7 @@
 		\end{equation*}
 		A similar argument gives the answer, since $\left|\cdot\right|$ is continuous.
 	\end{soln}
+	For an elaboration of the last argument, see \url{https://aryamanmaithani.github.io/ma-109-tut/handwritten/5.pdf}.
 	%
 	%
 	\newpage
@@ -1151,18 +1153,19 @@
 			y\sin(1/y) & \text{if } x = 0,\; y \neq 0.
 		\end{cases}
 	\end{equation*}
+	Show that none of the partial derivatives of $f$ exist at $(0, 0)$ although $f$ is continuous at $(0, 0).$
 	\begin{soln}
 		To show continuity: First, for $(x, y) \neq (0, 0),$ note that
 		\begin{equation*} 
-			\left|f(x, y)\right| \le \left|x\right| + \left|y\right| \le \sqrt{x^2 + y^2}.
+			\left|f(x, y)\right| \le \left|x\right| + \left|y\right| \le \sqrt{2}\sqrt{x^2 + y^2}.
 		\end{equation*}
 		The first inequality follows by taking the three cases and the second by simply squaring and verifying.
 
 		The above can be written as
 		\begin{equation*} 
-			\|f(x, y) - f(0, 0)\| \le \|(x, y) - (0, 0)\|.
+			|f(x, y) - f(0, 0)| \le \|(x, y) - (0, 0)\|.
 		\end{equation*}
-		Thus, given any $\epsilon > 0,$ $\delta = \epsilon$ works in the definition of continuity.
+		Thus, given any $\epsilon > 0,$ $\delta = \epsilon/\sqrt{2}$ works in the definition of continuity.
 
 		Now, we show neither partial derivative exists. The calculations are similar and we show only the first. For $h \neq 0,$ we note that
 		\begin{equation*} 
@@ -1173,22 +1176,22 @@
 	%
 	%
 	\newpage
-	\item[10.] Le $f(x, y) = 0$ if $y = 0$ and
+	\item[10.] Let $f(x, y) = 0$ if $y = 0$ and
 	\begin{equation*} 
 		f(x, y) = \dfrac{y}{\left|y\right|}\sqrt{x^2 + y^2}
 	\end{equation*}
 	otherwise. Show that $f$ is continuous at $(0, 0),$ $D_{\underline{u}}f(0, 0)$ exists for every {\color{red}unit} vector $\underline{u},$ yet $f$ is not differentiable at $(0, 0).$
 	\begin{soln}
 		For continuity: Let $(x, y) \neq (0, 0).$ If $y = 0,$ then\begin{equation*} 
-			\|f(x, y) - f(0, 0)\| = 0
+			|f(x, y) - f(0, 0)| = 0
 		\end{equation*}
 		and if $y \neq 0,$ then
 		\begin{equation*} 
-			\|f(x, y) - f(0, 0)\| = \sqrt{x^2 + y^2} = \|(x, y) - (0, 0)\|.
+			|f(x, y) - f(0, 0)| = \sqrt{x^2 + y^2} = \|(x, y) - (0, 0)\|.
 		\end{equation*}
 		The cases put together give
 		\begin{equation*} 
-			\|f(x, y) - f(0, 0)\| \le \|(x, y) - (0, 0)\|.
+			|f(x, y) - f(0, 0)| \le \|(x, y) - (0, 0)\|.
 		\end{equation*}
 		Thus, $\delta = \epsilon$ works as before.
 
@@ -1235,21 +1238,24 @@
 						\end{bmatrix}\right|}{\|(h, k)\|} = 0.
 		\end{equation*} 
 
+		We show that that is not case.
+
 		For $(h, k) \neq (0, 0)$ and $k \neq 0,$ we note that
 		\begin{align*} 
 			\dfrac{\left|f(0 + h, 0 + k) - f(0, 0) - A\begin{bmatrix}
 							h\\
 							k
-						\end{bmatrix}\right|}{\|(h, k)\|} &= \frac{f\left(0+h, 0+k\right)-f\left(0, 0\right)-0 h- 1k}{\sqrt{h^{2}+k^{2}}}\\
-						&= \dfrac{k}{|k|} - \dfrac{k}{\sqrt{h^2 + k^2}}
+						\end{bmatrix}\right|}{\|(h, k)\|} &= \frac{\md{f\left(0+h, 0+k\right)-f\left(0, 0\right)-0 h- 1k}}{\sqrt{h^{2}+k^{2}}}\\
+						&= \md{\dfrac{k}{|k|} - \dfrac{k}{\sqrt{h^2 + k^2}}}
 		\end{align*}
 		Note that along the curve $h = k$ with $(h, k) \neq (0, 0),$ we see that the above expression equals
 		\begin{equation*} 
-			\dfrac{k}{|k|} - \dfrac{k}{\sqrt{h^2 + k^2}} = \dfrac{k}{|k|} - \dfrac{k}{\sqrt{2k^2}} = \dfrac{k}{|k|}\left(1 - \dfrac{1}{\sqrt{2}}\right)
+			\md{\dfrac{k}{|k|} - \dfrac{k}{\sqrt{h^2 + k^2}}} = \md{\dfrac{k}{|k|} - \dfrac{k}{\sqrt{2k^2}}} = \left(1 - \dfrac{1}{\sqrt{2}}\right)
 		\end{equation*}
-		and the limit of \emph{that} does not exist as $k \to 0.$
+		and the limit of \emph{that} is not $0$ as $k \to 0.$
 
-		Thus, we see that the original limit (which was supposed to be $0$) also does not exist. Thus, $f$ is not differentiable at $(0, 0).$
+		Thus, we see that the original limit (which was supposed to be $0$) also does not equal $0.$ Thus, $f$ is not differentiable at $(0, 0).$
 	\end{soln}
+	Note that we haven't actually shown that the limit equals $1 - \frac{1}{\sqrt{2}}.$ (In fact, it doesn't exist.) All we have shown is that the limit is not $0.$
 \end{itemize}
 \end{document}
