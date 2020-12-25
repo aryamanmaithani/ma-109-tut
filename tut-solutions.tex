@@ -1091,7 +1091,7 @@
 		\begin{thm}[Sequential criterion]
 			Let $h:\mathbb{R}^2 \to \mathbb{R}$ be a function. Let $(x_0, y_0) \in \mathbb{R}^2.$ Then, $h$ is continuous at $(x_0, y_0)$ if and only if for every sequence $\left((x_n, y_n)\right)$ converging to $(x_0, y_0),$ we have that
 			\begin{equation*} 
-				\lim_{n\to \infty}f(x_n, y_n) = f(x_0, y_0).
+				\lim_{n\to \infty}{\color{myupdatecolor}h}(x_n, y_n) = {\color{myupdatecolor}h}(x_0, y_0).
 			\end{equation*}
 		\end{thm}
 
@@ -1104,7 +1104,7 @@
 		\end{equation*} 
 		Using the usual algebra of limits, we get that
 		\begin{align*} 
-			\lim_{n\to \infty}[f(x_n) \pm g(y_n)] &= \lim_{n\to \infty}f(x_n) \pm \lim_{n\to \infty}g(y_n) = f(x_0) +	g(y_0),\\
+			\lim_{n\to \infty}[f(x_n) \pm g(y_n)] &= \lim_{n\to \infty}f(x_n) \pm \lim_{n\to \infty}g(y_n) = f(x_0) \pm g(y_0),\\
 			\lim_{n\to \infty}[f(x_n) g(y_n)] &= \lim_{n\to \infty}f(x_n)\lim_{n\to \infty}g(y_n) = f(x_0)g(y_0).
 		\end{align*}
 		Since the sequence was arbitrary, we have shown continuity at$(x_0, y_0).$ Since $(x_0, y_0)$ was arbitrary, we have shown that the desired functions are continuous on $\mathbb{R}^2.$
@@ -1163,7 +1163,7 @@
 
 		The above can be written as
 		\begin{equation*} 
-			|f(x, y) - f(0, 0)| \le \|(x, y) - (0, 0)\|.
+			|f(x, y) - f(0, 0)| \le {\color{myupdatecolor}\sqrt{2}}\|(x, y) - (0, 0)\|.
 		\end{equation*}
 		Thus, given any $\epsilon > 0,$ $\delta = \epsilon/\sqrt{2}$ works in the definition of continuity.
 
