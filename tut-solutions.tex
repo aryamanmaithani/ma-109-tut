@@ -87,13 +87,13 @@
 \fancyhead[R]{\sffamily{\thepage}}
 \definecolor{myupdatecolor}{RGB}{0, 0, 255}
 
-% \usepackage{xcolor}
-% \definecolor{mybgcolor}{RGB}{50, 50, 50} %46, 51, 63
-% \usepackage{pagecolor}
-% \pagecolor{mybgcolor}
-% \color{white}
-% \mdfsetup{backgroundcolor=mybgcolor, fontcolor=white}
-% \definecolor{myupdatecolor}{RGB}{0, 255, 0}
+\usepackage{xcolor}
+\definecolor{mybgcolor}{RGB}{50, 50, 50} %46, 51, 63
+\usepackage{pagecolor}
+\pagecolor{mybgcolor}
+\color{white}
+\mdfsetup{backgroundcolor=mybgcolor, fontcolor=white}
+\definecolor{myupdatecolor}{RGB}{0, 255, 0}
 
 \renewcommand{\familydefault}{\sfdefault}
 
@@ -1131,7 +1131,7 @@
 
 		For $h \neq 0,$ we note that
 		\begin{align*} 
-			\dfrac{f(0 + h, 0) - f(0, 0)}{\|(h, 0)\|} &= \dfrac{\frac{\sin^2(h)}{h} - 0}{\left|h\right|}\\
+			\dfrac{f(0 + h, 0) - f(0, 0)}{h} &= \dfrac{\frac{\sin^2(h)}{{\color{myupdatecolor}\md{h}}} - 0}{{\color{myupdatecolor}h}}\\
 			&= \dfrac{\sin^2 h}{h\left|h\right|}
 		\end{align*}
 		It is easy to see that 
