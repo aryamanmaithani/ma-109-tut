@@ -29,6 +29,7 @@
 }
 \mdtheorem[style=theoremstyle]{defn}[thm]{Definition}
 \mdtheorem[style=theoremstyle]{thm}{Theorem}
+\mdtheorem[style=theoremstyle]{cor}[thm]{Corollary}
 
 \newcommand*{\doublerule}{\hrule width \hsize height 1pt \kern 0.5mm \hrule width \hsize height 2pt}
 \newcommand{\doublerulefill}{\leavevmode\leaders\vbox{\hrule width .1pt\kern1pt\hrule}\hfill\kern0pt}
@@ -384,6 +385,208 @@ Do there exist functions with the following properties? Justify.
 	%
 	%
 	\item This was fine for most of you. Do justify why $f$ has the properties using $f'$ and $f''$ (if you pick a twice differentiable function, like I did). Don't draw graphs.
-
 \end{enumerate}
+%
+%
+%
+\newpage
+\section{Assignment 3}
+Q1. Do there exist differentiable functions with the following properties?
+\begin{enumerate}
+	\item $f:[0, 1] \to \mathbb{R},$ $f(0) = -2,$ $f(1) = 3,$ $f'(x) \ge 10$ for all $x \in (0, 1).$
+	\item $f:[0, 1] \to \mathbb{R},$ $\md{f(x)} \le 1$ for all $x \in (0, 1),$ and $\exists x \in (0, 1) : f'(x) \ge 2.$
+	\item $f:[0, 1] \to \mathbb{R},$ $f(0) = f(1),$ and $f(x) \neq f\left(x + \frac{1}{3}\right)$ for all $x \in \left(0, \frac{2}{3}\right).$
+	\item $f:[0, 1] \to \mathbb{R},$ $f(0) = f(1),$ and $f(x) \neq f\left(x + \frac{3}{4}\right)$ for all $x \in \left(0, \frac{1}{4}\right).$
+\end{enumerate}
+\begin{soln}
+	The convention that I will adopt is that the function is differentiable on $(0, 1)$ and continuous on $[0, 1].$ We shall freely use the fact that differentiable functions are continuous.
+	\begin{enumerate}
+		\item {\color{red}No}. 
+
+		Suppose not. Let $f$ be a function with those properties.
+
+		By the above written convention, we may apply MVT and deduce the existence of some $c \in (0, 1)$ such that
+		\begin{equation*} 
+			f'(c) = \dfrac{f(1) - f(0)}{1 - 0} = 5 \not\ge 10.
+		\end{equation*}
+		A contradiction.
+		%
+		\item {\color{blue}Yes}.
+
+		Consider $f:[0, 1] \to \mathbb{R}$ defined as
+		\begin{equation*} 
+			f(x) \vcentcolon= 2x - 1.
+		\end{equation*}
+		The above function is differentiable, being a polynomial.
+
+		Note that
+		\begin{equation*} 
+			x \in [0, 1] \implies 2x \in [0, 2] \implies 2x - 1 \in [-1, 1] \implies \md{f(x)} \le 1.
+		\end{equation*}
+		On the other hand, $f'\left(\frac{1}{2}\right) = 2 \ge 2.$
+
+		Thus, $f$ satisfies all the properties.
+		%
+		\item {\color{red}No}. 
+
+		Suppose not. Let $f$ be a function with those properties.
+
+		Consider $g:\left[0, \frac{2}{3}\right] \to \mathbb{R}$ defined by
+		\begin{equation*} 
+			g(x) \vcentcolon= f(x) - f\left(x + \frac{1}{3}\right).
+		\end{equation*}
+		It suffices to show that $g$ has a root in the open interval $\left(0, \frac{2}{3}\right).$
+
+		Using the fact that $f(0) = f(1),$ we see that
+		\begin{equation*} 
+			g(0) + g\left(\frac{1}{3}\right) + g\left(\frac{2}{3}\right) = 0.
+		\end{equation*}
+		If $g\left(\frac{1}{3}\right) = 0,$ then we are done. If that is not the case, then one of $g(0)$ or $g\left(\frac{2}{3}\right)$ must have sign opposite to that of $g\left(\frac{1}{3}\right).$ By IVT, $g$ is zero at some point strictly between the two. ($g$ is continuous since $f$ is.) Thus, we are done.
+		%
+		\item {\color{blue}Yes}.
+
+		Consider $f:[0, 1] \to \mathbb{R}$ defined as $f(x) \vcentcolon= \sin(2\pi x).$
+
+		Clearly, $f$ is differentiable and $f(0) = 0 = f(1).$ Moreover, $f$ is strictly positive on $\left(0, \frac{1}{2}\right)$ and strictly negative on $\left(\frac{1}{2}, 1\right).$
+
+		Thus, if $x \in \left(0, \frac{1}{4}\right) \subset \left(0, \frac{1}{2}\right),$ then $f(x) > 0.$ \\
+		On the other hand, $x + \frac{3}{4} \in \left(\frac{3}{4}, 1\right) \subset \left(\frac{1}{2}, 1\right)$ and hence
+		\begin{equation*} 
+			f\left(x + \frac{3}{4}\right) < 0 < f(x).
+		\end{equation*}
+		Thus, we are done. \qedhere
+	\end{enumerate}
+\end{soln}
+
+\newpage
+
+Q2. Let $f:[0, 1) \to \mathbb{R}$ be defined as $f(x) = \log(1 + x).$ Let $P_n$ denote the order $n$ Taylor polynomial at the point $x_0 = 0.$ Use Taylor's Theorem to find the smallest $n$ so that the remainder term $R_n(x) = f(x) - P_n(x)$ satisfies 
+\begin{equation*} 
+	\md{R_n(x)} < 0.01
+\end{equation*}
+for all $x \in [0, 1).$
+
+\begin{soln}
+	For the moment, we consider our domain to be $[0, 1].$ (If you're not comfortable with derivatives at end points, consider the domain to be $(-1/2, 3/2)$ with $f(x) \vcentcolon= \log(1 + x)$.)
+
+	First, note that
+	\begin{equation*} 
+		f^{(n + 1)}(x) = \dfrac{(-1)^nn!}{(1 + x)^{n+1}}
+	\end{equation*}
+	for all $x \in [0, 1]$ and $n \ge 0.$ Thus, we get the Taylor polynomials as
+	\begin{equation*} 
+		P_n(x) = -\sum_{k = 1}^{n}\dfrac{(-1)^kx^k}{k}.
+	\end{equation*}
+	Moreover, by Taylor's Theorem, we see that
+	\begin{equation*} 
+		\md{R_n(x)} = \md{f^{(n+1)}(c_x)\dfrac{x^{n+1}}{(n + 1)!}} = \dfrac{x^{n+1}}{(1 + c_x)^{n+1}}\dfrac{1}{n + 1} \le \dfrac{1}{n + 1}.
+	\end{equation*}
+	The last inequality follows since $0 \le c_x < x \le 1.$
+
+	Thus, for all $x \in [0, 1],$ we see that $P_n(x) \to f(x).$ In particular, we get the following.
+
+	\begin{thm}
+		\begin{equation*} 
+			\log 2 = 1 - \dfrac{1}{2} + \dfrac{1}{3} - \dfrac{1}{4} + \cdots
+		\end{equation*}
+	\end{thm}
+
+	We note the following consequences.
+
+	\begin{cor}
+		If $n \ge 1,$ the following series converges:
+		\begin{equation*} 
+			\dfrac{1}{n} - \dfrac{1}{n+1} + \dfrac{1}{n+2} - \cdots.
+		\end{equation*}
+		Moreover, the above series has a strictly positive sum.
+	\end{cor}
+	The convergence is clear since removing the finitely many terms from the beginning does not affect convergence. To see the positive sum, note that the subsequence of even partial sums is strictly increasing and strictly positive.
+
+	Now, note that using our formula for $P_n,$ we get
+	\begin{equation*} 
+		R_n(x) = \log(1 + x) + \sum_{k = 1}^{n}\dfrac{(-1)^kx^k}{k}
+	\end{equation*}
+	for all $x \in [0, 1].$ (Note that since we're taking only finite sum on the right, the above is true even if you extended the domain to the open interval.) 
+
+	Differentiating gives
+	\begin{align*} 
+		R_n'(x) &= \dfrac{1}{1 + x} + \sum_{k = 1}^{n}(-1)^kx^{k-1}\\
+		&= \dfrac{1}{1 + x} + \dfrac{(-1)(1 - (-x)^n)}{1 + x}\\
+		&= (-1)^n\dfrac{x^n}{1 + x}.
+	\end{align*}
+	Thus, for all $x \in [0, 1]:$ $R_n'(x) \le 0$ if $n$ is odd and $R_n'(x) \ge 0$ if $n$ is even. Furthermore, the inequalities are strict if $x \neq 0.$
+
+	Note that in either case, $R_n(0) = 0.$ Thus, we see that $\md{R_n}$ is an increasing function on $[0, 1]$ and achieves its maximum at $1.$ In other words,
+	\begin{equation*} 
+		\md{R_n(x)} < \md{R_n(1)}
+	\end{equation*}
+	for all $x \in [0, 1).$
+
+	Our aim now is to bound $\md{R_n(1)}.$ For easier notation, let $e_n \vcentcolon= \md{R_n(1)}.$
+
+	Using the corollary about the sign of the partial sums, we see that
+	\begin{align*} 
+		e_n &= \dfrac{1}{n + 1} - \dfrac{1}{n + 2} + \dfrac{1}{n + 3} - \dfrac{1}{n + 4} + \cdots,\\
+		e_{n+1} &= \dfrac{1}{n + 2} - \dfrac{1}{n + 3} + \dfrac{1}{n + 4} - \dfrac{1}{n + 5} + \cdots.
+	\end{align*}
+	Again, by comparing the even subsequences of partial sums, we see that
+	\begin{equation*} 
+		e_{n} > e_{n + 1}
+	\end{equation*}
+	or
+	\begin{equation} \tag{$*$} \label{eq:2en}
+		2e_{n} > e_n + e_{n + 1}.
+	\end{equation}
+	Looking at the explicit series for the quantities for the right, we see that $e_n + e_{n + 1} = \frac{1}{n + 1}.$ Thus,
+	\begin{equation*} 
+		e_n > \dfrac{1}{2(n + 1)}.
+	\end{equation*}
+
+	Similar to \cref{eq:2en}, we get the other inequality
+	\begin{equation*} 
+		2e_{n} < e_n + e_{n-1} = \dfrac{1}{n}.
+	\end{equation*}
+	Thus, we have the bound
+	\begin{equation*} 
+		\dfrac{1}{2(n + 1)} < \md{R_n(1)} < \dfrac{1}{2n}.
+	\end{equation*}
+
+	Note that $1/0.01 = 100$ and thus, we see that if $n \le 49,$ then 
+	\begin{equation*} 
+		R_{n}(1) > \dfrac{1}{2(n + 1)} \ge \dfrac{1}{2\cdot50} = 0.01
+	\end{equation*} and hence, $n \ge 50.$ (Note that if $R_n(1) > 0.01,$ then continuity of $R_n$ implies that $R_n(x) > 0.01$ for some $x \in [0, 1)$.)
+
+	On the other hand, note that if $n = 50,$ then
+	\begin{equation*} 
+		\md{R_{n}(1)} < \dfrac{1}{102} < \dfrac{1}{100} = 0.01.
+	\end{equation*}
+	Thus, $n = 50.$
+\end{soln}
+
+Using the above method, we get the following answers.
+\begin{equation*} 
+	\begin{array}{|c|c|}
+		\hline
+		\text{Error} & n\\
+		\hline
+		0.01 & 50\\
+		0.02 & 25\\
+		0.03 & 16 \text{ or }17\\
+		0.04 & 12 \text{ or }13\\
+		0.05 & 10\\
+		\hline
+	\end{array}
+\end{equation*}
+
+By the ``or,'' I mean that my method above does not give a conclusive answer. At this point, one may use a calculator and see that $17$ works for $0.03$ and $12$ for $0.04.$
+
+\newpage
+\subsection{Common mistakes}
+\begin{itemize}
+	\item[Q1. 3.] A lot of you have tried to use some ``reverse'' Rolle's theorem. Note that if $f'(c) = 0$ for some $c,$ that does not mean that you can find $a < c < b$ such that $f(a) = f(b).$
+
+	Of course, any argument which can also work for the next part is clearly wrong.
+
+	Arguments using graphs are not correct.
+\end{itemize}
 \end{document}
