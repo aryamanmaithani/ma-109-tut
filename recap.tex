@@ -23,11 +23,12 @@
 % \renewcommand{\exp}{\operatorname{exp}}
 
 \theoremstyle{definition}
-\newtheorem{defn}{Definition}
-\newtheorem{prop}{Proposition}
-\newtheorem{cor}{Corollary}
 \newtheorem{thm}{Theorem}
-\newtheorem{rem}{Remark}
+\newtheorem{defn}[thm]{Definition}
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem{ex}[thm]{Example}
+\newtheorem{cor}[thm]{Corollary}
+\newtheorem{rem}[thm]{Remark}
 
 \begin{document}
 \tikzset{lab dis/.store in=\LabDis,
@@ -812,6 +813,148 @@
     \uncover<8->{The above matrix is also called the \emph{gradient} and denoted by $\nabla f(x_0, y_0).$ }
 \end{frame}
 \begin{frame}{Week 5}
+    \begin{tcolorbox}
+        Stop recording. Start a new one.
+
+        Take doubts.
+    \end{tcolorbox}
+\end{frame}
+
+\begin{frame}{Week 6}
+    \begin{tcolorbox}
+        Start recording!
+    \end{tcolorbox}
+\end{frame}
+\begin{frame}{Week 6}
+    Note that in my slides, I had actually defined the limit and continuity of {\color{blue}vector valued} functions of the form $f:\mathbb{R}^m \to \mathbb{R}^n$ last week itself. \uncover<2->{(In fact, the domain only need be a subset $U \subset \mathbb{R}^m$ and not the whole space itself.) }
+
+    \uncover<3->{Observe that given a function $f:U \to \mathbb{R}^n,$ }\uncover<4->{we actually get $n$ different functions $f_i:U \to \mathbb{R}$ for $i = 1, \ldots, n,$ }\uncover<5->{obtained by looking at each coordinate. }
+
+    \uncover<6->{One can show that a function of the form $f: U \to \mathbb{R}^n$ is continuous if and only if }\uncover<7->{each $f_i : U \to \mathbb{R}$ is continuous. }
+
+    \uncover<8->{If $n = m,$ these vector valued functions are called {\color{blue}vector fields}. }
+\end{frame}
+\begin{frame}{Week 6}
+    We now look at the derivative of a vector valued function. As earlier, ${\color{red}U} \subset \mathbb{R}^{\color{red}m}.$
+    \begin{defn}[Differentiability]
+        \uncover<2->{Let $f : {\color{red}U} \to \mathbb{R}^{{\color{blue}n}}$ be a function and $x$ be an interior point of $U.$ }\uncover<3->{$f$ is said to be \emph{differentiable at $x$} }\uncover<4->{if there exists an ${\color{blue}n} \times {\color{red}m}$ matrix $A$ }\uncover<5->{such that
+        \begin{equation*} 
+            \lim_{{\color{red}h}\to 0}\dfrac{\left\|f(x + h) - f(x) - Ah\right\|}{\|h\|} = 0.
+        \end{equation*} }\uncover<6->{In this case, we write $Df(x) = A$ }\uncover<7->{and call $A$ the \emph{total derivative} of $f$ at $x.$ }
+    \end{defn}
+    \uncover<8->{Note in the above that $h$ is a column matrix in the red space - $\mathbb{R}^{{\color{red}m}},$ that is, the domain space. }\uncover<9->{In the limit, note that the value in the numerator (inside the mod) is in $\mathbb{R}^{{\color{blue}n}}$ and denominator in $\mathbb{R}^{{\color{red}m}}.$ }
+\end{frame}
+\begin{frame}{Week 6}
+    Just like in the case of $\mathbb{R}^2 \to \mathbb{R},$ the general appearance of the derivative, if it exists, is quite simple:
+
+    \uncover<2->{Recall that given a map $f : U \to \mathbb{R}^n,$ we get $n$ functions $f_1, \ldots, f_n : U \to \mathbb{R}.$ }\uncover<3->{All of these are \underline{real valued} functions of $m$ variables. }\uncover<4->{Thus, it makes sense to talk about the $m$ partial derivatives. }\uncover<5->{In terms of this we get that
+    \begin{equation*} 
+        Df(x) = \begin{bmatrix}
+            \frac{\partial f_1}{\partial x_1}(x) & {\color{red}\cdots} & \frac{\partial f_1}{\partial x_{\color{red}m}}(x)\\
+            {\color{blue}\vdots} & {\color{purple}\ddots} & {\color{blue}\vdots} \\
+            \frac{\partial f_{{\color{blue}n}}}{\partial x_1}(x) & {\color{red}\cdots} & \frac{\partial f_{{\color{blue}n}}}{\partial x_{\color{red}m}}(x)\\
+        \end{bmatrix}
+    \end{equation*} }
+    \uncover<6->{\begin{tcolorbox}[colback = red!30]\bfseries
+    Note that partial derivatives (as seen so far) only make sense for \underline{real valued} functions.
+    \end{tcolorbox} }
+\end{frame}
+\begin{frame}{Week 6}
+    \begin{thm}[Chain rule]
+        \uncover<2->{Suppose we have functions as following: }\uncover<3->{
+        \begin{equation*} 
+            \mathbb{R}^m \overset{f}{\longrightarrow} \mathbb{R}^n \overset{g}{\longrightarrow} \mathbb{R}^p.
+        \end{equation*} }\uncover<4->{Assume that $f$ is differentiable at $x \in \mathbb{R}^m$ }\uncover<5->{and $g$ at $f(x).$ }\uncover<6->{Then $g \circ f:\mathbb{R}^m \to \mathbb{R}^p$ is differentiable at $x$ }\uncover<7->{and the $p \times m$ derivative matrix $D(g \circ f)(x)$ is given by }\uncover<8->{
+        \begin{equation*} 
+            D(g \circ f)(x) = \left[Dg(f(x))\right]\circ Df(x),
+        \end{equation*} }\uncover<9->{where $\circ$ on the right is matrix multiplication. }
+    \end{thm}
+    \uncover<10->{Note that the matrix multiplication makes sense because $Dg(f(x))$ is a $p \times n$ matrix and $Df(x)$ an $n \times m$ matrix. }\uncover<11->{Moreover, the product is a $p \times m$ matrix, as expected. }
+\end{frame} 
+\begin{frame}{Week 6}
+    \begin{thm}[Mixed partials theorem]
+        \uncover<2->{Let $f : U \to \mathbb{R}$ be a \underline{real valued} function }\uncover<3->{such that the partial derivatives $\frac{\partial }{\partial x_i}\left(\frac{\partial}{\partial x_j}f\right)$ exist and are continuous }\uncover<4->{for all $1 \le i, j \le m.$ }\uncover<5->{Then
+        \begin{equation*} 
+            \frac{\partial }{\partial x_i}\left(\frac{\partial}{\partial x_j}f\right) = \frac{\partial }{\partial x_j}\left(\frac{\partial}{\partial x_i}f\right)
+        \end{equation*} }\uncover<6->{for all $1 \le i, j \le m.$ }
+
+        \uncover<7->{In other words, the order of the \emph{mixed partial} is irrelevant. }
+    \end{thm}
+    \uncover<8->{A function satisfying the hypothesis of the above theorem is said to be a $\mathcal{C}^2$ function. }
+
+    \uncover<9->{A counterexample for the partials not being equal is given on the next slide. }\uncover<10->{Of course, the function is not $\mathcal{C}^2$ in that case. }
+\end{frame}
+\begin{frame}{Week 6}
+    The promised counterexample:
+
+    \begin{ex}[Inequality of mixed partials]
+        Let $f:\mathbb{R}^2 \to \mathbb{R}$ be defined by
+        \begin{equation*} 
+            f(x, y) \vcentcolon= \begin{cases}
+                \dfrac{xy(x^2 - y^2)}{x^2 + y^2} & (x, y) \neq (0, 0),\\
+                0 & (x, y) = (0, 0).
+            \end{cases}
+        \end{equation*}
+        Then,
+        \begin{equation*} 
+            \frac{\partial }{\partial x_2}\left(\frac{\partial}{\partial x_1}f\right)(0, 0) = -1 \neq 1 = \frac{\partial }{\partial x_1}\left(\frac{\partial}{\partial x_2}f\right)(0, 0).
+        \end{equation*}
+    \end{ex}
+\end{frame}
+\begin{frame}{Week 6}
+    \begin{defn}[Critical point]
+        \uncover<2->{Let $U \subset \mathbb{R}^2$ }\uncover<3->{and $(x_0, y_0) \in U$ be an interior point. }\uncover<4->{$(x_0, y_0)$ is called a \emph{critical point} of $f$ }\uncover<5->{if $\nabla f(x_0, y_0) = [0 \; 0].$ }
+    \end{defn}
+    \begin{defn}[Local minimum]
+        \uncover<6->{Let $U \subset \mathbb{R}^2$ }\uncover<7->{and $(x_0, y_0) \in U$ be an interior point. }\uncover<8->{Then, we say that $f$ attains a \emph{local minimum} at $(x_0, y_0)$ }\uncover<9->{if there exists $r > 0$ such that the disc }\uncover<10->{
+        \begin{equation*} 
+            D_r(x_0, y_0) = \{(x, y) \mid \|(x, y) - (x_0, y_0)\| < r\}
+        \end{equation*} }\uncover<11->{is contained in $U$ }\uncover<12->{and $f(x_0, y_0) \le f(x, y)$ for all $(x, y) \in D_r(x_0, y_0).$ }
+    \end{defn}
+\end{frame}
+\begin{frame}{Week 6}
+    \begin{defn}[Fermat's Theorem]
+        \uncover<2->{If a function has a local minimum at a point, }\uncover<3->{then that point is a critical point. }
+    \end{defn}
+    \uncover<4->{There's a similar definition for ``local maximum'' and a similar theorem. }
+
+    \uncover<5->{Of course, the converse is not true. }\uncover<6->{This wasn't true even in the case of one variable. }
+
+    \uncover<7->{In fact, a critical point which is not a point of local extremum is called a {\color{blue}saddle point}. }
+
+    \uncover<8->{In the one-variable case, we did have a second derivative test which let us conclude more information. }\uncover<9->{We have a similar thing here. }
+\end{frame}
+\begin{frame}{Week 6}
+    \begin{defn}[Double derivative test]
+        \uncover<2->{Let $f : U (\subset \mathbb{R}^2) \to \mathbb{R}$ be a $\mathcal{C}^2$ function. }\uncover<3->{Let $(x_0, y_0)$ be a critical point of $f.$ }\uncover<4->{Define
+        \begin{equation*} 
+            D \vcentcolon= f_{xx}(x_0, y_0)f_{yy}(x_0, y_0) - [f_{xy}(x_0, y_0)]^2.
+        \end{equation*} 
+        {\color{gray}The above can be seen as a certain determinant.}}
+        \uncover<5->{\begin{enumerate}
+            \item If $D > 0$ and $f_x(x_0, y_0) > 0,$ then $(x_0, y_0)$ is a local minimum for $f.$
+            \uncover<6->{\item If $D > 0$ and $f_x(x_0, y_0) < 0,$ then $(x_0, y_0)$ is a local maximum for $f.$ }
+            \uncover<7->{\item If $D < 0,$ then $(x_0, y_0)$ is a saddle point for $f.$ }
+            \uncover<8->{\item If $D = 0,$ the test says nothing. }
+        \end{enumerate} }
+    \end{defn}
+    \uncover<9->{Note that the above only gives information on the \emph{interior} of $U.$ }\uncover<10->{To get a global minimum on a (bounded) \emph{closed} rectangle, }\uncover<11->{we would also have to look at the \emph{boundary}. }
+\end{frame}
+\begin{frame}{Week 6}
+    Some concluding facts about multi-variable functions. \uncover<2->{For simplicity, we assume that the function is of the form $f:\mathbb{R}^2 \to \mathbb{R}.$ }
+    \uncover<3->{\begin{enumerate}
+        \uncover<3->{\item If $f$ is differentiable at a point, then $f$ is continuous at that point and all directional derivatives at that point exist. Moreover,
+        \begin{equation*} 
+            D_uf(x_0, y_0) = (\nabla f(x_0, y_0))\cdot u
+        \end{equation*}
+        for every unit vector $u.$ }
+        \uncover<4->{\item If $f_x$ and $f_y$ exist at a point, it does not imply that the other directional derivatives do too. }
+        \uncover<5->{\item If all directional derivatives exist at a point, it does not imply that $f$ is continuous at that point. In particular, $f$ need not be differentiable at that point. }
+        \uncover<6->{\item If you get $D = 0$ in the last test, you would have to analyse the function on your own and try to find out the behaviour. }
+    \end{enumerate} }
+\end{frame} 
+\begin{frame}{Week 6}
+    And for the last time.
     \begin{tcolorbox}
         Stop recording. Start a new one.
 

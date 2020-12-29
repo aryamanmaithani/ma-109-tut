@@ -1258,4 +1258,244 @@
 	\end{soln}
 	Note that we haven't actually shown that the limit equals $1 - \frac{1}{\sqrt{2}}.$ (In fact, it doesn't exist.) All we have shown is that the limit is not $0.$
 \end{itemize}
+%
+%
+%
+
+\newpage\section{Tutorial 6}
+\begin{center}
+	30th December, 2020
+\end{center}
+\textbf{Sheet 6}
+\begin{itemize}
+	\item[2.] Find the directions in which the directional derivative of $f(x, y) \vcentcolon= x^2 + \sin xy$ at the point $(1, 0)$ has the value $1.$
+	\begin{soln}
+		Note that $f$ is differentiable and thus, given a \emph{unit} vector $u,$ one has
+		\begin{equation*} 
+			D_uf(1, 0) = (\nabla f(1, 0))\cdot u.
+		\end{equation*}
+		The gradient is easy to compute. Indeed, one notes that
+		\begin{equation*} 
+			f_x(x_0, y_0) = 2x_0 + y_0\cos(x_0y_0) \quad\text{and}\quad f_y(x_0, y_0) = x_0\cos(x_0y_0).
+		\end{equation*}
+		Thus, we get
+		\begin{equation*} 
+			\nabla f(1, 0) = \begin{bmatrix}
+				f_x(1, 0) & f_y(1, 0)
+			\end{bmatrix} = \begin{bmatrix}
+				2 & 1
+			\end{bmatrix}.
+		\end{equation*}
+		Now, we assume an arbitrary unit vector as $u = \begin{bmatrix}
+			\cos \theta & \sin \theta
+		\end{bmatrix}$ for some $\theta \in [0, 2\pi).$
+
+		Taking the dot product and equating to it to $1$ gives us
+		\begin{equation*} 
+			2\cos\theta + \sin\theta = 1.
+		\end{equation*}
+		Letting $\alpha = \cos^{-1}\left(\frac{1}{\sqrt{5}}\right) \in \left(\frac{\pi}{4}, \frac{\pi}{2}\right).$
+		\begin{align*} 
+			2\cos\theta + \sin\theta &= 1\\
+			\iff \dfrac{2}{\sqrt{5}}\cos\theta + \dfrac{1}{\sqrt{5}}\sin\theta &= \dfrac{1}{\sqrt{5}}\\
+			\iff \sin(\theta + \alpha) &= \cos \alpha\\
+			\iff \sin(\theta + \alpha) &= \sin \left(\frac{\pi}{2} - \alpha\right)
+		\end{align*}
+		The above can be solved to give exactly two solutions in $[0, 2\pi)$ as:
+		\begin{equation*} 
+			\theta = \frac{\pi}{2} \text{ or } \frac{5\pi}{2} - 2\alpha.
+		\end{equation*}
+		Note that
+		\begin{align*} 
+			\sin\left(\frac{5\pi}{2} - 2\alpha\right) &= \sin\left(\frac{\pi}{2} - 2\alpha\right)\\
+			&= \cos\left(2\alpha\right)\\
+			&= 2\cos^2\alpha - 1\\
+			&= -\frac{3}{5}
+		\end{align*}
+		and similarly, its $\cos$ turns out to be $\frac{4}{5}.$
+
+		Thus, the two directions are
+		\begin{equation*} 
+			\begin{bmatrix}
+				0 & 1
+			\end{bmatrix} \quad\text{and}\quad \begin{bmatrix}
+				\frac{4}{5} & -\frac{3}{5}
+			\end{bmatrix}. \qedhere
+		\end{equation*}
+	\end{soln}
+	%
+	%
+	\newpage
+	\item[4.] Find $D_{\underline{u}}F(2, 2, 1),$ where $F(x, y, z) = 3x - 5y + 2z,$ and $\underline{u}$ is the unit vector in the direction of the outward normal to the sphere $x^2 + y^2 + z^2 = 9$ at $(2, 2, 1).$
+	\begin{soln}
+		The direction of the (outward) normal of the sphere is simply the same as that of the position vector. Thus, we have
+		\begin{equation*} 
+			\underline{u} = \left(\dfrac{2}{3}, \dfrac{2}{3}, \dfrac{1}{3}\right).
+		\end{equation*}
+		Note that
+		\begin{equation*} 
+			\nabla f(2, 2, 1) = \begin{bmatrix}
+				3 & -5 & 2
+			\end{bmatrix}.
+		\end{equation*}
+		Since $f$ is differentiable, we note that
+		\begin{equation*} 
+			D_{\underline{u}}f(2, 2, 1) = (\nabla f((2, 2, 1)))\cdot u.
+		\end{equation*}
+		Thus, we get
+		\begin{equation*} 
+			D_{\underline{u}}f(2, 2, 1) = -\dfrac{2}{3}. \qedhere
+		\end{equation*}
+	\end{soln}
+	%
+	%
+	\newpage
+	\item[5.] Given 
+	\begin{equation} \tag{$*$} \label{eq:random2}
+		\sin(x + y) + \sin(y + z) = 1,
+	\end{equation} find $\dfrac{\partial^2z}{\partial x\partial y},$ provided $\cos(y + z) \neq 0.$
+	\begin{soln}
+		Differentiating \cref{eq:random2} with respect to $x$ and keeping $y$ constant, we get
+		\begin{equation*} 
+			\cos(x + y) + \cos(y + z)\frac{\partial z}{\partial x} = 0
+		\end{equation*}
+		or (since $\cos(y + z) \neq 0$),
+		\begin{equation} \tag{$\star$} \label{eq:random3}
+			\frac{\partial z}{\partial x} = -\dfrac{\cos(x + y)}{\cos(y + z)}.	
+		\end{equation}
+		Differentiating \cref{eq:random2} with respect to $y$ and keeping $x$ constant, we get
+		\begin{equation} \tag{$\star\star$} \label{eq:random4}
+			\cos(x + y) + \cos(y + z)\left(1 + \frac{\partial z}{\partial y}\right) = 0.
+		\end{equation}
+		Partially differentiating the above with respect to $x$ gives
+		\begin{equation*} 
+			-\sin(x + y) - \sin(y + z){\color{red}\left(\dfrac{\partial z}{\partial x}\right)\left(1 + \frac{\partial z}{\partial y}\right)} + \cos(y + z)\left(\dfrac{\partial^2z}{\partial x\partial y}\right) = 0.
+		\end{equation*}
+		Using \cref{eq:random3} and (a rearrangement of) \cref{eq:random4}, the red term can be replaced to get
+		\begin{equation*} 
+			-\sin(x + y) - \sin(y + z)\left(-\dfrac{\cos(x + y)}{\cos(y + z)}\right)^2 + \cos(y + z)\left(\dfrac{\partial^2z}{\partial x\partial y}\right) = 0.
+		\end{equation*}
+		Rearranging the above gives the answer as
+		\begin{equation*} 
+			\dfrac{\partial^2z}{\partial x\partial y} = \dfrac{\sin(x + y)}{\cos(y + z)} + \tan(y + z)\dfrac{\cos^2(x + y)}{\cos^2(y + z)}.
+		\end{equation*}
+	\end{soln}
+	%
+	%
+	\newpage
+	\item[8.] Analyse the following functions for local minima, local maxima and saddle points:
+	\begin{enumerate}
+		\item $f(x, y) = (x^2 - y^2)e^{-(x^2 + y^2)/2}.$
+		\item $f(x, y) = x^3 - 3xy^2.$
+	\end{enumerate}
+	\begin{soln}
+		The idea in both is to use the second derivative test. Note that both the functions are defined on all of $\mathbb{R}^2$ and all partials of order $2$ exist and are continuous. Thus, the second derivative test is applicable.
+		\begin{enumerate}
+			\item For $(x_0, y_0)$ to be a point of extrema or a saddle point, it must be the case that $(\nabla f)(x_0, y_0) = (0, 0).$
+
+			Note that $f_x(x, y) =x e^{1 / 2\left(-x^{2}-y^{2}\right)}\left(-x^{2}+y^{2}+2\right).$
+
+			Also, $f_y(x, y) =y e^{1 / 2\left(-x^{2}-y^{2}\right)}\left(-x^{2}+y^{2}-2\right).$
+
+			Thus, solving $(\nabla f)(x_0, y_0) = (0, 0)$ gives us precisely that
+			\begin{equation*} 
+				(x_0, y_0) \in \{(0, 0),\;(0, \sqrt{2}),\;(0, -\sqrt{2}),\;(-\sqrt{2},0),\;(\sqrt{2}, 0)\}.
+			\end{equation*}
+
+			Recall the discriminant defined as
+			\begin{equation*} 
+				D \vcentcolon= f_{x x}\left(x_{0}, y_{0}\right) f_{y y}\left(x_{0}, y_{0}\right)-f_{x y}\left(x_{0}, y_{0}\right)^{2}.
+			\end{equation*}
+			In our case, the right hand side becomes
+			\[-e^{-x^{2}-y^{2}}\left(x^{6}-x^{4} y^{2}-3 x^{4}-x^{2} y^{4}+22 x^{2} y^{2}-8 x^{2}+y^{6}-3 y^{4}-8 y^{2}+4\right).\]
+			Moreover, $f_{xx}(x, y) = e^{-\left(x^{2}+y^{2}\right) / 2}(x^4 - x^2y^2 - 5x^2 + y^2 + 2)$ 
+
+			For $(x_0, y_0) = (0, 0),$ it is clear that it is a saddle point for $f$ as discriminant is $-4 < 0.$
+
+			Note that if $x = 0,$ the discriminant reduces to $-e^{-y^2}(y^6 - 3y^4 -8y^2 + 4).$ \\
+			Substituting $y = \pm\sqrt{2}$ gives us that the discriminant is positive with $f_{xx}$ positive and hence, the points are points of local minima. 
+
+			Similarly, we get that the points $(\pm\sqrt{2}, 0)$ are points of local maxima as they have discriminant positive and $f_{xx}$ negative. 
+
+			Thus, we get
+			\begin{center}
+				
+			\begin{tabular}{c|c}
+				Point & Type\\
+				\hline
+				$(0, 0)$ & Saddle\\
+				$(\pm\sqrt{2}, 0)$ & Maximum\\
+				$(0, \pm\sqrt{2})$ & Minimum
+			\end{tabular}
+			\end{center}
+		%
+		\item The calculations here are thankfully easier. For $(x_0, y_0)$ to be a point of extrema or a saddle point, it must be the case that $(\nabla f)(x_0, y_0) = (0, 0).$
+
+		Note that $f_x(x, y) = 3x^2 - 3y^2.$
+
+		Also, $f_y(x, y) = -6xy.$
+
+		Thus, solving $(\nabla f)(x_0, y_0) = (0, 0)$ gives us that $(x_0, y_0) = (0, 0).$
+
+		In our case, the discriminant at a general point is
+		\begin{align*} 
+			D &= f_{x x}\left(x_{0}, y_{0}\right) f_{y y}\left(x_{0}, y_{0}\right)-f_{x y}\left(x_{0}, y_{0}\right)^{2}\\
+			&= -36(x_0^2 + y_0^2).
+		\end{align*}
+
+		Hence, we get that the discriminant test is {\color{red} inconclusive!} This means that we must turn to some other analytic methods of determining the nature.
+
+		Now, we note that $f(x, 0) = x^3$ for all $x \in \mathbb{R}.$ This means that, given any $r > 0,$ we have
+		\begin{equation*} 
+			f\left(\frac{r}{2}, 0\right) > f(0, 0) > f\left(-\frac{r}{2}, 0\right).
+		\end{equation*}
+		However, note that
+		\begin{equation*} 
+			\left(-\frac{r}{2}, 0\right), \left(\frac{r}{2}, 0\right) \in D_r(0, 0).
+		\end{equation*}
+		Thus, $(0, 0)$ can neither be a point of local minima nor of local maxima.
+
+		Thus, $(0, 0)$ is a saddle point, by definition.
+		\end{enumerate}
+	\end{soln}
+	%
+	%
+	\newpage
+	\item[9.] Find the absolute maximum and the absolute minimum of
+	\begin{equation*} 
+		f(x, y) = (x^2 - 4x)\cos y \quad\text{for } 1 \le x \le 3,\; -\pi/4 \le y \le \pi/4.
+	\end{equation*}
+	%
+	\begin{soln}
+		Note that $f_x(x, y) = (2x-4) \cos y$ and $f_y(x, y) = -\left(x^{2}-4x\right) \sin y$ for interior points $(x, y).$\\
+		Thus, the only critical point is $p_1 = (2, 0).$
+
+		Now we restrict ourselves to the boundaries to find the local extrema.
+
+		``Right boundary:'' This is the line segment $x = 3, -\pi / 4 \leq y \leq \pi / 4.$ The function now reduces to $-3\cos y$ on this segment. Using our theory from one-variable calculus, we get that we need to check the points $(3, 0),\;(3, \pi/4),\;(3, -\pi/4).$\\
+		(The first because it's an interior point at which the derivative is $0.$ The others because they are the boundary points now.)
+
+		Similar consideration of the ``left boundary'' gives us the points $(1, 0),$ $(1, \pi/4),$ $(1, -\pi/4).$
+
+		Now, we look at the ``top boundary.'' The function there reduces to $\frac{x^2 - 4x}{\sqrt{2}}.$ Once again, using our theory from one-variable calculus, we get that we need to check the points $(1, \pi/4),\;(2, \pi/4),\;(3, \pi/4).$ Similarly, checking the ``bottom boundary'' gives us the points $(1, -\pi/4),\;(2, -\pi/4),\;(3, -\pi/4).$
+
+		
+		\begin{equation*} 
+			\begin{array}{|c||c|c|c|c|c|}
+				\hline
+				(x_0, y_0) & (2, 0) & (3, 0) & (3, \pi/4) & (2, \pi/4) & (1, \pi/4) \\
+				\hline
+				f(x_0, y_0) & -4 & -3 & \dfrac{-3}{\sqrt{2}} & \dfrac{-4}{\sqrt{2}} & \dfrac{-3}{\sqrt{2}} \\
+				\hline
+				\hline
+				(x_0, y_0) & (1, 0) & (1, -\pi/4) & (2, -\pi/4) & (3, -\pi/4) &  \\
+				\hline
+				f(x_0, y_0) & -3 & \dfrac{-3}{\sqrt{2}} & \dfrac{-4}{\sqrt{2}} & \dfrac{-3}{\sqrt{2}} & \\
+				\hline 
+				\end{array}
+		\end{equation*}
+
+		Thus, we get that $f_{\min} = -4$ at $(2, 0)$ and $f_{\max} = -\frac{3}{\sqrt{2}}$ at $(1, \pm \pi/4)$ and $(3, \pm\pi/4).$
+	\end{soln}
+\end{itemize}
 \end{document}
